@@ -1,0 +1,24 @@
+{
+  "name": "@falbricate/base",
+  "version": "0.0.1",
+  "description": "Base for falbricate",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "ts-node src/index.ts",
+    "format": "prettier . --write"
+  },
+  "keywords": [
+    "mocking"
+  ],
+  "author": "vojtechpavlu",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2"
+  }
+}
