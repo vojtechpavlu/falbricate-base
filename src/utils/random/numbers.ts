@@ -43,11 +43,12 @@ export const randomFloat = (
     throw new Error(
       `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`
     );
+  } else if (decimalDigits < 0) {
+    throw new Error(
+      `Number of decimal digits has to be non-negative`
+    )
   }
 
   const randomFloat = Math.random() * (max - min) + min;
   return parseFloat(randomFloat.toFixed(decimalDigits));
 }
-
-
-
