@@ -1,4 +1,4 @@
-import { randomSampleFromArray } from '../../../../src/utils/random/arrays';
+import { randomSampleFromArray } from '../../../../src';
 
 describe('randomSampleFromArray function', () => {
   it('should return array of items of given length', () => {
@@ -14,8 +14,8 @@ describe('randomSampleFromArray function', () => {
 
     sample.forEach((item) => {
       expect(array.includes(item)).toBeTruthy();
-    })
-  })
+    });
+  });
 
   it('should return without repetition', () => {
     const array = ['a', 'b', 'c', 'd'];
@@ -26,22 +26,22 @@ describe('randomSampleFromArray function', () => {
         if (idx1 < idx2) {
           expect(item1).not.toBe(item2);
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
   it('should throw on empty array', () => {
-    expect(() => randomSampleFromArray([], 2)).toThrow()
-  })
+    expect(() => randomSampleFromArray([], 2)).toThrow();
+  });
 
   it('should throw on n > arr.length', () => {
     const array = ['a'];
-    expect(() => randomSampleFromArray(array, 5)).toThrow()
-  })
+    expect(() => randomSampleFromArray(array, 5)).toThrow();
+  });
 
   it('should throw on n < 1', () => {
     const array = ['a', 'b', 'c', 'd'];
-    expect(() => randomSampleFromArray(array, 0)).toThrow()
-    expect(() => randomSampleFromArray(array, -1)).toThrow()
-  })
-})
+    expect(() => randomSampleFromArray(array, 0)).toThrow();
+    expect(() => randomSampleFromArray(array, -1)).toThrow();
+  });
+});

@@ -50,9 +50,8 @@ export const randomSampleFromArray = <T>(array: T[], n: number): T[] => {
  * @param array Array to be shuffled
  */
 export const shuffleArray = <T>(array: T[]): T[] => {
-
   if (!Array.isArray(array) || array.length < 1) {
-    throw new Error("Given argument must be an array with at least one item");
+    throw new Error('Given argument must be an array with at least one item');
   }
 
   const copy: T[] = array.slice();

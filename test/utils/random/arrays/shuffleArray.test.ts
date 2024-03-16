@@ -1,4 +1,4 @@
-import { shuffleArray } from '../../../../src/utils/random/arrays';
+import { shuffleArray } from '../../../../src';
 
 describe('shuffleArray function', () => {
   it('should return an array with same length', () => {
@@ -27,7 +27,7 @@ describe('shuffleArray function', () => {
 
   it('should actually shuffle the given array', () => {
     // Generate a long array
-    const array = Array.from(Array(500).keys()).map(i => i);
+    const array = Array.from(Array(500).keys()).map((i) => i);
     const shuffled = shuffleArray(array);
 
     expect(JSON.stringify(shuffled)).not.toBe(JSON.stringify(array));
@@ -36,4 +36,4 @@ describe('shuffleArray function', () => {
   it('should throw on empty array', () => {
     expect(() => shuffleArray([])).toThrow();
   });
-})
+});
