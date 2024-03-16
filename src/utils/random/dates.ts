@@ -9,4 +9,4 @@ import { randomInteger } from './numbers';
 export const randomDateTime = (from: Date, to: Date) => {
   const periodMs = to.getTime() - from.getTime();
   return new Date(from.getTime() + randomInteger(0, periodMs));
-}
+};

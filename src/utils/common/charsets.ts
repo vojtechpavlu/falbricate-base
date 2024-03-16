@@ -2,14 +2,14 @@
 export type Charset = string[];
 
 interface CharsetRegistry {
-  [name: string]: Charset
+  [name: string]: Charset;
 }
 
-const NUMBERS = "0123456789".split("");
-const LOWERCASES = "abcdefghijklmnopqrstuvwxyz".split("");
-const UPPERCASES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const SPECIALS = ".,-?!:_$#&@=+-;*`~/\\|\'\"".split("")
-const DOUBLES = "(){}[]<>".split("")
+const NUMBERS = '0123456789'.split('');
+const LOWERCASES = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const UPPERCASES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const SPECIALS = '.,-?!:_$#&@=+-;*`~/\\|\'"'.split('');
+const DOUBLES = '(){}[]<>'.split('');
 
 export const DEFAULT_CHARSETS: CharsetRegistry = {
   NUMBERS: NUMBERS,
@@ -19,34 +19,19 @@ export const DEFAULT_CHARSETS: CharsetRegistry = {
   DOUBLE_CHARS: DOUBLES,
 
   // Combinations
-  ALL_LETTERS: [
-    ...LOWERCASES,
-    ...UPPERCASES
-  ],
+  ALL_LETTERS: [...LOWERCASES, ...UPPERCASES],
 
-  ALPHANUMERICS: [
-    ...LOWERCASES,
-    ...UPPERCASES,
-    ...NUMBERS
-  ],
+  ALPHANUMERICS: [...LOWERCASES, ...UPPERCASES, ...NUMBERS],
 
   ALPHANUMERICS_WITH_SPECIALS: [
     ...LOWERCASES,
     ...UPPERCASES,
     ...NUMBERS,
-    ...SPECIALS
+    ...SPECIALS,
   ],
 
-  ALL: [
-    ...LOWERCASES,
-    ...UPPERCASES,
-    ...NUMBERS,
-    ...SPECIALS,
-    ...DOUBLES
-  ]
-}
-
-
+  ALL: [...LOWERCASES, ...UPPERCASES, ...NUMBERS, ...SPECIALS, ...DOUBLES],
+};
 
 /**
  * Checks if the given potential charset is an array
@@ -68,7 +53,7 @@ export const isCharset = (potentialCharset: any): boolean => {
   // Count all the characters in the given array
   const sumOfLengths = potentialCharset
     .map((item) => {
-      return typeof item === 'string' ? item.length : 0
+      return typeof item === 'string' ? item.length : 0;
     })
     .reduce((acc, curr) => acc + curr);
 

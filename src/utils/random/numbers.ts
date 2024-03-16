@@ -10,15 +10,14 @@
  * than the upper bound
  */
 export const randomInteger = (min: number, max: number): number => {
-
   if (min > max) {
     throw new Error(
-      `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`
+      `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`,
     );
   }
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 /**
  * Generates a random float within a range with a given precision by decimal
@@ -36,19 +35,16 @@ export const randomInteger = (min: number, max: number): number => {
 export const randomFloat = (
   min: number,
   max: number,
-  decimalDigits: number = 2
+  decimalDigits: number = 2,
 ): number => {
-
   if (min > max) {
     throw new Error(
-      `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`
+      `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`,
     );
   } else if (decimalDigits < 0) {
-    throw new Error(
-      `Number of decimal digits has to be non-negative`
-    )
+    throw new Error(`Number of decimal digits has to be non-negative`);
   }
 
   const randomFloat = Math.random() * (max - min) + min;
   return parseFloat(randomFloat.toFixed(decimalDigits));
-}
+};

@@ -7,15 +7,15 @@ import { randomInteger } from './numbers';
  */
 export const randomItemFromArray = <T>(array: T[]): T => {
   if (array === null || array === undefined) {
-    throw new Error("Given argument is null or undefined")
+    throw new Error('Given argument is null or undefined');
   } else if (!Array.isArray(array)) {
-    throw new Error("Given argument is not an array")
+    throw new Error('Given argument is not an array');
   } else if (array.length === 0) {
-    throw new Error("Given array is empty")
+    throw new Error('Given array is empty');
   }
 
-  return array[randomInteger(0, array.length)]!
-}
+  return array[randomInteger(0, array.length)]!;
+};
 
 /**
  * Selects a random sample from a given array.
@@ -25,23 +25,23 @@ export const randomItemFromArray = <T>(array: T[]): T => {
  */
 export const randomSampleFromArray = <T>(array: T[], n: number): T[] => {
   if (n === 1) {
-    return [randomItemFromArray(array)]
+    return [randomItemFromArray(array)];
   } else if (n < 1) {
-    throw new Error(`Invalid size of sample: ${n}`)
+    throw new Error(`Invalid size of sample: ${n}`);
   } else if (array === null || array === undefined) {
-    throw new Error("Given argument is null or undefined")
+    throw new Error('Given argument is null or undefined');
   } else if (!Array.isArray(array)) {
-    throw new Error("Given argument is not an array")
+    throw new Error('Given argument is not an array');
   } else if (array.length === 0) {
-    throw new Error("Given array is empty")
+    throw new Error('Given array is empty');
   } else if (array.length < n) {
     throw new Error(
-      `Given array doesn't have enough items: ${array.length} < ${n}`
+      `Given array doesn't have enough items: ${array.length} < ${n}`,
     );
   }
 
   return shuffleArray(array).slice(0, n);
-}
+};
 
 /**
  * Shuffles the given array using Durstenfeld algorithm. The result array
@@ -60,4 +60,4 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   }
 
   return copy;
-}
+};
