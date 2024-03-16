@@ -1,1 +1,2 @@
-export * from './random/numbers';
+export * from './common';
+export * from './random';
