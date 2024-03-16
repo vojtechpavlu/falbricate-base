@@ -1,4 +1,4 @@
-import { randomDateTime } from '../../../src/utils/random/dates';
+import { randomDateTime } from '../../../../src/utils/random/dates';
 
 describe('randomDateTime function', () => {
 

@@ -1,4 +1,4 @@
-import { randomSampleFromArray } from '../../../src/utils/random/arrays';
+import { randomSampleFromArray } from '../../../../src/utils/random/arrays';
 
 describe('randomSampleFromArray function', () => {
   it('should return array of items of given length', () => {

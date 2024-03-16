@@ -1,4 +1,4 @@
-import { shuffleArray } from '../../../src/utils/random/arrays';
+import { shuffleArray } from '../../../../src/utils/random/arrays';
 
 describe('shuffleArray function', () => {
   it('should return an array with same length', () => {
