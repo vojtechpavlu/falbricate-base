@@ -10,8 +10,8 @@ const LOWERCASES = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const UPPERCASES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const SPECIALS = '.,-?!:_$#&@=+-;*`~/\\|\'"'.split('');
 const DOUBLES = '(){}[]<>'.split('');
-const HEXADECIMAL_LOWERCASES = '0123456899abcdef'.split("");
-const HEXADECIMAL_UPPERCASES = '0123456899ABCDEF'.split("");
+const HEXADECIMAL_LOWERCASES = '0123456899abcdef'.split('');
+const HEXADECIMAL_UPPERCASES = '0123456899ABCDEF'.split('');
 
 export const DEFAULT_CHARSETS: CharsetRegistry = {
   NUMBERS: NUMBERS,
