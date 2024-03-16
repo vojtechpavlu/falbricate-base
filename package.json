@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "ts-node src/index.ts",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "test:unit": "jest"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
