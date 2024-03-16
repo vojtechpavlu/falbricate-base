@@ -16,8 +16,7 @@ describe('randomFloat function', () => {
     const value = randomFloat(1, 5, 3);
     const decimalPart = `${value}`.split('.')[1]!;
 
-    // In case the last decimal digit is zero
-    expect(decimalPart.length).toBeGreaterThanOrEqual(2);
+    // In case the last decimal digits are zero
     expect(decimalPart.length).toBeLessThanOrEqual(3);
   });
 
