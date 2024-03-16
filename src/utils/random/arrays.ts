@@ -14,7 +14,7 @@ export const randomItemFromArray = <T>(array: T[]): T => {
     throw new Error('Given array is empty');
   }
 
-  return array[randomInteger(0, array.length)]!;
+  return array[randomInteger(0, array.length - 1)]!;
 };
 
 /**
