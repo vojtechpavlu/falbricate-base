@@ -1,7 +1,7 @@
 import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomInteger } from '../../utils';
 
-type IntegerGeneratorConfig = {
+export type IntegerGeneratorConfig = {
   min: number,
   max: number
 } & ValueGeneratorConfig

@@ -1,7 +1,7 @@
 import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomFloat } from '../../utils';
 
-type FloatGeneratorConfig = {
+export type FloatGeneratorConfig = {
   min: number,
   max: number
   decimalDigits?: number
