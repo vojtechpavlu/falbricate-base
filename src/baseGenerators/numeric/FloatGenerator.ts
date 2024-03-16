@@ -7,6 +7,9 @@ export type FloatGeneratorConfig = {
   decimalDigits?: number;
 } & ValueGeneratorConfig;
 
+/**
+ * This class generates random float number within a given range.
+ */
 export class FloatGenerator extends ValueGenerator<
   number,
   FloatGeneratorConfig
@@ -17,10 +20,12 @@ export class FloatGenerator extends ValueGenerator<
   }
 
   get = (): number => {
-    return randomFloat(
+    const value = randomFloat(
       this.config.min,
       this.config.max,
       this.config.decimalDigits,
     );
+
+    return this.pipe(value);
   };
 }

@@ -6,6 +6,9 @@ export type IntegerGeneratorConfig = {
   max: number;
 } & ValueGeneratorConfig;
 
+/**
+ * This class generates a random integer within a given range.
+ */
 export class IntegerGenerator extends ValueGenerator<
   number,
   IntegerGeneratorConfig
