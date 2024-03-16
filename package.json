@@ -16,6 +16,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
+    "compile": "tsc",
     "dev": "ts-node src/index.ts",
     "format": "prettier . --write",
     "test:unit": "jest"
