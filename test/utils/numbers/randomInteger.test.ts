@@ -1,4 +1,4 @@
-import { randomInteger } from '../../src/utils';
+import { randomInteger } from '../../../src/utils';
 
 describe('randomInteger function', () => {
   it('should return a number within range', () => {

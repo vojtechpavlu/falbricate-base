@@ -1,4 +1,4 @@
-import { randomFloat } from '../../src/utils';
+import { randomFloat } from '../../../src/utils';
 
 describe('randomFloat function', () => {
   it('should return a number within range', () => {
