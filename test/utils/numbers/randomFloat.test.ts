@@ -16,7 +16,9 @@ describe('randomFloat function', () => {
     const value = randomFloat(1, 5, 3);
     const decimalPart = `${value}`.split('.')[1]!;
 
-    expect(decimalPart.length).toBe(3);
+    // In case the last decimal digit is zero
+    expect(decimalPart.length).toBeGreaterThanOrEqual(2);
+    expect(decimalPart.length).toBeLessThanOrEqual(3);
   });
 
   it('should throw on min > max', () => {
