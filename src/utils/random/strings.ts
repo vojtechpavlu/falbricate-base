@@ -49,7 +49,7 @@ export const randomStringOfLength = (
   let result = '';
 
   for (let i = 0; i < length; i++) {
-    result = result + charset[randomInteger(0, charset.length)];
+    result = result + charset[randomInteger(0, charset.length - 1)];
   }
 
   return result;

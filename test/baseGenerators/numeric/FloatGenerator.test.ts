@@ -1,7 +1,4 @@
-import {
-  FloatGenerator,
-  FloatGeneratorConfig,
-} from '../../../src';
+import { FloatGenerator, FloatGeneratorConfig } from '../../../src';
 
 describe('FloatGenerator class', () => {
   it('should return a float within a given range (without precision)', () => {
