@@ -1,2 +1,2 @@
-export * from "./FloatGenerator"
-export * from "./IntegerGenerator"
+export * from './FloatGenerator';
+export * from './IntegerGenerator';

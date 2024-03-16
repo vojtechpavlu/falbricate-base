@@ -2,13 +2,15 @@ import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomFloat } from '../../utils';
 
 export type FloatGeneratorConfig = {
-  min: number,
-  max: number
-  decimalDigits?: number
-} & ValueGeneratorConfig
+  min: number;
+  max: number;
+  decimalDigits?: number;
+} & ValueGeneratorConfig;
 
-export class FloatGenerator extends ValueGenerator<number, FloatGeneratorConfig> {
-
+export class FloatGenerator extends ValueGenerator<
+  number,
+  FloatGeneratorConfig
+> {
   constructor(config: FloatGeneratorConfig) {
     super(config);
     config.decimalDigits = config.decimalDigits ?? 2;
@@ -18,7 +20,7 @@ export class FloatGenerator extends ValueGenerator<number, FloatGeneratorConfig>
     return randomFloat(
       this.config.min,
       this.config.max,
-      this.config.decimalDigits
+      this.config.decimalDigits,
     );
   };
 }

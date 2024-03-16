@@ -5,7 +5,7 @@ import { GeneratedValue } from '../baseGenerators/ValueGenerator';
  * Falsum is a randomly generated object by the given schema.
  */
 export interface Falsum {
-  [name: string]: GeneratedValue
+  [name: string]: GeneratedValue;
 }
 
 /**
@@ -14,19 +14,18 @@ export interface Falsum {
  * The reason for this kind of pipes is to enable the client to change
  * the general mechanism of how is the Falsum generated to his needs.
  */
-export type FalsumPipe = (falsum: Falsum) => Falsum
+export type FalsumPipe = (falsum: Falsum) => Falsum;
 
 /**
  * Fabricator is a factory class providing services of generating
  * Falsum objects and maintaining their generative process.
  */
 export class Fabricator {
-
   /** Schema to be used for Falsum fabrication */
   private schema: Schema<any, any>;
 
   constructor(schema: Schema<any, any>) {
-    this.schema = schema
+    this.schema = schema;
   }
 
   /**
@@ -39,8 +38,8 @@ export class Fabricator {
       falsum[property] = this.schema.fields[property]?.get();
     });
 
-    return falsum
-  }
+    return falsum;
+  };
 
   /**
    * Generates multiple Falsum objects fitting the schema given in constructor.
@@ -51,17 +50,18 @@ export class Fabricator {
    * rule of non-negativity.
    */
   public generateMany = (n: number): Falsum[] => {
-
     if (!n || n < 0) {
-      throw new Error(`Expected a positive number of how many items should be created: ${n}`)
+      throw new Error(
+        `Expected a positive number of how many items should be created: ${n}`,
+      );
     }
 
-    const items: Falsum[] = []
+    const items: Falsum[] = [];
 
     for (let i = 0; i < n; i++) {
-      items.push(this.generate())
+      items.push(this.generate());
     }
 
     return items;
-  }
+  };
 }

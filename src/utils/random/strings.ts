@@ -20,7 +20,6 @@ export const randomCharacter = (charset: Charset | any): string => {
   return randomItemFromArray(charset);
 };
 
-
 /**
  * Generates a random string from given charset of a given length.
  *
