@@ -6,7 +6,7 @@ import { randomInteger } from './numbers';
  * @param from  Start datetime period interval
  * @param to    End datetime period interval
  */
-export const randomDateTime = (from: Date, to: Date) => {
+export const randomDateTime = (from: Date, to: Date): Date => {
   const periodMs = to.getTime() - from.getTime();
   return new Date(from.getTime() + randomInteger(0, periodMs));
 };
