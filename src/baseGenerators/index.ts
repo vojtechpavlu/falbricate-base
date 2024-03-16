@@ -10,8 +10,10 @@ import {
  * @template ValueType  Type of the value to be generated using the built value generator
  * @template Conf       Type of the configuration to be passed to the value generator
  */
-export type ValueGeneratorBuilder<ValueType extends GeneratedValue, Conf extends ValueGeneratorConfig> =
-  (config: Conf) => ValueGenerator<ValueType, Conf>;
+export type ValueGeneratorBuilder<
+  ValueType extends GeneratedValue,
+  Conf extends ValueGeneratorConfig,
+> = (config: Conf) => ValueGenerator<ValueType, Conf>;
 
 /**
  * Type definition of the Registry of all the value generators.
@@ -19,7 +21,10 @@ export type ValueGeneratorBuilder<ValueType extends GeneratedValue, Conf extends
  * @template ValueType  Type of the value to be generated using the built value generator
  * @template Conf       Type of the configuration to be passed to the value generator
  */
-interface ValueGeneratorRegistry<ValueType extends GeneratedValue, Conf extends ValueGeneratorConfig> {
+interface ValueGeneratorRegistry<
+  ValueType extends GeneratedValue,
+  Conf extends ValueGeneratorConfig,
+> {
   [name: string]: ValueGeneratorBuilder<ValueType, Conf>;
 }
 
@@ -44,7 +49,7 @@ export const get = <
   Conf extends ValueGeneratorConfig,
 >(
   name: string,
-  config: Conf
+  config: Conf,
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -54,7 +59,6 @@ export const get = <
 
   return generatorBuilderFunction(config) as ValueGenerator<GenValue, Conf>;
 };
-
 
 /**
  * Access method to check there is a value generator builder
@@ -75,10 +79,16 @@ export const hasGenerator = (name: string): boolean => {
  * @param builder Value Generator builder to be assigned under the given name
  */
 export const registerValueGenerator = <
-  GeneratorValueType extends GeneratedValue, GivenConfig extends ValueGeneratorConfig
->(name: string, builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>) => {
+  GeneratorValueType extends GeneratedValue,
+  GivenConfig extends ValueGeneratorConfig,
+>(
+  name: string,
+  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
+) => {
   if (hasGenerator(name)) {
-    throw new Error(`There is already one value generator with name '${name}' registered`);
+    throw new Error(
+      `There is already one value generator with name '${name}' registered`,
+    );
   }
 
   VALUE_GENERATOR_REGISTRY[name] = builder;
