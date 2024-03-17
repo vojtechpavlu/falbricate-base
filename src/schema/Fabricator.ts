@@ -10,14 +10,6 @@ export interface Falsum {
 }
 
 /**
- * Falsum Pipe is a function altering a given Falsum into another one.
- *
- * The reason for this kind of pipes is to enable the client to change
- * the general mechanism of how is the Falsum generated to his needs.
- */
-export type FalsumPipe = (falsum: Falsum) => Falsum;
-
-/**
  * Fabricator is a factory class providing services of generating
  * Falsum objects and maintaining their generative process.
  */
@@ -35,8 +27,14 @@ export class Fabricator {
   public generate = (): Falsum => {
     let falsum: Falsum = {};
 
+    // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
       falsum[property] = this.schema.fields[property]?.get();
+    });
+
+    // Pipe the value through all the Falsum Pipes
+    this.schema.pipes.forEach((pipe) => {
+      falsum = pipe(falsum);
     });
 
     return falsum;

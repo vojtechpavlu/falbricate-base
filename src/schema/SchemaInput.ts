@@ -3,6 +3,7 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../baseGenerators';
+import { FalsumPipe } from '../pipes';
 
 /**
  * Plain JavaScript Object representation of a field for which
@@ -12,6 +13,13 @@ export interface DeclarativeFieldDefinition {
   type: string;
   config: ValueGeneratorConfig & any;
 }
+
+/**
+ * Declaration of a Falsum Pipe client input enabling the client
+ * to can use either the actual function to pipe the falsum or
+ * a name of predefined Falsum Pipe.
+ */
+export type FalsumPipeInput = FalsumPipe | string;
 
 /**
  * Client-given schema declaration needing to be compiled.
@@ -29,4 +37,6 @@ export interface SchemaInput {
       | DeclarativeFieldDefinition
       | ValueGenerator<GeneratedValue, ValueGeneratorConfig>;
   };
+
+  pipes?: FalsumPipeInput[];
 }
