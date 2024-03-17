@@ -2,7 +2,7 @@ import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomInteger } from '../../utils';
 
 export type IntegerGeneratorConfig = {
-  min: number;
+  min?: number;
   max: number;
 } & ValueGeneratorConfig;
 
@@ -10,15 +10,21 @@ export type IntegerGeneratorConfig = {
  * This class generates a random integer within a given range.
  */
 export class IntegerGenerator extends ValueGenerator<
-  number,
-  IntegerGeneratorConfig
+  number, IntegerGeneratorConfig
 > {
   constructor(config: IntegerGeneratorConfig) {
+
+    if (!config.max) {
+      throw new Error(`Property 'max' is required`);
+    }
+
+    config.min = config.min ? config.min : 0;
+
     super(config);
   }
 
   get = (): number => {
-    let value = randomInteger(this.config.min, this.config.max);
+    let value = randomInteger(this.config.min ?? 0, this.config.max);
     return this.pipe(value);
   };
 }

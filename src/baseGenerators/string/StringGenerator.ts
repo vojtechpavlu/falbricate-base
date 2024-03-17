@@ -34,6 +34,13 @@ export class StringOfLengthGenerator extends ValueGenerator<
   StringGeneratorConfig
 > {
   constructor(config: StringGeneratorConfig) {
+
+    if (!config.length) {
+      throw new Error(`Property 'length' is required`);
+    } else if (!config.charset) {
+      throw new Error(`Property 'charset' is required`);
+    }
+
     super(config);
   }
 
