@@ -1,5 +1,5 @@
 import { Schema } from './Schema';
-import { GeneratedValue } from '../baseGenerators/ValueGenerator';
+import { GeneratedValue } from '../baseGenerators';
 
 /**
  * Falsum is a randomly generated object by the given schema.

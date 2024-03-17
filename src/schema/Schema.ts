@@ -2,7 +2,7 @@ import {
   ValueGenerator,
   GeneratedValue,
   ValueGeneratorConfig,
-} from '../baseGenerators/ValueGenerator';
+} from '../baseGenerators';
 
 /** General declaration of a field definition.*/
 export interface FieldsDefinition<
