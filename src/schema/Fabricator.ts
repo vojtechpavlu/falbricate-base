@@ -1,5 +1,6 @@
 import { Schema } from './Schema';
 import { GeneratedValue } from '../baseGenerators';
+import { SchemaInput } from './SchemaInput';
 
 /**
  * Falsum is a randomly generated object by the given schema.
@@ -22,10 +23,10 @@ export type FalsumPipe = (falsum: Falsum) => Falsum;
  */
 export class Fabricator {
   /** Schema to be used for Falsum fabrication */
-  private schema: Schema<any, any>;
+  private schema: Schema;
 
-  constructor(schema: Schema<any, any>) {
-    this.schema = schema;
+  constructor(schemaInput: SchemaInput) {
+    this.schema = new Schema(schemaInput);
   }
 
   /**
