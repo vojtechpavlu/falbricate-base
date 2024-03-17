@@ -17,7 +17,7 @@ export const camelToSnake = (camel: string): string => {
   }
 
   return snake;
-}
+};
 
 /**
  * Turns the Snake case into Camel case; like this:
@@ -29,11 +29,13 @@ export const camelToSnake = (camel: string): string => {
 export const snakeToCamel = (snake: string): string => {
   const words = snake.split('_');
 
-  return words.map((word, idx) => {
-    if (idx === 0) {
-      return word;
-    } else {
-      return word.charAt(0).toUpperCase() + word.toLowerCase().slice(1);
-    }
-  }).join('');
-}
+  return words
+    .map((word, idx) => {
+      if (idx === 0) {
+        return word;
+      } else {
+        return word.charAt(0).toUpperCase() + word.toLowerCase().slice(1);
+      }
+    })
+    .join('');
+};

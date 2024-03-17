@@ -5,7 +5,7 @@ import {
   ValueGeneratorConfig,
 } from '../baseGenerators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
-import { FalsumPipe, getFalsumPipe } from '../pipes/falsum';
+import { FalsumPipe, getFalsumPipe } from '../pipes';
 
 /** General declaration of a field definition. */
 export interface FieldsDefinition {
@@ -23,7 +23,6 @@ export interface FieldsDefinition {
  * </ul>
  */
 export class Schema {
-
   /** Field definitions by which the Falsum property will be generated */
   public readonly fields: FieldsDefinition;
 
@@ -59,7 +58,7 @@ export class Schema {
   };
 
   private compilePipes = (schemaInput: SchemaInput): FalsumPipe[] => {
-    const pipes: FalsumPipe[] = []
+    const pipes: FalsumPipe[] = [];
 
     schemaInput.pipes?.forEach((pipe) => {
       if (typeof pipe === 'function') {
@@ -69,8 +68,8 @@ export class Schema {
       } else {
         throw new Error(`Unrecognized type '${typeof pipe}'`);
       }
-    })
+    });
 
     return pipes;
-  }
+  };
 }

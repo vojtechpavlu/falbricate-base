@@ -35,7 +35,7 @@ export class Fabricator {
     // Pipe the value through all the Falsum Pipes
     this.schema.pipes.forEach((pipe) => {
       falsum = pipe(falsum);
-    })
+    });
 
     return falsum;
   };

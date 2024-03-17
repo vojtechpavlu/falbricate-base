@@ -1,2 +1,2 @@
 export * from './FalsumPipe';
-export * from './fieldNameCasing'
+export * from './fieldNameCasing';

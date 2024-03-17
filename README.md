@@ -23,7 +23,7 @@ const fabricator= new Fabricator({
       config: {
         charset: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(''),
         length: 10,
-        pipes: [                  // Modify the generated value with pipes 
+        pipes: [                  // Modify the generated value with pipes
           (value) => value.toLowerCase(),
           (value) => `u/${value}`
         ]
@@ -52,7 +52,6 @@ const falsums: Falsum[] = fabricator.generateMany(5);
 // Possible output:
 // { username: 'u/ooqne190mc', age: 18, languages: [ 'Python', 'Java', 'JS/TS' ]}
 ```
-
 
 ## Disclaimer
 

@@ -3,7 +3,7 @@ import { fieldsToSnake } from '../../../../src';
 
 const falsum: Falsum = {
   propName1: 'value',
-  propName2: 3
+  propName2: 3,
 };
 
 describe('fieldsToSnake falsum pipe', () => {
@@ -26,7 +26,7 @@ describe('fieldsToSnake falsum pipe', () => {
   it('should snake-case all the fields in a given falsum', () => {
     const falsum: Falsum = {
       propName: 'value',
-      anotherPropName: 'anotherValue'
+      anotherPropName: 'anotherValue',
     };
 
     const snake = fieldsToSnake(falsum);
@@ -38,8 +38,8 @@ describe('fieldsToSnake falsum pipe', () => {
   it(`should change nested objects' property names`, () => {
     const falsum: Falsum = {
       propName: {
-        nestedProp: 'value'
-      }
+        nestedProp: 'value',
+      },
     };
 
     const snake = fieldsToSnake(falsum);
@@ -50,7 +50,7 @@ describe('fieldsToSnake falsum pipe', () => {
 
   it(`should change nested array's objects' property names`, () => {
     const falsum: Falsum = {
-      propName: [ { nestedProp: 'value' } ]
+      propName: [{ nestedProp: 'value' }],
     };
 
     const snake = fieldsToSnake(falsum);
@@ -58,5 +58,4 @@ describe('fieldsToSnake falsum pipe', () => {
 
     expect(nestedPropNames[0]).toBe('nested_prop');
   });
-
 });

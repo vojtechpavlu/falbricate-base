@@ -7,4 +7,4 @@ describe('camelToCase function', () => {
 
     expect(snake).toBe('camel_case');
   });
-})
+});
