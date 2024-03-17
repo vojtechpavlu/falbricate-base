@@ -22,7 +22,7 @@ describe('StringGenerator class', () => {
     const generator = new StringOfLengthGenerator(conf);
     const generatedString = generator.get();
 
-    generatedString.split('').forEach((char) => {
+    generatedString.split('').forEach((char: any) => {
       expect(generatedString.includes(char)).toBe(true);
     });
   });
