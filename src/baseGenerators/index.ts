@@ -1,13 +1,13 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig,
+  ValueGeneratorConfig
 } from './ValueGenerator';
 import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig,
+  IntegerGeneratorConfig
 } from './numeric';
 import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
 
@@ -56,7 +56,7 @@ export const get = <
   Conf extends ValueGeneratorConfig,
 >(
   name: string,
-  config: Conf,
+  config: Conf
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -75,7 +75,7 @@ export const get = <
  */
 export const hasGenerator = (name: string): boolean => {
   return !!Object.keys(VALUE_GENERATOR_REGISTRY).find(
-    (key: string) => key === name,
+    (key: string) => key === name
   );
 };
 
@@ -90,11 +90,11 @@ export const registerValueGenerator = <
   GivenConfig extends ValueGeneratorConfig,
 >(
   name: string,
-  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
+  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>
 ) => {
   if (hasGenerator(name)) {
     throw new Error(
-      `There is already one value generator with name '${name}' registered`,
+      `There is already one value generator with name '${name}' registered`
     );
   }
 
@@ -104,21 +104,12 @@ export const registerValueGenerator = <
 /** Registry for Value generator builders */
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
-registerValueGenerator(
-  'range-integer',
-  (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
-);
+registerValueGenerator('range-integer', (config: IntegerGeneratorConfig) => new IntegerGenerator(config));
+registerValueGenerator('range-float', (config: FloatGeneratorConfig) => new FloatGenerator(config));
+registerValueGenerator('string-of-length', (config: StringGeneratorConfig) => new StringOfLengthGenerator(config));
 
-registerValueGenerator(
-  'range-float',
-  (config: FloatGeneratorConfig) => new FloatGenerator(config),
-);
 
-registerValueGenerator(
-  'string-of-length',
-  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
-);
-
-export * from './numeric';
 export * from './ValueGenerator';
+export * from './numeric';
 export * from './string';
+export * from './array';
