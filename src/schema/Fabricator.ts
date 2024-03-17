@@ -1,7 +1,6 @@
 import { Schema } from './Schema';
 import { GeneratedValue } from '../baseGenerators';
 import { SchemaInput } from './SchemaInput';
-import { FalsumPipe } from '../pipes/falsum';
 
 /**
  * Falsum is a randomly generated object by the given schema.
