@@ -54,7 +54,8 @@ export const shuffleArray = <T>(array: T[]): T[] => {
     throw new Error('Given argument must be an array with at least one item');
   }
 
-  const copy: T[] = array.slice();
+  // Make a deep copy
+  const copy: T[] = JSON.parse(JSON.stringify(array));
 
   for (let current = array.length - 1; current > 0; current--) {
     const switchIndex = randomInteger(0, current);

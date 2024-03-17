@@ -4,12 +4,27 @@ import {
   ValueGeneratorConfig,
 } from './ValueGenerator';
 import {
+  ConstantNumberConfig,
+  ConstantNumberGenerator,
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
   IntegerGeneratorConfig,
 } from './numeric';
-import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
+import {
+  ConstantStringConfig,
+  ConstantStringGenerator,
+  StringGeneratorConfig,
+  StringOfLengthGenerator,
+} from './string';
+import {
+  ArrayPicker,
+  ArrayPickerConfig,
+  ArraySampleConfig,
+  ArraySampleGenerator,
+  ConstantArrayConfig,
+  ConstantArrayGenerator,
+} from './array';
 
 /**
  * Type definition for builders of ValueGenerators
@@ -104,21 +119,45 @@ export const registerValueGenerator = <
 /** Registry for Value generator builders */
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
+// Register numerics
 registerValueGenerator(
   'range-integer',
   (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
 );
-
 registerValueGenerator(
   'range-float',
   (config: FloatGeneratorConfig) => new FloatGenerator(config),
 );
+registerValueGenerator(
+  'constant-number',
+  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
+);
 
+// Register strings
 registerValueGenerator(
   'string-of-length',
   (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
 );
+registerValueGenerator(
+  'constant-string',
+  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
+);
 
-export * from './numeric';
+// Register arrays
+registerValueGenerator(
+  'array-picker',
+  (config: ArrayPickerConfig) => new ArrayPicker(config),
+);
+registerValueGenerator(
+  'constant-array',
+  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
+);
+registerValueGenerator(
+  'array-sample',
+  (config: ArraySampleConfig) => new ArraySampleGenerator(config),
+);
+
 export * from './ValueGenerator';
+export * from './numeric';
 export * from './string';
+export * from './array';
