@@ -1,4 +1,9 @@
-import { GeneratedValue, get, ValueGenerator, ValueGeneratorConfig } from '../baseGenerators';
+import {
+  GeneratedValue,
+  get,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../baseGenerators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
 
 /** General declaration of a field definition. */
@@ -24,7 +29,7 @@ export class Schema {
   }
 
   private compile = (schemaInput: SchemaInput): FieldsDefinition => {
-    const compiled: FieldsDefinition = {}
+    const compiled: FieldsDefinition = {};
 
     Object.keys(schemaInput.fields).forEach((key) => {
       let inputField = schemaInput.fields[key];
@@ -32,13 +37,13 @@ export class Schema {
       // When already ValueGenerator -> no need to compile;
       // otherwise transform POJSO into matching ValueGenerator
       if (inputField instanceof ValueGenerator) {
-        compiled[key] = inputField
+        compiled[key] = inputField;
       } else {
         inputField = inputField as DeclarativeFieldDefinition;
-        compiled[key] = get(inputField.type, inputField.config)
+        compiled[key] = get(inputField.type, inputField.config);
       }
-    })
+    });
 
     return compiled;
-  }
+  };
 }

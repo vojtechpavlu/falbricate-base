@@ -1,5 +1,9 @@
 import { Charset, randomStringOfLength } from '../../utils';
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 
 /**
  * Configuration for the String generator of a specified length
@@ -34,7 +38,6 @@ export class StringOfLengthGenerator extends ValueGenerator<
   StringGeneratorConfig
 > {
   constructor(config: StringGeneratorConfig) {
-
     if (!config.length) {
       throw new Error(`Property 'length' is required`);
     } else if (!config.charset) {

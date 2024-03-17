@@ -1,12 +1,16 @@
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../baseGenerators';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../baseGenerators';
 
 /**
  * Plain JavaScript Object representation of a field for which
  * shall be a value generated.
  */
 export interface DeclarativeFieldDefinition {
-  type: string,
-  config: ValueGeneratorConfig & any
+  type: string;
+  config: ValueGeneratorConfig & any;
 }
 
 /**
@@ -21,6 +25,8 @@ export interface DeclarativeFieldDefinition {
  */
 export interface SchemaInput {
   fields: {
-    [name: string]: DeclarativeFieldDefinition | ValueGenerator<GeneratedValue, ValueGeneratorConfig>
-  }
+    [name: string]:
+      | DeclarativeFieldDefinition
+      | ValueGenerator<GeneratedValue, ValueGeneratorConfig>;
+  };
 }

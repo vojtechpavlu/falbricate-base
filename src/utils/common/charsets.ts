@@ -80,11 +80,11 @@ export const getCharset = (name: string): Charset => {
   const charset = CHARSET_REGISTRY[name];
 
   if (!charset) {
-    throw new Error(`Charset '${name}' not found`)
+    throw new Error(`Charset '${name}' not found`);
   }
 
   return charset;
-}
+};
 
 /**
  * Checks there is a charset of this name registered.
@@ -93,7 +93,7 @@ export const getCharset = (name: string): Charset => {
  */
 export const hasCharset = (name: string): boolean => {
   return !!Object.keys(CHARSET_REGISTRY).find((key) => key === name);
-}
+};
 
 /**
  * Tries to store the given charset
@@ -106,10 +106,14 @@ export const hasCharset = (name: string): boolean => {
  */
 export const storeCharset = (name: string, charset: Charset) => {
   if (!isCharset(charset)) {
-    throw new Error(`Given argument is not charset (non-empty array of single-character strings)`)
+    throw new Error(
+      `Given argument is not charset (non-empty array of single-character strings)`,
+    );
   } else if (hasCharset(name)) {
-    throw new Error(`There already is a charset with name '${name}' registered`)
+    throw new Error(
+      `There already is a charset with name '${name}' registered`,
+    );
   }
 
   CHARSET_REGISTRY[name] = charset;
-}
+};
