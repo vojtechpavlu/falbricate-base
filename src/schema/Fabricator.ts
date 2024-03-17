@@ -1,6 +1,7 @@
 import { Schema } from './Schema';
 import { GeneratedValue } from '../baseGenerators';
 import { SchemaInput } from './SchemaInput';
+import { FalsumPipe } from '../pipes/falsum';
 
 /**
  * Falsum is a randomly generated object by the given schema.
@@ -10,14 +11,6 @@ export interface Falsum {
 }
 
 /**
- * Falsum Pipe is a function altering a given Falsum into another one.
- *
- * The reason for this kind of pipes is to enable the client to change
- * the general mechanism of how is the Falsum generated to his needs.
- */
-export type FalsumPipe = (falsum: Falsum) => Falsum;
-
-/**
  * Fabricator is a factory class providing services of generating
  * Falsum objects and maintaining their generative process.
  */
@@ -25,12 +18,8 @@ export class Fabricator {
   /** Schema to be used for Falsum fabrication */
   readonly schema: Schema;
 
-  /** Pipes used to modify the whole generated falsum */
-  readonly pipes: FalsumPipe[];
-
-  constructor(schemaInput: SchemaInput, pipes: FalsumPipe[] = []) {
+  constructor(schemaInput: SchemaInput) {
     this.schema = new Schema(schemaInput);
-    this.pipes = pipes;
   }
 
   /**
@@ -45,7 +34,7 @@ export class Fabricator {
     });
 
     // Pipe the value through all the Falsum Pipes
-    this.pipes.forEach((pipe) => {
+    this.schema.pipes.forEach((pipe) => {
       falsum = pipe(falsum);
     })
 
