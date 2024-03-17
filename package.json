@@ -1,6 +1,6 @@
 {
   "name": "@falbricate/base",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Base for falbricate",
   "keywords": [
     "mocking"
@@ -21,6 +21,7 @@
     "cleanup": "npm run clear && npm run format",
     "dev": "ts-node src/index.ts",
     "format": "prettier . --write",
+    "publish": "npm run test:unit && npm run clear && npm run build && npm publish --access public",
     "test:unit": "jest"
   },
   "devDependencies": {
