@@ -3,6 +3,8 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from './ValueGenerator';
+import { FloatGenerator, FloatGeneratorConfig, IntegerGenerator, IntegerGeneratorConfig } from './numeric';
+import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
 
 /**
  * Type definition for builders of ValueGenerators
@@ -67,9 +69,7 @@ export const get = <
  * @param name Name of the value generator builder
  */
 export const hasGenerator = (name: string): boolean => {
-  return Object.keys(VALUE_GENERATOR_REGISTRY)
-    .map((k: string) => k === name)
-    .reduce((acc, curr) => acc || curr);
+  return !!Object.keys(VALUE_GENERATOR_REGISTRY).find((key: string) => key === name)
 };
 
 /**
@@ -96,6 +96,21 @@ export const registerValueGenerator = <
 
 /** Registry for Value generator builders */
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
+
+registerValueGenerator(
+  "range-integer",
+  (config: IntegerGeneratorConfig) => new IntegerGenerator(config)
+);
+
+registerValueGenerator(
+  "range-float",
+  (config: FloatGeneratorConfig) => new FloatGenerator(config)
+);
+
+registerValueGenerator(
+  "string-of-length",
+  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config)
+);
 
 export * from './numeric';
 export * from './ValueGenerator';

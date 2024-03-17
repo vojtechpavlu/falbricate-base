@@ -2,7 +2,7 @@ import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomFloat } from '../../utils';
 
 export type FloatGeneratorConfig = {
-  min: number;
+  min?: number;
   max: number;
   decimalDigits?: number;
 } & ValueGeneratorConfig;
@@ -11,19 +11,21 @@ export type FloatGeneratorConfig = {
  * This class generates random float number within a given range.
  */
 export class FloatGenerator extends ValueGenerator<
-  number,
-  FloatGeneratorConfig
+  number, FloatGeneratorConfig
 > {
   constructor(config: FloatGeneratorConfig) {
+    if (!config.max) {
+      throw new Error(`Property 'max' is required`)
+    }
+
     super(config);
-    config.decimalDigits = config.decimalDigits ?? 2;
   }
 
   get = (): number => {
     const value = randomFloat(
-      this.config.min,
+      this.config.min ?? 0,
       this.config.max,
-      this.config.decimalDigits,
+      this.config.decimalDigits ?? 2,
     );
 
     return this.pipe(value);
