@@ -1,5 +1,9 @@
 import { Charset, randomStringOfLength } from '../../utils';
-import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 
 /**
  * Configuration for the String generator of a specified length
@@ -30,11 +34,10 @@ export type StringGeneratorConfig = {
  * </ul>
  */
 export class StringOfLengthGenerator extends ValueGenerator<
-  string,
+  GeneratedValue,
   StringGeneratorConfig
 > {
   constructor(config: StringGeneratorConfig) {
-
     if (!config.length) {
       throw new Error(`Property 'length' is required`);
     } else if (!config.charset) {
@@ -44,7 +47,7 @@ export class StringOfLengthGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): string => {
+  get = (): GeneratedValue => {
     let value = randomStringOfLength(this.config.charset, this.config.length);
     return this.pipe(value);
   };

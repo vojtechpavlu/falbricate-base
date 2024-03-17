@@ -1,4 +1,8 @@
-import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 import { randomInteger } from '../../utils';
 
 export type IntegerGeneratorConfig = {
@@ -10,10 +14,10 @@ export type IntegerGeneratorConfig = {
  * This class generates a random integer within a given range.
  */
 export class IntegerGenerator extends ValueGenerator<
-  number, IntegerGeneratorConfig
+  GeneratedValue,
+  IntegerGeneratorConfig
 > {
   constructor(config: IntegerGeneratorConfig) {
-
     if (!config.max) {
       throw new Error(`Property 'max' is required`);
     }
@@ -23,7 +27,7 @@ export class IntegerGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): number => {
+  get = (): GeneratedValue => {
     let value = randomInteger(this.config.min ?? 0, this.config.max);
     return this.pipe(value);
   };

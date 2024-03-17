@@ -1,3 +1,3 @@
 export * from './Fabricator';
 export * from './Schema';
-export * from './SchemaInput'
+export * from './SchemaInput';

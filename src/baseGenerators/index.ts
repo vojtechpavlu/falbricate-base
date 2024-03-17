@@ -3,7 +3,12 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from './ValueGenerator';
-import { FloatGenerator, FloatGeneratorConfig, IntegerGenerator, IntegerGeneratorConfig } from './numeric';
+import {
+  FloatGenerator,
+  FloatGeneratorConfig,
+  IntegerGenerator,
+  IntegerGeneratorConfig,
+} from './numeric';
 import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
 
 /**
@@ -69,7 +74,9 @@ export const get = <
  * @param name Name of the value generator builder
  */
 export const hasGenerator = (name: string): boolean => {
-  return !!Object.keys(VALUE_GENERATOR_REGISTRY).find((key: string) => key === name)
+  return !!Object.keys(VALUE_GENERATOR_REGISTRY).find(
+    (key: string) => key === name,
+  );
 };
 
 /**
@@ -98,18 +105,18 @@ export const registerValueGenerator = <
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
 registerValueGenerator(
-  "range-integer",
-  (config: IntegerGeneratorConfig) => new IntegerGenerator(config)
+  'range-integer',
+  (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
 );
 
 registerValueGenerator(
-  "range-float",
-  (config: FloatGeneratorConfig) => new FloatGenerator(config)
+  'range-float',
+  (config: FloatGeneratorConfig) => new FloatGenerator(config),
 );
 
 registerValueGenerator(
-  "string-of-length",
-  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config)
+  'string-of-length',
+  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
 );
 
 export * from './numeric';
