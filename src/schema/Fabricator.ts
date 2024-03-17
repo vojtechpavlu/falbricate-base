@@ -23,7 +23,7 @@ export type FalsumPipe = (falsum: Falsum) => Falsum;
  */
 export class Fabricator {
   /** Schema to be used for Falsum fabrication */
-  private schema: Schema;
+  readonly schema: Schema;
 
   constructor(schemaInput: SchemaInput) {
     this.schema = new Schema(schemaInput);

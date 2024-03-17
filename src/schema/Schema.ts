@@ -17,7 +17,7 @@ export interface FieldsDefinition {
  * </ul>
  */
 export class Schema {
-  readonly fields: FieldsDefinition;
+  public readonly fields: FieldsDefinition;
 
   constructor(schemaInput: SchemaInput) {
     this.fields = this.compile(schemaInput);
@@ -29,6 +29,8 @@ export class Schema {
     Object.keys(schemaInput.fields).forEach((key) => {
       let inputField = schemaInput.fields[key];
 
+      // When already ValueGenerator -> no need to compile;
+      // otherwise transform POJSO into matching ValueGenerator
       if (inputField instanceof ValueGenerator) {
         compiled[key] = inputField
       } else {
