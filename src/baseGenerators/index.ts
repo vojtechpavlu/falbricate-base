@@ -17,7 +17,13 @@ import {
   StringGeneratorConfig,
   StringOfLengthGenerator
 } from './string';
-import { ArrayPicker, ArrayPickerConfig, ConstantArrayConfig, ConstantArrayGenerator } from './array';
+import {
+  ArrayPicker,
+  ArrayPickerConfig,
+  ArraySampleConfig, ArraySampleGenerator,
+  ConstantArrayConfig,
+  ConstantArrayGenerator
+} from './array';
 
 /**
  * Type definition for builders of ValueGenerators
@@ -124,6 +130,7 @@ registerValueGenerator('constant-string', (config: ConstantStringConfig) => new 
 // Register arrays
 registerValueGenerator('array-picker', (config: ArrayPickerConfig) => new ArrayPicker(config));
 registerValueGenerator('constant-array', (config: ConstantArrayConfig) => new ConstantArrayGenerator(config));
+registerValueGenerator('array-sample', (config: ArraySampleConfig) => new ArraySampleGenerator(config));
 
 
 export * from './ValueGenerator';
