@@ -25,8 +25,12 @@ export class Fabricator {
   /** Schema to be used for Falsum fabrication */
   readonly schema: Schema;
 
-  constructor(schemaInput: SchemaInput) {
+  /** Pipes used to modify the whole generated falsum */
+  readonly pipes: FalsumPipe[];
+
+  constructor(schemaInput: SchemaInput, pipes: FalsumPipe[] = []) {
     this.schema = new Schema(schemaInput);
+    this.pipes = pipes;
   }
 
   /**
@@ -35,9 +39,15 @@ export class Fabricator {
   public generate = (): Falsum => {
     let falsum: Falsum = {};
 
+    // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
       falsum[property] = this.schema.fields[property]?.get();
     });
+
+    // Pipe the value through all the Falsum Pipes
+    this.pipes.forEach((pipe) => {
+      falsum = pipe(falsum);
+    })
 
     return falsum;
   };
