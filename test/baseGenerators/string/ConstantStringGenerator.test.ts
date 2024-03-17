@@ -27,4 +27,11 @@ describe('StringGenerator class', () => {
     //@ts-ignore
     expect(() => new ConstantStringGenerator(conf)).toThrow();
   });
+
+  it('should raise an error on non-string value', () => {
+    const conf = { text: 1 }
+
+    //@ts-ignore
+    expect(() => new ConstantStringGenerator(conf)).toThrow();
+  });
 });
