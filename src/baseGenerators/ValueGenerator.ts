@@ -60,7 +60,7 @@ export abstract class ValueGenerator<
    *  <li>{@link ValuePipe} Pipe handling the modification of the given value</li>
    * </ul>
    */
-  protected pipe = (value: ValueType) => {
+  protected pipe = (value: ValueType): GeneratedValue => {
     this.config.pipes?.forEach((pipe: ValuePipe) => {
       value = pipe(value);
     });

@@ -1,4 +1,4 @@
-import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 
 /**
  * Configuration specifying which string should the
@@ -13,17 +13,19 @@ export type ConstantStringConfig = {
  * in the configuration.
  */
 export class ConstantStringGenerator extends ValueGenerator<
-  string, ConstantStringConfig
+  GeneratedValue, ConstantStringConfig
 > {
   constructor(config: ConstantStringConfig) {
     if (!config.text) {
       throw new Error(`Property 'text' is required`)
+    } else if (typeof config.text !== 'string') {
+      throw new Error(`Property 'text' must be of type 'string'`)
     }
 
     super(config);
   }
 
-  get = (): string => {
+  get = (): GeneratedValue => {
     return this.pipe(this.config.text);
   }
 }

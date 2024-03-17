@@ -1,4 +1,4 @@
-import { ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { randomFloat } from '../../utils';
 
 export type FloatGeneratorConfig = {
@@ -11,7 +11,7 @@ export type FloatGeneratorConfig = {
  * This class generates random float number within a given range.
  */
 export class FloatGenerator extends ValueGenerator<
-  number, FloatGeneratorConfig
+  GeneratedValue, FloatGeneratorConfig
 > {
   constructor(config: FloatGeneratorConfig) {
     if (!config.max) {
@@ -21,7 +21,7 @@ export class FloatGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): number => {
+  get = (): GeneratedValue => {
     const value = randomFloat(
       this.config.min ?? 0,
       this.config.max,
