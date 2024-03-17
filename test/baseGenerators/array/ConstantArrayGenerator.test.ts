@@ -16,30 +16,30 @@ describe('ConstantArrayGenerator class', () => {
 
     generated.forEach((item: any, idx: number) => {
       expect(item).toBe(array[idx]);
-    })
+    });
   });
 
   it('should throw on empty array', () => {
     const array: any[] = [];
 
-    expect(() => new ConstantArrayGenerator({ array })).toThrow()
+    expect(() => new ConstantArrayGenerator({ array })).toThrow();
   });
 
   it('should throw on null', () => {
     const array = null;
     // @ts-ignore
-    expect(() => new ConstantArrayGenerator({ array })).toThrow()
+    expect(() => new ConstantArrayGenerator({ array })).toThrow();
   });
 
   it('should throw on undefined', () => {
     const array = undefined;
     // @ts-ignore
-    expect(() => new ConstantArrayGenerator({ array })).toThrow()
+    expect(() => new ConstantArrayGenerator({ array })).toThrow();
   });
 
   it('should throw on non-array argument', () => {
-    const array = "not array";
+    const array = 'not array';
     // @ts-ignore
-    expect(() => new ConstantArrayGenerator({ array })).toThrow()
+    expect(() => new ConstantArrayGenerator({ array })).toThrow();
   });
 });

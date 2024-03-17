@@ -9,7 +9,7 @@ import {
  * Configuration for the array picker defining the array
  */
 export type ArrayPickerConfig = {
-  array: any[]
+  array: any[];
 } & ValueGeneratorConfig;
 
 /**

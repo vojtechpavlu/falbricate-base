@@ -13,7 +13,7 @@ describe('ArrayPicker generator class', () => {
   });
 
   it('should fail on non-array', () => {
-    const array: string = "";
+    const array: string = '';
     // @ts-ignore
     expect(() => new ArrayPicker({ array })).toThrow();
   });
@@ -36,7 +36,7 @@ describe('ArrayPicker generator class', () => {
     const array: any[] = ['a'];
     const generator = new ArrayPicker({
       array,
-      pipes: [(value: string) => value.toUpperCase()]
+      pipes: [(value: string) => value.toUpperCase()],
     });
 
     expect(generator.get()).toBe('A');

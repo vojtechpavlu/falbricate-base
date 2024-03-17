@@ -29,11 +29,15 @@ export class ArraySampleGenerator extends ValueGenerator<
     } else if (config.array.length < 1) {
       throw new Error(`Property 'array' must have at least one item`);
     } else if (config.sampleSize === undefined || config.sampleSize === null) {
-      throw new Error(`Property 'sampleSize' is required`)
+      throw new Error(`Property 'sampleSize' is required`);
     } else if (config.sampleSize < 1) {
-      throw new Error(`Property 'sampleSize' has to be at least 1 (got: ${config.sampleSize})`)
+      throw new Error(
+        `Property 'sampleSize' has to be at least 1 (got: ${config.sampleSize})`,
+      );
     } else if (config.sampleSize > config.array.length) {
-      throw new Error(`Property 'sampleSize' has to be less or equal to size of the given array`)
+      throw new Error(
+        `Property 'sampleSize' has to be less or equal to size of the given array`,
+      );
     }
 
     super(config);
@@ -41,7 +45,7 @@ export class ArraySampleGenerator extends ValueGenerator<
 
   get = (): GeneratedValue => {
     return this.pipe(
-      randomSampleFromArray(this.config.array, this.config.sampleSize)
+      randomSampleFromArray(this.config.array, this.config.sampleSize),
     );
   };
 }

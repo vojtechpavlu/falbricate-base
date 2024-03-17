@@ -1,7 +1,7 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig
+  ValueGeneratorConfig,
 } from './ValueGenerator';
 import {
   ConstantNumberConfig,
@@ -9,20 +9,21 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig
+  IntegerGeneratorConfig,
 } from './numeric';
 import {
   ConstantStringConfig,
   ConstantStringGenerator,
   StringGeneratorConfig,
-  StringOfLengthGenerator
+  StringOfLengthGenerator,
 } from './string';
 import {
   ArrayPicker,
   ArrayPickerConfig,
-  ArraySampleConfig, ArraySampleGenerator,
+  ArraySampleConfig,
+  ArraySampleGenerator,
   ConstantArrayConfig,
-  ConstantArrayGenerator
+  ConstantArrayGenerator,
 } from './array';
 
 /**
@@ -70,7 +71,7 @@ export const get = <
   Conf extends ValueGeneratorConfig,
 >(
   name: string,
-  config: Conf
+  config: Conf,
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -89,7 +90,7 @@ export const get = <
  */
 export const hasGenerator = (name: string): boolean => {
   return !!Object.keys(VALUE_GENERATOR_REGISTRY).find(
-    (key: string) => key === name
+    (key: string) => key === name,
   );
 };
 
@@ -104,11 +105,11 @@ export const registerValueGenerator = <
   GivenConfig extends ValueGeneratorConfig,
 >(
   name: string,
-  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>
+  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
 ) => {
   if (hasGenerator(name)) {
     throw new Error(
-      `There is already one value generator with name '${name}' registered`
+      `There is already one value generator with name '${name}' registered`,
     );
   }
 
@@ -119,19 +120,42 @@ export const registerValueGenerator = <
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
 // Register numerics
-registerValueGenerator('range-integer', (config: IntegerGeneratorConfig) => new IntegerGenerator(config));
-registerValueGenerator('range-float', (config: FloatGeneratorConfig) => new FloatGenerator(config));
-registerValueGenerator('constant-number', (config: ConstantNumberConfig) => new ConstantNumberGenerator(config));
+registerValueGenerator(
+  'range-integer',
+  (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
+);
+registerValueGenerator(
+  'range-float',
+  (config: FloatGeneratorConfig) => new FloatGenerator(config),
+);
+registerValueGenerator(
+  'constant-number',
+  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
+);
 
 // Register strings
-registerValueGenerator('string-of-length', (config: StringGeneratorConfig) => new StringOfLengthGenerator(config));
-registerValueGenerator('constant-string', (config: ConstantStringConfig) => new ConstantStringGenerator(config));
+registerValueGenerator(
+  'string-of-length',
+  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
+);
+registerValueGenerator(
+  'constant-string',
+  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
+);
 
 // Register arrays
-registerValueGenerator('array-picker', (config: ArrayPickerConfig) => new ArrayPicker(config));
-registerValueGenerator('constant-array', (config: ConstantArrayConfig) => new ConstantArrayGenerator(config));
-registerValueGenerator('array-sample', (config: ArraySampleConfig) => new ArraySampleGenerator(config));
-
+registerValueGenerator(
+  'array-picker',
+  (config: ArrayPickerConfig) => new ArrayPicker(config),
+);
+registerValueGenerator(
+  'constant-array',
+  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
+);
+registerValueGenerator(
+  'array-sample',
+  (config: ArraySampleConfig) => new ArraySampleGenerator(config),
+);
 
 export * from './ValueGenerator';
 export * from './numeric';

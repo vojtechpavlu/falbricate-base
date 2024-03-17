@@ -33,12 +33,10 @@ export class ConstantArrayGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    return this.pipe(
-      this.arrayDeepCopy(this.config.array)
-    );
+    return this.pipe(this.arrayDeepCopy(this.config.array));
   };
 
   private arrayDeepCopy = (arr: any[]) => {
     return JSON.parse(JSON.stringify(arr));
-  }
+  };
 }
