@@ -58,4 +58,16 @@ describe('fieldsToSnake falsum pipe', () => {
 
     expect(nestedPropNames[0]).toBe('nested_prop');
   });
+
+  it(`should return undefined on undefined given`, () => {
+    // @ts-ignore
+    const snake = fieldsToSnake(undefined);
+    expect(snake).toBeUndefined();
+  });
+
+  it(`should return null on null given`, () => {
+    // @ts-ignore
+    const snake = fieldsToSnake(null);
+    expect(snake).toBeNull();
+  });
 });
