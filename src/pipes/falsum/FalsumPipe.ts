@@ -1,4 +1,7 @@
 import { Falsum } from '../../schema';
+import { fieldsToCamel, fieldsToSnake } from './fieldNameCasing';
+import { addGeneratedTimestampDate, addGeneratedTimestampNumber } from './generatedTimestamp';
+import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
 
 /**
  * Falsum Pipe is a function altering a given Falsum into another one.
@@ -67,3 +70,16 @@ export const hasFalsumPipe = (name: string): boolean => {
     (pipeName) => pipeName === name,
   );
 };
+
+// Falsum field names modifications
+storeFalsumPipe('snake-case-props', fieldsToSnake);
+storeFalsumPipe('camel-case-props', fieldsToCamel);
+
+// Timestamps
+storeFalsumPipe('generated-timestamp-date', addGeneratedTimestampDate);
+storeFalsumPipe('generated-timestamp-number', addGeneratedTimestampNumber);
+
+// Pruners
+storeFalsumPipe('prune-undefined', pruneUndefined)
+storeFalsumPipe('prune-null', pruneNulls)
+storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays)
