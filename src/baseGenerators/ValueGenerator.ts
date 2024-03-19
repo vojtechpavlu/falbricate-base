@@ -1,15 +1,7 @@
+import { ValuePipe } from '../pipes/value';
+
 export type SingleValue = string | number | boolean | (any & {});
 export type GeneratedValue = SingleValue | SingleValue[];
-
-/**
- * Declaration of a pipe altering the generated value
- *
- * @see
- * <ul>
- *  <li>{@link GeneratedValue} Value being modified by this pipe</li>
- * </ul>
- */
-export type ValuePipe = (value: GeneratedValue) => GeneratedValue;
 
 /**
  * Common configuration for all the value generators
