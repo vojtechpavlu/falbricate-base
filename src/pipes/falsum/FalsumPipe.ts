@@ -6,6 +6,7 @@ import {
 } from './generatedTimestamp';
 import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
 import { stringify, stringifyWithIndentation } from './stringification';
+import { objectFalsumToList } from './objectFalsumManipulation';
 
 /**
  * Falsum Pipe is a function altering a given Falsum into another one.
@@ -14,6 +15,30 @@ import { stringify, stringifyWithIndentation } from './stringification';
  * the general mechanism of how is the Falsum generated to his needs.
  */
 export type FalsumPipe = (falsum: ObjectFalsum) => Falsum;
+
+export type FalsumPipeName =
+  | string
+  // Field names modifications
+  | (
+      | 'snake-case-props'
+      | 'camel-case-props'
+
+      // Timestamps
+      | 'generated-timestamp-date'
+      | 'generated-timestamp-number'
+
+      // Pruners
+      | 'prune-undefined'
+      | 'prune-null'
+      | 'prune-empty-arrays'
+
+      // Stringification
+      | 'stringify'
+      | 'stringify-indented'
+
+      // Object Manipulation
+      | 'object-to-list'
+    );
 
 /**
  * Registry used to store the commonly used Falsum Pipes
@@ -91,3 +116,6 @@ storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays);
 // Stringification
 storeFalsumPipe('stringify', stringify);
 storeFalsumPipe('stringify-indented', stringifyWithIndentation);
+
+// Object Manipulation
+storeFalsumPipe('object-to-list', objectFalsumToList);

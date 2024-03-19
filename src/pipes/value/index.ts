@@ -114,4 +114,4 @@ storeValuePipe('object-to-list', objectValueToList);
 export * from './stringify';
 export * from './casing';
 export * from './sorting';
-export * from './objectValueManipulation'
+export * from './objectValueManipulation';
