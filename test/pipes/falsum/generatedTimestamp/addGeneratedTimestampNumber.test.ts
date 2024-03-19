@@ -1,4 +1,4 @@
-import { addGeneratedTimestampNumber } from '../../../../src';
+import { addGeneratedTimestampNumber, ObjectFalsum } from '../../../../src';
 
 describe('addGeneratedTimestampNumber function', () => {
   it('should create `generatedAt` field in the given object', () => {
@@ -10,7 +10,7 @@ describe('addGeneratedTimestampNumber function', () => {
 
   it('should add a timestamp of Date type', () => {
     const falsum = { test: "test-value" }
-    const modified = addGeneratedTimestampNumber(falsum);
+    const modified = addGeneratedTimestampNumber(falsum) as ObjectFalsum;
 
     expect(typeof modified['generatedAt'] === 'number').toBe(true);
   });

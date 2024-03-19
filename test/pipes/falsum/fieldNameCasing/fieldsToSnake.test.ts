@@ -1,4 +1,4 @@
-import { Falsum } from '../../../../src';
+import { Falsum, ObjectFalsum } from '../../../../src';
 import { fieldsToSnake } from '../../../../src';
 
 const falsum: Falsum = {
@@ -14,7 +14,7 @@ describe('fieldsToSnake falsum pipe', () => {
   });
 
   it('should not change the types of the values', () => {
-    const snake = fieldsToSnake(falsum);
+    const snake = fieldsToSnake(falsum) as ObjectFalsum;
     const originalObjectKeys = Object.keys(falsum);
     const snakeObjectKeys = Object.keys(snake);
 
@@ -42,7 +42,7 @@ describe('fieldsToSnake falsum pipe', () => {
       },
     };
 
-    const snake = fieldsToSnake(falsum);
+    const snake = fieldsToSnake(falsum) as ObjectFalsum;
     const nestedPropNames = Object.keys(snake['prop_name']);
 
     expect(nestedPropNames[0]).toBe('nested_prop');
@@ -53,7 +53,7 @@ describe('fieldsToSnake falsum pipe', () => {
       propName: [{ nestedProp: 'value' }],
     };
 
-    const snake = fieldsToSnake(falsum);
+    const snake = fieldsToSnake(falsum) as ObjectFalsum;
     const nestedPropNames = Object.keys(snake['prop_name'][0]);
 
     expect(nestedPropNames[0]).toBe('nested_prop');
