@@ -1,11 +1,11 @@
-import { Falsum } from '../../schema';
+import { Falsum, ObjectFalsum } from '../../schema';
 
 /**
  * Turns the given Falsum into a string
  *
  * @param falsum to be turned into a string
  */
-export const stringify = (falsum: Falsum) => {
+export const stringify = (falsum: ObjectFalsum): string => {
   return JSON.stringify(falsum);
 }
 
@@ -14,6 +14,6 @@ export const stringify = (falsum: Falsum) => {
  *
  * @param falsum to be turned into a string with indentation
  */
-export const stringifyWithIndentation = (falsum: Falsum) => {
+export const stringifyWithIndentation = (falsum: ObjectFalsum): string => {
   return JSON.stringify(falsum, null, 2);
 }

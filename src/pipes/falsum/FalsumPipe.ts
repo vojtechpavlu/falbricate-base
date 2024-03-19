@@ -1,4 +1,4 @@
-import { Falsum } from '../../schema';
+import { Falsum, ObjectFalsum } from '../../schema';
 import { fieldsToCamel, fieldsToSnake } from './fieldNameCasing';
 import { addGeneratedTimestampDate, addGeneratedTimestampNumber } from './generatedTimestamp';
 import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
@@ -10,7 +10,7 @@ import { stringify, stringifyWithIndentation } from './stringification';
  * The reason for this kind of pipes is to enable the client to change
  * the general mechanism of how is the Falsum generated to his needs.
  */
-export type FalsumPipe = (falsum: Falsum) => Falsum;
+export type FalsumPipe = (falsum: ObjectFalsum) => Falsum;
 
 /**
  * Registry used to store the commonly used Falsum Pipes
