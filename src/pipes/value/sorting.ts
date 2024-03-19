@@ -1,5 +1,5 @@
 import { GeneratedValue } from '../../baseGenerators';
-import { sortArray, sortString } from '../../utils/common/sorting';
+import { sortArray, sortString } from '../../utils';
 
 /**
  * Sorts the given value in ascending order.
