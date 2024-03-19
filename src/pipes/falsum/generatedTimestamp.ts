@@ -9,9 +9,9 @@ import { Falsum, ObjectFalsum } from '../../schema';
 export const addGeneratedTimestampDate = (falsum: ObjectFalsum): Falsum => {
   return {
     ...falsum,
-    generatedAt: new Date()
+    generatedAt: new Date(),
   };
-}
+};
 
 /**
  * This simply adds a property `generatedAt` that describes when
@@ -22,6 +22,6 @@ export const addGeneratedTimestampDate = (falsum: ObjectFalsum): Falsum => {
 export const addGeneratedTimestampNumber = (falsum: ObjectFalsum): Falsum => {
   return {
     ...falsum,
-    generatedAt: new Date().getTime()
+    generatedAt: new Date().getTime(),
   };
-}
+};

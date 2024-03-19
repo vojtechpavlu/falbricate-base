@@ -2,27 +2,28 @@ import { Falsum, ObjectFalsum } from '../../../../src';
 import { pruneUndefined } from '../../../../src';
 
 const falsum: Falsum = {
-  notUndefined: "someValue",
+  notUndefined: 'someValue',
   undefinedValue: undefined,
   nullValue: null,
   emtpyList: [],
   obj: {
-    notUndefined: "someValue",
+    notUndefined: 'someValue',
     undefinedValue: undefined,
     nullValue: null,
   },
   list: [
     {
       obj: {
-        notUndefined: "someValue", undefinedValue: undefined,
-      }
+        notUndefined: 'someValue',
+        undefinedValue: undefined,
+      },
     },
     undefined,
-    "someValue",
+    'someValue',
     null,
   ],
-  emptyObj: {}
-}
+  emptyObj: {},
+};
 
 describe('pruneUndefined function', () => {
   it('should remove fields with undefined value', () => {
@@ -39,4 +40,4 @@ describe('pruneUndefined function', () => {
     const pruned = pruneUndefined(falsum) as ObjectFalsum;
     expect(pruned.list.length).toBe(3);
   });
-})
+});

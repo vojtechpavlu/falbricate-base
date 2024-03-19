@@ -1,8 +1,9 @@
 import {
   Fabricator,
   FloatGenerator,
-  IntegerGenerator, ObjectFalsum,
-  SchemaInput
+  IntegerGenerator,
+  ObjectFalsum,
+  SchemaInput,
 } from '../../src';
 
 const schemaInput: SchemaInput = {

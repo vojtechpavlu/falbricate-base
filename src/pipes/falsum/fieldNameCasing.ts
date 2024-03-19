@@ -13,11 +13,10 @@ import { camelToSnake, snakeToCamel } from '../../utils';
 export const fieldsToSnake = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     // When the given input is undefined or null
-    return falsum
+    return falsum;
   } else if (Array.isArray(falsum)) {
     // When the given falsum is an array
-    return (falsum as ObjectFalsum[])
-      .map((item) => fieldsToSnake(item));
+    return (falsum as ObjectFalsum[]).map((item) => fieldsToSnake(item));
   } else if (typeof falsum === 'object') {
     // When the given falsum is an object
     const snakeFalsum: Falsum = {};
@@ -47,11 +46,10 @@ export const fieldsToSnake = (falsum: ObjectFalsum): Falsum => {
 export const fieldsToCamel = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     // When the given input is undefined or null
-    return falsum
+    return falsum;
   } else if (Array.isArray(falsum)) {
     // When the given falsum is an array
-    return (falsum as ObjectFalsum[])
-      .map((item) => fieldsToCamel(item));
+    return (falsum as ObjectFalsum[]).map((item) => fieldsToCamel(item));
   } else if (typeof falsum === 'object') {
     // When the given falsum is an object
     const camelFalsum: Falsum = {};
@@ -70,4 +68,4 @@ export const fieldsToCamel = (falsum: ObjectFalsum): Falsum => {
     // Else, when the Falsum is e.g. a number or a string
     return falsum;
   }
-}
+};

@@ -1,6 +1,9 @@
 import { Falsum, ObjectFalsum } from '../../schema';
 import { fieldsToCamel, fieldsToSnake } from './fieldNameCasing';
-import { addGeneratedTimestampDate, addGeneratedTimestampNumber } from './generatedTimestamp';
+import {
+  addGeneratedTimestampDate,
+  addGeneratedTimestampNumber,
+} from './generatedTimestamp';
 import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
 import { stringify, stringifyWithIndentation } from './stringification';
 
@@ -81,10 +84,10 @@ storeFalsumPipe('generated-timestamp-date', addGeneratedTimestampDate);
 storeFalsumPipe('generated-timestamp-number', addGeneratedTimestampNumber);
 
 // Pruners
-storeFalsumPipe('prune-undefined', pruneUndefined)
-storeFalsumPipe('prune-null', pruneNulls)
-storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays)
+storeFalsumPipe('prune-undefined', pruneUndefined);
+storeFalsumPipe('prune-null', pruneNulls);
+storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays);
 
 // Stringification
-storeFalsumPipe('stringify', stringify)
-storeFalsumPipe('stringify-indented', stringifyWithIndentation)
+storeFalsumPipe('stringify', stringify);
+storeFalsumPipe('stringify-indented', stringifyWithIndentation);

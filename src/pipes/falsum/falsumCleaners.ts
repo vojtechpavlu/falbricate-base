@@ -89,7 +89,10 @@ export const pruneEmptyArrays = (falsum: ObjectFalsum): Falsum => {
       const content = falsum[propertyName];
 
       // Either is not an array or is an array with non-zero length; else skip
-      if (!Array.isArray(content) || (Array.isArray(content) && content.length !== 0)) {
+      if (
+        !Array.isArray(content) ||
+        (Array.isArray(content) && content.length !== 0)
+      ) {
         prunedFalsum[propertyName] = content;
       }
     });

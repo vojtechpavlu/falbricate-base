@@ -2,27 +2,28 @@ import { ObjectFalsum } from '../../../../src';
 import { pruneNulls } from '../../../../src';
 
 const falsum: ObjectFalsum = {
-  notUndefined: "someValue",
+  notUndefined: 'someValue',
   undefinedValue: undefined,
   nullValue: null,
   emtpyList: [],
   obj: {
-    notUndefined: "someValue",
+    notUndefined: 'someValue',
     undefinedValue: undefined,
     nullValue: null,
   },
   list: [
     {
       obj: {
-        notUndefined: "someValue", undefinedValue: undefined,
-      }
+        notUndefined: 'someValue',
+        undefinedValue: undefined,
+      },
     },
     undefined,
-    "someValue",
+    'someValue',
     null,
   ],
-  emptyObj: {}
-}
+  emptyObj: {},
+};
 
 describe('pruneNulls function', () => {
   it('should remove fields with undefined value', () => {

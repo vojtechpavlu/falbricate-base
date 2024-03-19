@@ -1,4 +1,4 @@
-import { Falsum, ObjectFalsum } from '../../schema';
+import { ObjectFalsum } from '../../schema';
 
 /**
  * Turns the given Falsum into a string
@@ -7,7 +7,7 @@ import { Falsum, ObjectFalsum } from '../../schema';
  */
 export const stringify = (falsum: ObjectFalsum): string => {
   return JSON.stringify(falsum);
-}
+};
 
 /**
  * Turns the given Falsum into a string with 2 spaces indentation
@@ -16,4 +16,4 @@ export const stringify = (falsum: ObjectFalsum): string => {
  */
 export const stringifyWithIndentation = (falsum: ObjectFalsum): string => {
   return JSON.stringify(falsum, null, 2);
-}
+};

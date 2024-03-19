@@ -13,7 +13,7 @@ export interface ObjectFalsum {
  * Randomly generated Falsum by given schema and piped through
  * Falsum Pipes
  */
-export type Falsum = ObjectFalsum | string
+export type Falsum = ObjectFalsum | string;
 
 /**
  * Fabricator is a factory class providing services of generating
