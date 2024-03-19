@@ -1,4 +1,4 @@
-import { Falsum } from '../../../../src';
+import { Falsum, ObjectFalsum } from '../../../../src';
 import { pruneUndefined } from '../../../../src';
 
 const falsum: Falsum = {
@@ -31,12 +31,12 @@ describe('pruneUndefined function', () => {
   });
 
   it('should remove fields with undefined value in nested objects', () => {
-    const pruned = pruneUndefined(falsum);
+    const pruned = pruneUndefined(falsum) as ObjectFalsum;
     expect(Object.keys(pruned.obj).length).toBe(2);
   });
 
   it('should remove fields with undefined value in nested arrays', () => {
-    const pruned = pruneUndefined(falsum);
+    const pruned = pruneUndefined(falsum) as ObjectFalsum;
     expect(pruned.list.length).toBe(3);
   });
 })

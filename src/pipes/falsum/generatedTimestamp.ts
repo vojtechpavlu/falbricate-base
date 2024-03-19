@@ -1,4 +1,4 @@
-import { Falsum } from '../../schema';
+import { Falsum, ObjectFalsum } from '../../schema';
 
 /**
  * This simply adds a property `generatedAt` that describes when
@@ -6,7 +6,7 @@ import { Falsum } from '../../schema';
  *
  * @param falsum Falsum that should have a timestamp property assigned
  */
-export const addGeneratedTimestampDate = (falsum: Falsum): Falsum => {
+export const addGeneratedTimestampDate = (falsum: ObjectFalsum): Falsum => {
   return {
     ...falsum,
     generatedAt: new Date()
@@ -19,7 +19,7 @@ export const addGeneratedTimestampDate = (falsum: Falsum): Falsum => {
  *
  * @param falsum Falsum that should have a timestamp property assigned
  */
-export const addGeneratedTimestampNumber = (falsum: Falsum): Falsum => {
+export const addGeneratedTimestampNumber = (falsum: ObjectFalsum): Falsum => {
   return {
     ...falsum,
     generatedAt: new Date().getTime()

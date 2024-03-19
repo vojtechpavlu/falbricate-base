@@ -1,4 +1,4 @@
-import { Falsum } from '../../schema';
+import { Falsum, ObjectFalsum } from '../../schema';
 
 /**
  * Removes all the fields that contain undefined value.
@@ -7,15 +7,15 @@ import { Falsum } from '../../schema';
  *
  * @param falsum Falsum with possible undefined values.
  */
-export const pruneUndefined = (falsum: Falsum): Falsum => {
+export const pruneUndefined = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     return falsum;
   } else if (Array.isArray(falsum)) {
-    return (falsum as Falsum[])
+    return (falsum as ObjectFalsum[])
       .filter((item) => item !== undefined)
       .map((item) => pruneUndefined(item));
   } else if (typeof falsum === 'object') {
-    const prunedFalsum: Falsum = {};
+    const prunedFalsum: ObjectFalsum = {};
 
     // For each field in the given falsum
     Object.keys(falsum).forEach((propertyName) => {
@@ -42,7 +42,7 @@ export const pruneNulls = (falsum: Falsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     return falsum;
   } else if (Array.isArray(falsum)) {
-    return (falsum as Falsum[])
+    return (falsum as ObjectFalsum[])
       .filter((item) => item !== null)
       .map((f) => pruneNulls(f));
   } else if (typeof falsum === 'object') {
@@ -72,17 +72,17 @@ export const pruneNulls = (falsum: Falsum): Falsum => {
  *
  * @param falsum Falsum with possible empty arrays.
  */
-export const pruneEmptyArrays = (falsum: Falsum): Falsum => {
+export const pruneEmptyArrays = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     return falsum;
   } else if (Array.isArray(falsum)) {
-    return (falsum as Falsum[])
+    return (falsum as ObjectFalsum[])
       .filter((item) => {
         return !(Array.isArray(item) && item.length !== 0);
       })
       .map((f) => pruneEmptyArrays(f));
   } else if (typeof falsum === 'object') {
-    const prunedFalsum: Falsum = {};
+    const prunedFalsum: ObjectFalsum = {};
 
     // For each field in the given falsum
     Object.keys(falsum).forEach((propertyName) => {

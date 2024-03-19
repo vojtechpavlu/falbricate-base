@@ -1,8 +1,8 @@
 import {
   Fabricator,
   FloatGenerator,
-  IntegerGenerator,
-  SchemaInput,
+  IntegerGenerator, ObjectFalsum,
+  SchemaInput
 } from '../../src';
 
 const schemaInput: SchemaInput = {
@@ -38,7 +38,7 @@ describe('Fabricator constructor', () => {
 describe('Fabricator generate function', () => {
   it('should generate an object of expected shape', () => {
     const fabricator = new Fabricator(schemaInput);
-    const falsum = fabricator.generate();
+    const falsum = fabricator.generate() as ObjectFalsum;
 
     // Check the general shape
     expect(typeof falsum).toBe('object');
@@ -71,7 +71,7 @@ describe('Fabricator generateMany function', () => {
 
   it('should generate objects of a shape', () => {
     const fabricator = new Fabricator(schemaInput);
-    const falsums = fabricator.generateMany(5);
+    const falsums = fabricator.generateMany(5) as ObjectFalsum[];
 
     falsums.forEach((falsum) => {
       // Check the general shape

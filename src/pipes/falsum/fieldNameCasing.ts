@@ -1,4 +1,4 @@
-import { Falsum } from '../../schema';
+import { Falsum, ObjectFalsum } from '../../schema';
 import { camelToSnake, snakeToCamel } from '../../utils';
 
 /**
@@ -10,13 +10,13 @@ import { camelToSnake, snakeToCamel } from '../../utils';
  *
  * @param falsum Falsum to be processed
  */
-export const fieldsToSnake = (falsum: Falsum): Falsum => {
+export const fieldsToSnake = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     // When the given input is undefined or null
     return falsum
   } else if (Array.isArray(falsum)) {
     // When the given falsum is an array
-    return (falsum as Falsum[])
+    return (falsum as ObjectFalsum[])
       .map((item) => fieldsToSnake(item));
   } else if (typeof falsum === 'object') {
     // When the given falsum is an object
@@ -44,13 +44,13 @@ export const fieldsToSnake = (falsum: Falsum): Falsum => {
  *
  * @param falsum Falsum to be processed
  */
-export const fieldsToCamel = (falsum: Falsum): Falsum => {
+export const fieldsToCamel = (falsum: ObjectFalsum): Falsum => {
   if (falsum === undefined || falsum === null) {
     // When the given input is undefined or null
     return falsum
   } else if (Array.isArray(falsum)) {
     // When the given falsum is an array
-    return (falsum as Falsum[])
+    return (falsum as ObjectFalsum[])
       .map((item) => fieldsToCamel(item));
   } else if (typeof falsum === 'object') {
     // When the given falsum is an object
