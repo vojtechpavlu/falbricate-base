@@ -2,6 +2,8 @@ import { GeneratedValue } from '../../baseGenerators';
 import { stringify } from './stringify';
 import { sortAsc, sortDesc } from './sorting';
 import { lowercase, uppercase } from './casing';
+import { singleSpace, trimString } from './stringCleaning';
+import { splitBySpace } from './split';
 
 /**
  * Declaration of a pipe altering the generated value
@@ -15,7 +17,11 @@ export type ValuePipe = (value: GeneratedValue) => GeneratedValue;
 
 /** Names of the Value Pipes for type-hinting purposes */
 export type ValuePipeName = string | (
-  'stringify' | 'sort-ascending' | 'sort-descending' | 'uppercase' | 'lowercase'
+  // String value pipes
+  'stringify'| 'trim' | 'single-space' |'uppercase' | 'lowercase' | 'space-split' |
+
+  // Sorting
+  'sort-ascending' | 'sort-descending'
   )
 
 
@@ -78,16 +84,17 @@ export const storeValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
   VALUE_PIPE_REGISTRY[name] = pipe;
 };
 
-// Stringification
+// String value pipes
 storeValuePipe('stringify', stringify);
+storeValuePipe('trim', trimString);
+storeValuePipe('single-space', singleSpace);
+storeValuePipe('uppercase', uppercase);
+storeValuePipe('lowercase', lowercase);
+storeValuePipe('space-split', splitBySpace)
 
 // Sorting
 storeValuePipe('sort-ascending', sortAsc);
 storeValuePipe('sort-descending', sortDesc);
-
-// Casing
-storeValuePipe('uppercase', uppercase);
-storeValuePipe('lowercase', lowercase);
 
 
 export * from './stringify';
