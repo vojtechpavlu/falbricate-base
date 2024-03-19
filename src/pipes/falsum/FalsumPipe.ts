@@ -2,6 +2,7 @@ import { Falsum } from '../../schema';
 import { fieldsToCamel, fieldsToSnake } from './fieldNameCasing';
 import { addGeneratedTimestampDate, addGeneratedTimestampNumber } from './generatedTimestamp';
 import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
+import { stringify, stringifyWithIndentation } from './stringification';
 
 /**
  * Falsum Pipe is a function altering a given Falsum into another one.
@@ -83,3 +84,7 @@ storeFalsumPipe('generated-timestamp-number', addGeneratedTimestampNumber);
 storeFalsumPipe('prune-undefined', pruneUndefined)
 storeFalsumPipe('prune-null', pruneNulls)
 storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays)
+
+// Stringification
+storeFalsumPipe('stringify', stringify)
+storeFalsumPipe('stringify-indented', stringifyWithIndentation)
