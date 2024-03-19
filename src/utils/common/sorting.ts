@@ -1,4 +1,4 @@
-export type SortOrder = "asc" | "desc";
+export type SortOrder = 'asc' | 'desc';
 
 /**
  * Sorts the given array of items in a given sorting order.
@@ -15,12 +15,12 @@ export const sortArray = <T>(items: T[], order: SortOrder = 'asc'): T[] => {
     }
 
     if (order === 'asc') {
-      return i1 < i2 ? -1 : 1
+      return i1 < i2 ? -1 : 1;
     } else {
-      return i1 < i2 ? 1 : -1
+      return i1 < i2 ? 1 : -1;
     }
   });
-}
+};
 
 /**
  * Sorts the given string by characters and by given order.
@@ -31,10 +31,9 @@ export const sortArray = <T>(items: T[], order: SortOrder = 'asc'): T[] => {
  * @throws {Error} When the given array contains objects
  */
 export const sortString = (str: string, order: SortOrder = 'asc'): string => {
-
   if (typeof str !== 'string') {
-    throw new Error(`This function can only sort string, not '${typeof str}'`)
+    throw new Error(`This function can only sort string, not '${typeof str}'`);
   }
 
-  return sortArray(str.split(""), order).join("");
-}
+  return sortArray(str.split(''), order).join('');
+};

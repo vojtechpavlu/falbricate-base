@@ -11,13 +11,13 @@ import { sortArray, sortString } from '../../utils/common/sorting';
  */
 export const sortAsc = (value: GeneratedValue): GeneratedValue => {
   if (Array.isArray(value)) {
-    return sortArray(value, "asc");
+    return sortArray(value, 'asc');
   } else if (typeof value === 'string') {
-    return sortString(value, "asc")
+    return sortString(value, 'asc');
   } else {
     throw new Error(`Can't sort this type of value: ${typeof value}`);
   }
-}
+};
 
 /**
  * Sorts the given value in descending order.
@@ -29,10 +29,10 @@ export const sortAsc = (value: GeneratedValue): GeneratedValue => {
  */
 export const sortDesc = (value: GeneratedValue): GeneratedValue => {
   if (Array.isArray(value)) {
-    return sortArray(value, "desc");
+    return sortArray(value, 'desc');
   } else if (typeof value === 'string') {
-    return sortString(value, "desc")
+    return sortString(value, 'desc');
   } else {
     throw new Error(`Can't sort this type of value: ${typeof value}`);
   }
-}
+};

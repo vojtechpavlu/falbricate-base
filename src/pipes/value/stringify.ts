@@ -7,4 +7,4 @@ import { GeneratedValue } from '../../baseGenerators';
  */
 export const stringify = (value: GeneratedValue): string => {
   return JSON.stringify(value);
-}
+};

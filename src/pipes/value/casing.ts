@@ -9,11 +9,13 @@ import { GeneratedValue } from '../../baseGenerators';
  */
 export const uppercase = (value: GeneratedValue): string => {
   if (typeof value !== 'string') {
-    throw new Error(`Uppercasing can be performed on strings only; not on '${typeof value}' types`)
+    throw new Error(
+      `Uppercasing can be performed on strings only; not on '${typeof value}' types`,
+    );
   }
 
   return value.toUpperCase();
-}
+};
 
 /**
  * Turns the given string value to lowercase characters
@@ -24,8 +26,10 @@ export const uppercase = (value: GeneratedValue): string => {
  */
 export const lowercase = (value: GeneratedValue): string => {
   if (typeof value !== 'string') {
-    throw new Error(`Lowercasing can be performed on strings only; not on '${typeof value}' types`)
+    throw new Error(
+      `Lowercasing can be performed on strings only; not on '${typeof value}' types`,
+    );
   }
 
   return value.toLowerCase();
-}
+};

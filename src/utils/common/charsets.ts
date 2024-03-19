@@ -3,12 +3,20 @@
  */
 export type Charset = string[];
 
-
-export type CharsetName = string | (
-  'numbers' | 'lowercase' | 'uppercase' | 'specials' | 'doubles' |
-  'hexlower' | 'hexupper' | 'letters' | 'alphanum' | 'alphanumspecs'
-  )
-
+export type CharsetName =
+  | string
+  | (
+      | 'numbers'
+      | 'lowercase'
+      | 'uppercase'
+      | 'specials'
+      | 'doubles'
+      | 'hexlower'
+      | 'hexupper'
+      | 'letters'
+      | 'alphanum'
+      | 'alphanumspecs'
+    );
 
 /**
  * Declaration of registry holding the registered charsets
@@ -56,9 +64,8 @@ const CHARSET_REGISTRY: CharsetRegistry = {
   alphanum: [...LOWERCASES, ...UPPERCASES, ...NUMBERS],
 
   /** Alphanumeric characters with special characters */
-  alphanumspecs: [...LOWERCASES, ...UPPERCASES, ...NUMBERS, ...SPECIALS]
+  alphanumspecs: [...LOWERCASES, ...UPPERCASES, ...NUMBERS, ...SPECIALS],
 };
-
 
 /**
  * Checks if the given potential charset is an array of single-character strings.

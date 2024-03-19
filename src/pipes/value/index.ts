@@ -16,14 +16,21 @@ import { splitBySpace } from './split';
 export type ValuePipe = (value: GeneratedValue) => GeneratedValue;
 
 /** Names of the Value Pipes for type-hinting purposes */
-export type ValuePipeName = string | (
+export type ValuePipeName =
+  | string
   // String value pipes
-  'stringify'| 'trim' | 'single-space' |'uppercase' | 'lowercase' | 'space-split' |
+  | (
+      | 'stringify'
+      | 'trim'
+      | 'single-space'
+      | 'uppercase'
+      | 'lowercase'
+      | 'space-split'
 
-  // Sorting
-  'sort-ascending' | 'sort-descending'
-  )
-
+      // Sorting
+      | 'sort-ascending'
+      | 'sort-descending'
+    );
 
 /**
  * Declaration of Value Pipes Registry type
@@ -61,7 +68,6 @@ export const hasValuePipe = (name: ValuePipeName): boolean => {
   return !!Object.keys(VALUE_PIPE_REGISTRY).find((key) => key === name);
 };
 
-
 /**
  * Tries to store the given Value Pipe with a given name assigned.
  *
@@ -76,7 +82,9 @@ export const storeValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
   if (!name) {
     throw new Error(`Name is required`);
   } else if (hasValuePipe(name)) {
-    throw new Error(`There already is one Value Pipe registered with name '${name}'`);
+    throw new Error(
+      `There already is one Value Pipe registered with name '${name}'`,
+    );
   } else if (!pipe) {
     throw new Error(`Pipe must be defined`);
   }
@@ -90,12 +98,11 @@ storeValuePipe('trim', trimString);
 storeValuePipe('single-space', singleSpace);
 storeValuePipe('uppercase', uppercase);
 storeValuePipe('lowercase', lowercase);
-storeValuePipe('space-split', splitBySpace)
+storeValuePipe('space-split', splitBySpace);
 
 // Sorting
 storeValuePipe('sort-ascending', sortAsc);
 storeValuePipe('sort-descending', sortDesc);
-
 
 export * from './stringify';
 export * from './casing';

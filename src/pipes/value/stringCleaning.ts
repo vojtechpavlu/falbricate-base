@@ -11,9 +11,11 @@ export const trimString = (value: GeneratedValue): GeneratedValue => {
   if (typeof value === 'string') {
     return value.trim();
   } else {
-    throw new Error(`Can't trim this value: ${value} - it needs to be a string`);
+    throw new Error(
+      `Can't trim this value: ${value} - it needs to be a string`,
+    );
   }
-}
+};
 
 /**
  * Removes all occurrences of multiple consecutive spaces and replaces
@@ -27,6 +29,8 @@ export const singleSpace = (value: GeneratedValue): GeneratedValue => {
   if (typeof value === 'string') {
     return value.replace(/\s+/g, ' ');
   } else {
-    throw new Error(`Can't trim this value: ${value} - it needs to be a string`);
+    throw new Error(
+      `Can't trim this value: ${value} - it needs to be a string`,
+    );
   }
-}
+};

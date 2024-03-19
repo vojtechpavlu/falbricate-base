@@ -12,8 +12,8 @@ export const splitBySpace = (value: GeneratedValue): GeneratedValue[] => {
   if (value === undefined || value === null) {
     throw new Error(`Value has to be defined: ${value}`);
   } else if (typeof value === 'string') {
-    return value.split(" ");
+    return value.split(' ');
   } else {
     throw new Error(`Can't split object of type '${typeof value}'`);
   }
-}
+};

@@ -2,16 +2,16 @@ import { addGeneratedTimestampNumber, ObjectFalsum } from '../../../../src';
 
 describe('addGeneratedTimestampNumber function', () => {
   it('should create `generatedAt` field in the given object', () => {
-    const falsum = { test: "test-value" }
+    const falsum = { test: 'test-value' };
     const modified = addGeneratedTimestampNumber(falsum);
 
-    expect(Object.keys(modified).includes("generatedAt")).toBe(true);
+    expect(Object.keys(modified).includes('generatedAt')).toBe(true);
   });
 
   it('should add a timestamp of Date type', () => {
-    const falsum = { test: "test-value" }
+    const falsum = { test: 'test-value' };
     const modified = addGeneratedTimestampNumber(falsum) as ObjectFalsum;
 
     expect(typeof modified['generatedAt'] === 'number').toBe(true);
   });
-})
+});
