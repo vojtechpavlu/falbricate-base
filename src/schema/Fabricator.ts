@@ -5,9 +5,15 @@ import { SchemaInput } from './SchemaInput';
 /**
  * Falsum is a randomly generated object by the given schema.
  */
-export interface Falsum {
+export interface ObjectFalsum {
   [name: string]: GeneratedValue;
 }
+
+/**
+ * Randomly generated Falsum by given schema and piped through
+ * Falsum Pipes
+ */
+export type Falsum = ObjectFalsum | string
 
 /**
  * Fabricator is a factory class providing services of generating
@@ -25,7 +31,8 @@ export class Fabricator {
    * Generates a single Falsum fitting the schema given in constructor.
    */
   public generate = (): Falsum => {
-    let falsum: Falsum = {};
+    // Future ObjectFalsum
+    let falsum: any = {};
 
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
