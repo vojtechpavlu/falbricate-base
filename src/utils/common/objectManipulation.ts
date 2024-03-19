@@ -1,5 +1,5 @@
 interface ManipulatedObject {
-  [key: string]: any
+  [key: string]: any;
 }
 
 /**
@@ -16,21 +16,22 @@ interface ManipulatedObject {
 export const objectToList = (
   obj: ManipulatedObject,
   keyName: string = 'key',
-  valueName: string = 'value'
+  valueName: string = 'value',
 ): ManipulatedObject[] => {
-
   if (typeof obj === 'object' && Array.isArray(obj)) {
-    throw new Error(`The given object can't be an array`)
+    throw new Error(`The given object can't be an array`);
   } else if (typeof obj !== 'object') {
-    throw new Error(`The given argument has to be an object, not ${typeof obj}`)
+    throw new Error(
+      `The given argument has to be an object, not ${typeof obj}`,
+    );
   } else {
     return Object.keys(obj).map((key: string) => {
       const resultObject: ManipulatedObject = {};
 
-      resultObject[keyName] = key
-      resultObject[valueName] = obj[key]
+      resultObject[keyName] = key;
+      resultObject[valueName] = obj[key];
 
-      return resultObject
+      return resultObject;
     });
   }
-}
+};
