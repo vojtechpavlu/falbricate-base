@@ -1,7 +1,7 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig,
+  ValueGeneratorConfig
 } from './ValueGenerator';
 import {
   ConstantNumberConfig,
@@ -9,13 +9,13 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig,
+  IntegerGeneratorConfig
 } from './numeric';
 import {
   ConstantStringConfig,
   ConstantStringGenerator,
   StringGeneratorConfig,
-  StringOfLengthGenerator,
+  StringOfLengthGenerator
 } from './string';
 import {
   ArrayPicker,
@@ -23,8 +23,18 @@ import {
   ArraySampleConfig,
   ArraySampleGenerator,
   ConstantArrayConfig,
-  ConstantArrayGenerator,
+  ConstantArrayGenerator
 } from './array';
+
+
+/**
+ * Declaration of the basic Value Generator names for type-hinting purposes
+ */
+export type ValueGeneratorName = string | (
+  'range-integer' | 'range-float' | 'constant-number' | 'string-of-length' | 'constant-string' |
+  'array-picker' | 'constant-array' | 'array-sample'
+  )
+
 
 /**
  * Type definition for builders of ValueGenerators
@@ -47,7 +57,7 @@ interface ValueGeneratorRegistry<
   ValueType extends GeneratedValue,
   Conf extends ValueGeneratorConfig,
 > {
-  [name: string]: ValueGeneratorBuilder<ValueType, Conf>;
+  [name: ValueGeneratorName]: ValueGeneratorBuilder<ValueType, Conf>;
 }
 
 /**
@@ -70,8 +80,8 @@ export const get = <
   GenValue extends GeneratedValue,
   Conf extends ValueGeneratorConfig,
 >(
-  name: string,
-  config: Conf,
+  name: ValueGeneratorName,
+  config: Conf
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -88,9 +98,9 @@ export const get = <
  *
  * @param name Name of the value generator builder
  */
-export const hasGenerator = (name: string): boolean => {
+export const hasGenerator = (name: ValueGeneratorName): boolean => {
   return !!Object.keys(VALUE_GENERATOR_REGISTRY).find(
-    (key: string) => key === name,
+    (key: string) => key === name
   );
 };
 
@@ -105,11 +115,11 @@ export const registerValueGenerator = <
   GivenConfig extends ValueGeneratorConfig,
 >(
   name: string,
-  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
+  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>
 ) => {
   if (hasGenerator(name)) {
     throw new Error(
-      `There is already one value generator with name '${name}' registered`,
+      `There is already one value generator with name '${name}' registered`
     );
   }
 
@@ -122,39 +132,39 @@ const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 // Register numerics
 registerValueGenerator(
   'range-integer',
-  (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
+  (config: IntegerGeneratorConfig) => new IntegerGenerator(config)
 );
 registerValueGenerator(
   'range-float',
-  (config: FloatGeneratorConfig) => new FloatGenerator(config),
+  (config: FloatGeneratorConfig) => new FloatGenerator(config)
 );
 registerValueGenerator(
   'constant-number',
-  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
+  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config)
 );
 
 // Register strings
 registerValueGenerator(
   'string-of-length',
-  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
+  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config)
 );
 registerValueGenerator(
   'constant-string',
-  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
+  (config: ConstantStringConfig) => new ConstantStringGenerator(config)
 );
 
 // Register arrays
 registerValueGenerator(
   'array-picker',
-  (config: ArrayPickerConfig) => new ArrayPicker(config),
+  (config: ArrayPickerConfig) => new ArrayPicker(config)
 );
 registerValueGenerator(
   'constant-array',
-  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
+  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config)
 );
 registerValueGenerator(
   'array-sample',
-  (config: ArraySampleConfig) => new ArraySampleGenerator(config),
+  (config: ArraySampleConfig) => new ArraySampleGenerator(config)
 );
 
 export * from './ValueGenerator';
