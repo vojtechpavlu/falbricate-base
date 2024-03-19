@@ -29,4 +29,22 @@ describe('objectToList function', () => {
       expect(item['myValue']).not.toBeUndefined();
     });
   });
+
+  it('should throw on non-object types', () => {
+    // @ts-ignore
+    expect(() => objectToList(1)).toThrow()
+    // @ts-ignore
+    expect(() => objectToList(true)).toThrow()
+    // @ts-ignore
+    expect(() => objectToList("not object")).toThrow()
+    // @ts-ignore
+    expect(() => objectToList([])).toThrow()
+  });
+
+  it('should throw on undefined and null', () => {
+    // @ts-ignore
+    expect(() => objectToList(undefined)).toThrow()
+    // @ts-ignore
+    expect(() => objectToList(null)).toThrow()
+  });
 });

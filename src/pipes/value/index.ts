@@ -4,6 +4,7 @@ import { sortAsc, sortDesc } from './sorting';
 import { lowercase, uppercase } from './casing';
 import { singleSpace, trimString } from './stringCleaning';
 import { splitBySpace } from './split';
+import { objectValueToList } from './objectValueManipulation';
 
 /**
  * Declaration of a pipe altering the generated value
@@ -30,6 +31,9 @@ export type ValuePipeName =
       // Sorting
       | 'sort-ascending'
       | 'sort-descending'
+
+      // Object manipulation
+      | 'object-to-list'
     );
 
 /**
@@ -104,6 +108,10 @@ storeValuePipe('space-split', splitBySpace);
 storeValuePipe('sort-ascending', sortAsc);
 storeValuePipe('sort-descending', sortDesc);
 
+// Object manipulation
+storeValuePipe('object-to-list', objectValueToList);
+
 export * from './stringify';
 export * from './casing';
 export * from './sorting';
+export * from './objectValueManipulation'
