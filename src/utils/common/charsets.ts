@@ -3,11 +3,18 @@
  */
 export type Charset = string[];
 
+
+export type CharsetName = string | (
+  'numbers' | 'lowercase' | 'uppercase' | 'specials' | 'doubles' |
+  'hexlower' | 'hexupper' | 'letters' | 'alphanum' | 'alphanumspecs'
+  )
+
+
 /**
  * Declaration of registry holding the registered charsets
  */
 interface CharsetRegistry {
-  [name: string]: Charset;
+  [name: CharsetName]: Charset;
 }
 
 /* Definition of basic charsets */
@@ -21,28 +28,37 @@ const HEXADECIMAL_UPPERCASES = '0123456899ABCDEF'.split('');
 
 /** Charset registry */
 const CHARSET_REGISTRY: CharsetRegistry = {
-  NUMBERS: NUMBERS,
-  LOWERCASE_CHARS: LOWERCASES,
-  UPPERCASE_CHARS: UPPERCASES,
-  SPECIAL_CHARS: SPECIALS,
-  DOUBLE_CHARS: DOUBLES,
-  HEXADECIMALS_LOWER: HEXADECIMAL_LOWERCASES,
-  HEXADECIMALS_UPPER: HEXADECIMAL_UPPERCASES,
+  /** Numeric characters (can be described as [0-9] regular expression) */
+  numbers: NUMBERS,
 
-  // Combinations
-  ALL_LETTERS: [...LOWERCASES, ...UPPERCASES],
+  /** Lowercase characters (can be described as [a-z] regular expression) */
+  lowercase: LOWERCASES,
 
-  ALPHANUMERICS: [...LOWERCASES, ...UPPERCASES, ...NUMBERS],
+  /** Uppercase characters (can be described as [A-Z] regular expression) */
+  uppercase: UPPERCASES,
 
-  ALPHANUMERICS_WITH_SPECIALS: [
-    ...LOWERCASES,
-    ...UPPERCASES,
-    ...NUMBERS,
-    ...SPECIALS,
-  ],
+  /** Special characters */
+  specials: SPECIALS,
 
-  ALL: [...LOWERCASES, ...UPPERCASES, ...NUMBERS, ...SPECIALS, ...DOUBLES],
+  /** Characters going in pairs, like parentheses */
+  doubles: DOUBLES,
+
+  /** Hexadecimal characters in lowercase letters */
+  hexlower: HEXADECIMAL_LOWERCASES,
+
+  /** Hexadecimal characters in uppercase letters */
+  hexupper: HEXADECIMAL_UPPERCASES,
+
+  /** All letters (can be described as [a-zA-Z] regular expression) */
+  letters: [...LOWERCASES, ...UPPERCASES],
+
+  /** Alphanumerics (can be described as [a-zA-Z0-9] regular expression) */
+  alphanum: [...LOWERCASES, ...UPPERCASES, ...NUMBERS],
+
+  /** Alphanumeric characters with special characters */
+  alphanumspecs: [...LOWERCASES, ...UPPERCASES, ...NUMBERS, ...SPECIALS]
 };
+
 
 /**
  * Checks if the given potential charset is an array of single-character strings.
@@ -76,7 +92,7 @@ export const isCharset = (potentialCharset: any): boolean => {
  *
  * @throws {Error} When there is no charset of such name
  */
-export const getCharset = (name: string): Charset => {
+export const getCharset = (name: CharsetName): Charset => {
   const charset = CHARSET_REGISTRY[name];
 
   if (!charset) {
@@ -91,7 +107,7 @@ export const getCharset = (name: string): Charset => {
  *
  * @param name Name of the charset to be checked
  */
-export const hasCharset = (name: string): boolean => {
+export const hasCharset = (name: CharsetName): boolean => {
   return !!Object.keys(CHARSET_REGISTRY).find((key) => key === name);
 };
 
