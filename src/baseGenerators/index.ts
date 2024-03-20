@@ -14,6 +14,8 @@ import {
 import {
   ConstantStringConfig,
   ConstantStringGenerator,
+  StringFromContextConfig,
+  StringFromContextGenerator,
   StringGeneratorConfig,
   StringOfLengthGenerator,
 } from './string';
@@ -40,6 +42,7 @@ export type ValueGeneratorName =
       | 'array-picker'
       | 'constant-array'
       | 'array-sample'
+      | 'string-in-context'
     );
 
 /**
@@ -87,7 +90,7 @@ export const get = <
   Conf extends ValueGeneratorConfig,
 >(
   name: ValueGeneratorName,
-  config: Conf,
+  config: Conf & any,
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -171,6 +174,10 @@ registerValueGenerator(
 registerValueGenerator(
   'array-sample',
   (config: ArraySampleConfig) => new ArraySampleGenerator(config),
+);
+registerValueGenerator(
+  'string-in-context',
+  (config: StringFromContextConfig) => new StringFromContextGenerator(config),
 );
 
 export * from './ValueGenerator';

@@ -1,4 +1,5 @@
 import { ValuePipe } from '../pipes/value';
+import { GenerationContext } from '../schema/generationContext';
 
 export type SingleValue = string | number | boolean | (any & {});
 export type GeneratedValue = SingleValue | SingleValue[];
@@ -39,7 +40,7 @@ export abstract class ValueGenerator<
   /**
    * Returns a generated value
    */
-  abstract get: () => ValueType;
+  abstract get: (context: GenerationContext) => ValueType;
 
   /**
    * Pipes the given value through the defined pipes to modify the
