@@ -43,6 +43,10 @@ export class StringFromContextGenerator extends ValueGenerator<
       this.config.sep
     );
 
+    if (!!valueOnPath && typeof valueOnPath !== 'string') {
+      throw new Error(`Retrieved value from context is actually not a string`)
+    }
+
     return this.pipe(valueOnPath);
   };
 }

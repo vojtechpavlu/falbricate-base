@@ -46,6 +46,22 @@ describe('accessProperty function', () => {
     expect(value).toBe("test")
   });
 
+  it('should return undefined when found it', () => {
+    const obj = {
+      value: undefined
+    }
+
+    expect(accessProperty(obj, "value")).toBe(undefined)
+  });
+
+  it('should return null when found it', () => {
+    const obj = {
+      value: null
+    }
+
+    expect(accessProperty(obj, "value")).toBe(null)
+  });
+
   it('should throw on empty object', () => {
     const obj = {}
     expect(() => accessProperty(obj, "test")).toThrow()

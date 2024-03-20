@@ -62,6 +62,46 @@ describe('StringFromContext generator', () => {
     expect(generator.get(context)).toBe("test");
   });
 
+  it('should throw an error on non-string non-empty value', () => {
+    const context = { value: 1 }
+
+    const generator = new StringFromContextGenerator({
+      path: "value",
+    });
+
+    expect(() => generator.get(context)).toThrow();
+  });
+
+  it('should not throw an error on empty string value', () => {
+    const context = { value: "" }
+
+    const generator = new StringFromContextGenerator({
+      path: "value",
+    });
+
+    expect(() => generator.get(context)).not.toThrow();
+  });
+
+  it('should not throw an error on undefined value', () => {
+    const context = { value: undefined }
+
+    const generator = new StringFromContextGenerator({
+      path: "value",
+    });
+
+    expect(() => generator.get(context)).not.toThrow();
+  });
+
+  it('should not throw an error on null value', () => {
+    const context = { value: null }
+
+    const generator = new StringFromContextGenerator({
+      path: "value",
+    });
+
+    expect(() => generator.get(context)).not.toThrow();
+  });
+
   it('should use the pipes', () => {
     const context = {
       value: "test"

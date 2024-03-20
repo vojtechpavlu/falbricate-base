@@ -31,5 +31,9 @@ export const accessProperty = (
     }
   });
 
+  if (current === undefined || current === null) {
+    return current;
+  }
+
   return JSON.parse(JSON.stringify(current));
 }
