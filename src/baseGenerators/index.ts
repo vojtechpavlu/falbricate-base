@@ -22,12 +22,13 @@ import {
   StringOfLengthGenerator,
 } from './string';
 import {
+  ArrayFromContextConfig, ArrayFromContextGenerator,
   ArrayPicker,
   ArrayPickerConfig,
   ArraySampleConfig,
   ArraySampleGenerator,
   ConstantArrayConfig,
-  ConstantArrayGenerator,
+  ConstantArrayGenerator
 } from './array';
 
 /**
@@ -46,6 +47,7 @@ export type ValueGeneratorName =
       | 'array-sample'
       | 'string-in-context'
       | 'number-in-context'
+      | 'array-in-context'
     );
 
 /**
@@ -185,6 +187,10 @@ registerValueGenerator(
 registerValueGenerator(
   'number-in-context',
   (config: NumberFromContextConfig) => new NumberFromContextGenerator(config),
+);
+registerValueGenerator(
+  'array-in-context',
+  (config: ArrayFromContextConfig) => new ArrayFromContextGenerator(config),
 );
 
 export * from './ValueGenerator';
