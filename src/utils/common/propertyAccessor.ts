@@ -1,5 +1,5 @@
 interface Accessible {
-  [propName: string]: Accessible | any
+  [propName: string]: Accessible | any;
 }
 
 /**
@@ -15,19 +15,25 @@ interface Accessible {
 export const accessProperty = (
   obj: Accessible,
   path: string,
-  sep: string = "."
+  sep: string = '.',
 ) => {
   const pathSteps = path.split(sep);
   let current = obj;
   pathSteps.forEach((step, idx) => {
     if (Array.isArray(current)) {
-      throw new Error(`Can't access '${step}' at position (${idx}) in '${path}' - arrays are not supported`);
+      throw new Error(
+        `Can't access '${step}' at position (${idx}) in '${path}' - arrays are not supported`,
+      );
     } else if (!current || Object.keys(current).length === 0) {
-      throw new Error(`Can't access '${step}' at position (${idx}) in '${path}' - does not exist`);
+      throw new Error(
+        `Can't access '${step}' at position (${idx}) in '${path}' - does not exist`,
+      );
     } else if (typeof current === 'object') {
       current = current[step];
     } else {
-      throw new Error(`Can't access '${step}' at position (${idx}) in '${path}' - unexpected type (${typeof current})`);
+      throw new Error(
+        `Can't access '${step}' at position (${idx}) in '${path}' - unexpected type (${typeof current})`,
+      );
     }
   });
 
@@ -36,4 +42,4 @@ export const accessProperty = (
   }
 
   return JSON.parse(JSON.stringify(current));
-}
+};

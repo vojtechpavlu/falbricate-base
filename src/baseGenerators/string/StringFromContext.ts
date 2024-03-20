@@ -11,8 +11,8 @@ import { GenerationContext } from '../../schema/generationContext';
  * from the given context.
  */
 export type StringFromContextConfig = {
-  path: string,
-  sep?: string,
+  path: string;
+  sep?: string;
 } & ValueGeneratorConfig;
 
 /**
@@ -23,9 +23,8 @@ export class StringFromContextGenerator extends ValueGenerator<
   GeneratedValue,
   StringFromContextConfig
 > {
-  constructor(config:   StringFromContextConfig) {
-
-    config.sep = config.sep ?? "."
+  constructor(config: StringFromContextConfig) {
+    config.sep = config.sep ?? '.';
 
     if (!config.path) {
       throw new Error(`Property 'path' is required`);
@@ -40,11 +39,11 @@ export class StringFromContextGenerator extends ValueGenerator<
     const valueOnPath = accessProperty(
       context,
       this.config.path,
-      this.config.sep
+      this.config.sep,
     );
 
     if (!!valueOnPath && typeof valueOnPath !== 'string') {
-      throw new Error(`Retrieved value from context is actually not a string`)
+      throw new Error(`Retrieved value from context is actually not a string`);
     }
 
     return this.pipe(valueOnPath);

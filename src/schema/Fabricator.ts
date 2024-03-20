@@ -57,7 +57,10 @@ export class Fabricator {
    * @throws {Error} When the given number of expected Falsums doesn't match the
    * rule of non-negativity.
    */
-  public generateMany = (n: number, context: GenerationContext = {}): Falsum[] => {
+  public generateMany = (
+    n: number,
+    context: GenerationContext = {},
+  ): Falsum[] => {
     if (!n || n < 0) {
       throw new Error(
         `Expected a positive number of how many items should be created: ${n}`,
