@@ -1,6 +1,7 @@
 import { Schema } from './Schema';
 import { GeneratedValue } from '../baseGenerators';
 import { SchemaInput } from './SchemaInput';
+import { GenerationContext } from './generationContext';
 
 /**
  * Falsum is a randomly generated object by the given schema.
@@ -30,13 +31,13 @@ export class Fabricator {
   /**
    * Generates a single Falsum fitting the schema given in constructor.
    */
-  public generate = (): Falsum => {
+  public generate = (context: GenerationContext = {}): Falsum => {
     // Future ObjectFalsum
     let falsum: any = {};
 
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
-      falsum[property] = this.schema.fields[property]?.get();
+      falsum[property] = this.schema.fields[property]?.get(context);
     });
 
     // Pipe the value through all the Falsum Pipes
@@ -50,12 +51,13 @@ export class Fabricator {
   /**
    * Generates multiple Falsum objects fitting the schema given in constructor.
    *
-   * @param n Number of Falsum objects to be generated. Has to be non-negative.
+   * @param n       Number of Falsum objects to be generated. Has to be non-negative.
+   * @param context Context to be used for generation of these falsums.
    *
    * @throws {Error} When the given number of expected Falsums doesn't match the
    * rule of non-negativity.
    */
-  public generateMany = (n: number): Falsum[] => {
+  public generateMany = (n: number, context: GenerationContext = {}): Falsum[] => {
     if (!n || n < 0) {
       throw new Error(
         `Expected a positive number of how many items should be created: ${n}`,
