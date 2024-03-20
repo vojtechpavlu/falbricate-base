@@ -52,9 +52,9 @@ export class Fabricator {
    * Generates multiple Falsum objects fitting the schema given in constructor.
    *
    * @param n       Number of Falsum objects to be generated. Has to be non-negative.
-   * @param context Context to be used for generation of these falsums.
+   * @param context Context to be used for generation of these falsa.
    *
-   * @throws {Error} When the given number of expected Falsums doesn't match the
+   * @throws {Error} When the given number of expected falsa doesn't match the
    * rule of non-negativity.
    */
   public generateMany = (

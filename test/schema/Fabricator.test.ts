@@ -58,9 +58,9 @@ describe('Fabricator generate function', () => {
 describe('Fabricator generateMany function', () => {
   it('should generate an array of objects', () => {
     const fabricator = new Fabricator(schemaInput);
-    const falsums = fabricator.generateMany(5);
+    const falsa = fabricator.generateMany(5);
 
-    expect(Array.isArray(falsums)).toBe(true);
+    expect(Array.isArray(falsa)).toBe(true);
   });
 
   it('should generate specified number of objects', () => {
@@ -72,9 +72,9 @@ describe('Fabricator generateMany function', () => {
 
   it('should generate objects of a shape', () => {
     const fabricator = new Fabricator(schemaInput);
-    const falsums = fabricator.generateMany(5) as ObjectFalsum[];
+    const falsa = fabricator.generateMany(5) as ObjectFalsum[];
 
-    falsums.forEach((falsum) => {
+    falsa.forEach((falsum) => {
       // Check the general shape
       expect(typeof falsum).toBe('object');
       expect(Object.keys(falsum).length).toBe(2);

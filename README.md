@@ -47,7 +47,7 @@ const fabricator= new Fabricator({
 const falsum: Falsum = fabricator.generate();
 
 // Generate multiple items at once
-const falsums: Falsum[] = fabricator.generateMany(5);
+const falsa: Falsum[] = fabricator.generateMany(5);
 
 // Possible output:
 // { username: 'u/ooqne190mc', age: 18, languages: [ 'Python', 'Java', 'JS/TS' ]}
