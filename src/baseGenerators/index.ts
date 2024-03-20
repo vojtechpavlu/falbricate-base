@@ -22,13 +22,14 @@ import {
   StringOfLengthGenerator,
 } from './string';
 import {
-  ArrayFromContextConfig, ArrayFromContextGenerator,
+  ArrayFromContextConfig,
+  ArrayFromContextGenerator,
   ArrayPicker,
   ArrayPickerConfig,
   ArraySampleConfig,
   ArraySampleGenerator,
   ConstantArrayConfig,
-  ConstantArrayGenerator
+  ConstantArrayGenerator,
 } from './array';
 
 /**
