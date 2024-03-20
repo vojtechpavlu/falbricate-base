@@ -63,7 +63,7 @@ describe('NumberFromContext generator', () => {
   });
 
   it('should throw an error on string non-empty value', () => {
-    const context = { value: "test" };
+    const context = { value: 'test' };
 
     const generator = new NumberFromContextGenerator({
       path: 'value',

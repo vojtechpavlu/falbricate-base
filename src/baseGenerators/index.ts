@@ -9,7 +9,9 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig, NumberFromContextConfig, NumberFromContextGenerator
+  IntegerGeneratorConfig,
+  NumberFromContextConfig,
+  NumberFromContextGenerator,
 } from './numeric';
 import {
   ConstantStringConfig,
@@ -43,7 +45,7 @@ export type ValueGeneratorName =
       | 'constant-array'
       | 'array-sample'
       | 'string-in-context'
-  | 'number-in-context'
+      | 'number-in-context'
     );
 
 /**
