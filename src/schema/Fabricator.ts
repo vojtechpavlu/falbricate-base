@@ -67,7 +67,7 @@ export class Fabricator {
     const items: Falsum[] = [];
 
     for (let i = 0; i < n; i++) {
-      items.push(this.generate());
+      items.push(this.generate(context));
     }
 
     return items;
