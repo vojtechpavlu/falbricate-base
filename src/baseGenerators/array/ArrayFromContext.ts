@@ -3,7 +3,7 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../ValueGenerator';
-import { accessProperty } from '../../utils/common/propertyAccessor';
+import { accessProperty, PathSeparator } from '../../utils/common/propertyAccessor';
 import { GenerationContext } from '../../schema/generationContext';
 
 /**
@@ -12,7 +12,7 @@ import { GenerationContext } from '../../schema/generationContext';
  */
 export type ArrayFromContextConfig = {
   path: string;
-  sep?: string;
+  sep?: PathSeparator;
 } & ValueGeneratorConfig;
 
 /**

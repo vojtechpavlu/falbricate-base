@@ -1,5 +1,5 @@
 /** Separators usable to distinguish the movement in the structure */
-type PathSeparator = '.' | '/' | '#' | '$';
+export type PathSeparator = '.' | '/' | '#' | '$';
 
 /** Definition of an object the function can process */
 interface Accessible {
