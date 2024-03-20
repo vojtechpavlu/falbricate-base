@@ -10,20 +10,20 @@ import { GenerationContext } from '../../schema/generationContext';
  * Configuration specifying what property should be taken
  * from the given context.
  */
-export type StringFromContextConfig = {
+export type ArrayFromContextConfig = {
   path: string;
   sep?: PathSeparator;
 } & ValueGeneratorConfig;
 
 /**
- * This generator simply returns the string specified at the path
+ * This generator simply returns the array specified at the path
  * from the given context.
  */
-export class StringFromContextGenerator extends ValueGenerator<
+export class ArrayFromContextGenerator extends ValueGenerator<
   GeneratedValue,
-  StringFromContextConfig
+  ArrayFromContextConfig
 > {
-  constructor(config: StringFromContextConfig) {
+  constructor(config: ArrayFromContextConfig) {
     config.sep = config.sep ?? '.';
 
     if (!config.path) {
@@ -42,8 +42,8 @@ export class StringFromContextGenerator extends ValueGenerator<
       this.config.sep,
     );
 
-    if (!!valueOnPath && typeof valueOnPath !== 'string') {
-      throw new Error(`Retrieved value from context is actually not a string`);
+    if (!!valueOnPath && !Array.isArray(valueOnPath)) {
+      throw new Error(`Retrieved value from context is actually not an array`);
     }
 
     return this.pipe(valueOnPath);

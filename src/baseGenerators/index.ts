@@ -10,6 +10,8 @@ import {
   FloatGeneratorConfig,
   IntegerGenerator,
   IntegerGeneratorConfig,
+  NumberFromContextConfig,
+  NumberFromContextGenerator,
 } from './numeric';
 import {
   ConstantStringConfig,
@@ -20,6 +22,8 @@ import {
   StringOfLengthGenerator,
 } from './string';
 import {
+  ArrayFromContextConfig,
+  ArrayFromContextGenerator,
   ArrayPicker,
   ArrayPickerConfig,
   ArraySampleConfig,
@@ -43,6 +47,8 @@ export type ValueGeneratorName =
       | 'constant-array'
       | 'array-sample'
       | 'string-in-context'
+      | 'number-in-context'
+      | 'array-in-context'
     );
 
 /**
@@ -178,6 +184,14 @@ registerValueGenerator(
 registerValueGenerator(
   'string-in-context',
   (config: StringFromContextConfig) => new StringFromContextGenerator(config),
+);
+registerValueGenerator(
+  'number-in-context',
+  (config: NumberFromContextConfig) => new NumberFromContextGenerator(config),
+);
+registerValueGenerator(
+  'array-in-context',
+  (config: ArrayFromContextConfig) => new ArrayFromContextGenerator(config),
 );
 
 export * from './ValueGenerator';

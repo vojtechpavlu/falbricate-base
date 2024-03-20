@@ -1,7 +1,7 @@
 {
   "name": "@falbricate/base",
-  "version": "1.2.1",
-  "description": "Base for falbricate",
+  "version": "1.2.2",
+  "description": "Base for falbricate - tool to Fabricate Falsa",
   "keywords": [
     "mocking"
   ],

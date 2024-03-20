@@ -10,7 +10,7 @@ import { GenerationContext } from '../../schema/generationContext';
  * Configuration specifying what property should be taken
  * from the given context.
  */
-export type StringFromContextConfig = {
+export type NumberFromContextConfig = {
   path: string;
   sep?: PathSeparator;
 } & ValueGeneratorConfig;
@@ -19,11 +19,11 @@ export type StringFromContextConfig = {
  * This generator simply returns the string specified at the path
  * from the given context.
  */
-export class StringFromContextGenerator extends ValueGenerator<
+export class NumberFromContextGenerator extends ValueGenerator<
   GeneratedValue,
-  StringFromContextConfig
+  NumberFromContextConfig
 > {
-  constructor(config: StringFromContextConfig) {
+  constructor(config: NumberFromContextConfig) {
     config.sep = config.sep ?? '.';
 
     if (!config.path) {
@@ -42,8 +42,8 @@ export class StringFromContextGenerator extends ValueGenerator<
       this.config.sep,
     );
 
-    if (!!valueOnPath && typeof valueOnPath !== 'string') {
-      throw new Error(`Retrieved value from context is actually not a string`);
+    if (!!valueOnPath && typeof valueOnPath !== 'number') {
+      throw new Error(`Retrieved value from context is actually not a number`);
     }
 
     return this.pipe(valueOnPath);
