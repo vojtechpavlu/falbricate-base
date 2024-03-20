@@ -9,7 +9,7 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig,
+  IntegerGeneratorConfig, NumberFromContextConfig, NumberFromContextGenerator
 } from './numeric';
 import {
   ConstantStringConfig,
@@ -43,6 +43,7 @@ export type ValueGeneratorName =
       | 'constant-array'
       | 'array-sample'
       | 'string-in-context'
+  | 'number-in-context'
     );
 
 /**
@@ -178,6 +179,10 @@ registerValueGenerator(
 registerValueGenerator(
   'string-in-context',
   (config: StringFromContextConfig) => new StringFromContextGenerator(config),
+);
+registerValueGenerator(
+  'number-in-context',
+  (config: NumberFromContextConfig) => new NumberFromContextGenerator(config),
 );
 
 export * from './ValueGenerator';
