@@ -1,7 +1,7 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig,
+  ValueGeneratorConfig, ValueGeneratorName
 } from '../baseGenerators';
 import { FalsumPipe } from '../pipes';
 
@@ -10,7 +10,7 @@ import { FalsumPipe } from '../pipes';
  * shall be a value generated.
  */
 export interface DeclarativeFieldDefinition {
-  type: string;
+  type: ValueGeneratorName;
   config: ValueGeneratorConfig & any;
 }
 

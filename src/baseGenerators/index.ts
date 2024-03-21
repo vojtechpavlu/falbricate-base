@@ -31,6 +31,7 @@ import {
   ConstantArrayConfig,
   ConstantArrayGenerator,
 } from './array';
+import { ObjectFromContextConfig, ObjectFromContextGenerator } from './object';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -49,6 +50,7 @@ export type ValueGeneratorName =
       | 'string-in-context'
       | 'number-in-context'
       | 'array-in-context'
+      | 'object-in-context'
     );
 
 /**
@@ -193,8 +195,13 @@ registerValueGenerator(
   'array-in-context',
   (config: ArrayFromContextConfig) => new ArrayFromContextGenerator(config),
 );
+registerValueGenerator(
+  'object-in-context',
+  (config: ObjectFromContextConfig) => new ObjectFromContextGenerator(config)
+)
 
 export * from './ValueGenerator';
 export * from './numeric';
 export * from './string';
 export * from './array';
+export * from './object';
