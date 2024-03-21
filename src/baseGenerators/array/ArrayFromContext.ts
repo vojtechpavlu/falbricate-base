@@ -13,6 +13,8 @@ import { GenerationContext } from '../../schema/generationContext';
 export type ArrayFromContextConfig = {
   path: string;
   sep?: PathSeparator;
+  handleError?: boolean
+  useErrorValue?: any
 } & ValueGeneratorConfig;
 
 /**
@@ -40,6 +42,7 @@ export class ArrayFromContextGenerator extends ValueGenerator<
       context,
       this.config.path,
       this.config.sep,
+      this.config.handleError ? {errorValue: this.config.useErrorValue} : undefined
     );
 
     if (!!valueOnPath && !Array.isArray(valueOnPath)) {
