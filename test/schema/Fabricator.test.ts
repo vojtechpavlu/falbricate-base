@@ -3,20 +3,20 @@ import {
   FloatGenerator,
   IntegerGenerator,
   ObjectFalsum,
-  SchemaInput,
+  SchemaInput
 } from '../../src';
 
 const schemaInput: SchemaInput = {
   fields: {
     test1: {
       type: 'range-integer',
-      config: { min: 10, max: 50 },
+      config: { min: 10, max: 50 }
     },
     test2: {
       type: 'range-float',
-      config: { min: 10, max: 50 },
-    },
-  },
+      config: { min: 10, max: 50 }
+    }
+  }
 };
 
 describe('Fabricator constructor', () => {
@@ -53,6 +53,31 @@ describe('Fabricator generate function', () => {
     expect(typeof falsum['test1']).toBe('number');
     expect(typeof falsum['test2']).toBe('number');
   });
+
+  it('should pass the context', () => {
+    const schema: SchemaInput = {
+      fields: {
+        test: {
+          type: 'string-in-context',
+          config: { path: 'data.key' }
+        }
+      }
+    };
+
+    const fabricator = new Fabricator(schema);
+    const falsum = fabricator.generate({
+      data: { key: 'value' }
+    }) as ObjectFalsum;
+
+    expect(falsum.test).toBe('value');
+  });
+
+  it('should pass the falsum being generated', () => {
+    const fabricator = new Fabricator(schemaInput);
+    const falsa = fabricator.generateMany(5);
+
+    expect(Array.isArray(falsa)).toBe(true);
+  });
 });
 
 describe('Fabricator generateMany function', () => {
@@ -86,6 +111,66 @@ describe('Fabricator generateMany function', () => {
       // Check types of the properties
       expect(typeof falsum['test1']).toBe('number');
       expect(typeof falsum['test2']).toBe('number');
+    });
+  });
+
+  it('should pass the context', () => {
+    const schema: SchemaInput = {
+      fields: {
+        test: {
+          type: 'string-in-context',
+          config: { path: 'data.key' }
+        }
+      }
+    };
+
+    const fabricator = new Fabricator(schema);
+    const falsa = fabricator.generateMany(5,  { key: 'value' }) as ObjectFalsum[];
+
+    falsa.forEach((falsum) => {
+      expect(falsum.test).toBe("value");
+    })
+  });
+
+  it('should pass the index', () => {
+    const schema: SchemaInput = {
+      fields: {
+        test: {
+          type: 'number-in-context',
+          config: {
+            path: 'index'
+          }
+        }
+      }
+    };
+
+    const fabricator = new Fabricator(schema);
+    const falsa = fabricator.generateMany(5) as ObjectFalsum[];
+
+    falsa.forEach((falsum, idx) => {
+      expect(falsum.test).toBe(idx);
+    });
+  });
+
+  it('should pass the previous', () => {
+    const schema: SchemaInput = {
+      fields: {
+        test: {
+          type: 'object-in-context',
+          config: {
+            path: 'previous'
+          }
+        }
+      }
+    };
+
+    const fabricator = new Fabricator(schema);
+    const falsa = fabricator.generateMany(2) as ObjectFalsum[];
+
+    falsa.forEach((falsum, idx) => {
+      if (idx === 1) {
+        expect(falsum.test).not.toBeUndefined();
+      }
     });
   });
 });

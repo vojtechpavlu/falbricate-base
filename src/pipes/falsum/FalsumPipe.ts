@@ -14,7 +14,7 @@ import { objectFalsumToList } from './objectFalsumManipulation';
  * The reason for this kind of pipes is to enable the client to change
  * the general mechanism of how is the Falsum generated to his needs.
  */
-export type FalsumPipe = (falsum: ObjectFalsum) => Falsum;
+export type FalsumPipe = (falsum: ObjectFalsum) => Falsum | ObjectFalsum;
 
 export type FalsumPipeName =
   | string
