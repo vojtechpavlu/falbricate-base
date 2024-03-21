@@ -1,1 +1,2 @@
-export * from './ObjectFromContext'
+export * from './ObjectFromContext';
+export * from './ObjectFromSchema';

@@ -46,6 +46,17 @@ describe('accessProperty function', () => {
     expect(value).toBe('test');
   });
 
+  it('should use error value when error', () => {
+    const obj = {};
+
+    expect(accessProperty(
+      obj,
+      'non.existent.value',
+      '.',
+      {errorValue: "still passing"}
+    )).toBe("still passing");
+  });
+
   it('should return undefined when found it', () => {
     const obj = {
       value: undefined,
