@@ -51,15 +51,15 @@ export class Fabricator {
   /**
    * Generates multiple Falsum objects fitting the schema given in constructor.
    *
-   * @param n       Number of Falsum objects to be generated. Has to be non-negative.
-   * @param context Context to be used for generation of these falsa.
+   * @param n     Number of Falsum objects to be generated. Has to be non-negative.
+   * @param data  Given client context to be used for generation of these falsa.
    *
    * @throws {Error} When the given number of expected falsa doesn't match the
    * rule of non-negativity.
    */
   public generateMany = (
     n: number,
-    context: GenerationContext = {},
+    data: GenerationContext = {},
   ): Falsum[] => {
     if (!n || n < 0) {
       throw new Error(
@@ -68,9 +68,19 @@ export class Fabricator {
     }
 
     const items: Falsum[] = [];
+    let previous = undefined;
 
     for (let i = 0; i < n; i++) {
-      items.push(this.generate(context));
+      const item = this.generate({
+        // Add previous item
+        previous,
+
+        // Add client context
+        data
+      });
+
+      previous = item;
+      items.push(item);
     }
 
     return items;
