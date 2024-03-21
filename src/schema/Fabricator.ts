@@ -37,6 +37,10 @@ export class Fabricator {
 
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
+      // Add falsum which is currently being generated
+      context = { ...context, current: falsum }
+
+      // Generate a new value with the whole context
       falsum[property] = this.schema.fields[property]?.get(context);
     });
 
