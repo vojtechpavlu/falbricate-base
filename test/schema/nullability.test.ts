@@ -3,8 +3,8 @@ import { ConstantStringGenerator, NullabilityConfiguration } from '../../src';
 describe('Nullability of generated values', () => {
   it('should accept nullability configuration', () => {
     const conf: NullabilityConfiguration = {
-      nullabilityValue: undefined,
-      nullabilityProb: 0.5
+      nullValue: undefined,
+      probability: 0.5
     };
 
     const generator = new ConstantStringGenerator({
@@ -19,8 +19,8 @@ describe('Nullability of generated values', () => {
 
   it('should always generate value on probability === 1', () => {
     const conf: NullabilityConfiguration = {
-      nullabilityValue: undefined,
-      nullabilityProb: 1
+      nullValue: undefined,
+      probability: 1
     };
 
     const generator = new ConstantStringGenerator({
@@ -35,8 +35,8 @@ describe('Nullability of generated values', () => {
 
   it('should never generate value on probability === 0', () => {
     const conf: NullabilityConfiguration = {
-      nullabilityValue: undefined,
-      nullabilityProb: 0
+      nullValue: undefined,
+      probability: 0
     };
 
     const generator = new ConstantStringGenerator({
@@ -51,8 +51,8 @@ describe('Nullability of generated values', () => {
 
   it('should generate more non-null values on probability === 0.9', () => {
     const conf: NullabilityConfiguration = {
-      nullabilityValue: undefined,
-      nullabilityProb: 0.9
+      nullValue: undefined,
+      probability: 0.9
     };
 
     const generator = new ConstantStringGenerator({
@@ -74,8 +74,8 @@ describe('Nullability of generated values', () => {
 
   it('should generate more non-null values on probability === 0.9', () => {
     const conf: NullabilityConfiguration = {
-      nullabilityValue: undefined,
-      nullabilityProb: 0.1
+      nullValue: undefined,
+      probability: 0.1
     };
 
     const generator = new ConstantStringGenerator({
