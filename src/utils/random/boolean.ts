@@ -11,6 +11,6 @@ export const randomBoolean = (probability: number = 0.5) => {
   if (probability < 0 || probability > 1) {
     throw new Error(`Probability is expected to be in range of [0, 1]: ${probability}`)
   } else {
-    return randomFloat(0, 1) > probability
+    return randomFloat(0, 1) <= probability
   }
 }
