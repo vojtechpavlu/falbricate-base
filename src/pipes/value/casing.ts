@@ -8,7 +8,9 @@ import { GeneratedValue } from '../../baseGenerators';
  * @throws {Error} When the given value is not a string
  */
 export const uppercase = (value: GeneratedValue): string => {
-  if (typeof value !== 'string') {
+  if (value === undefined || value === null) {
+    return value
+  } else if (typeof value !== 'string') {
     throw new Error(
       `Uppercasing can be performed on strings only; not on '${typeof value}' types`,
     );
@@ -25,7 +27,9 @@ export const uppercase = (value: GeneratedValue): string => {
  * @throws {Error} When the given value is not a string
  */
 export const lowercase = (value: GeneratedValue): string => {
-  if (typeof value !== 'string') {
+  if (value === undefined || value === null) {
+    return value
+  } else if (typeof value !== 'string') {
     throw new Error(
       `Lowercasing can be performed on strings only; not on '${typeof value}' types`,
     );

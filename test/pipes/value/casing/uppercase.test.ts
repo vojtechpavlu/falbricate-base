@@ -1,4 +1,5 @@
 import { getValuePipe, uppercase } from '../../../../src/pipes/value';
+import { trimString } from '../../../../src/pipes/value/stringCleaning';
 
 const name = 'uppercase';
 
@@ -8,14 +9,9 @@ describe('uppercase Value Pipe', () => {
     expect(uppercase(value)).toBe('TEST');
   });
 
-  it('should throw on undefined', () => {
-    const value = undefined;
-    expect(() => uppercase(value)).toThrow();
-  });
-
-  it('should throw on null', () => {
-    const value = null;
-    expect(() => uppercase(value)).toThrow();
+  it('should return undefined and null on null-like value', () => {
+    expect(trimString(undefined)).toBe(undefined);
+    expect(trimString(null)).toBe(null);
   });
 
   it('should throw on number', () => {

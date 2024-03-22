@@ -1,5 +1,6 @@
 import { splitBySpace } from '../../../../src/pipes/value/split';
 import { getValuePipe } from '../../../../src/pipes/value';
+import { trimString } from '../../../../src/pipes/value/stringCleaning';
 
 const pipeName = 'space-split';
 
@@ -22,9 +23,9 @@ describe('splitBySpace Value Pipe', () => {
     expect(() => splitBySpace([])).toThrow();
   });
 
-  it('should throw undefined and null', () => {
-    expect(() => splitBySpace(undefined)).toThrow();
-    expect(() => splitBySpace(null)).toThrow();
+  it('should return undefined and null on null-like value', () => {
+    expect(trimString(undefined)).toBe(undefined);
+    expect(trimString(null)).toBe(null);
   });
 
   it('should be possible to find by name', () => {

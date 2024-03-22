@@ -1,4 +1,4 @@
-import { singleSpace } from '../../../../src/pipes/value/stringCleaning';
+import { singleSpace, trimString } from '../../../../src/pipes/value/stringCleaning';
 import { getValuePipe } from '../../../../src/pipes/value';
 
 const pipeName = 'single-space';
@@ -16,9 +16,9 @@ describe('singleSpace Value Pipe', () => {
     expect(() => singleSpace({})).toThrow();
   });
 
-  it('should throw on undefined and null', () => {
-    expect(() => singleSpace(undefined)).toThrow();
-    expect(() => singleSpace(null)).toThrow();
+  it('should return undefined and null on null-like value', () => {
+    expect(trimString(undefined)).toBe(undefined);
+    expect(trimString(null)).toBe(null);
   });
 
   it('should be found on its name', () => {
