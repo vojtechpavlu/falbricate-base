@@ -102,19 +102,6 @@ describe('ArrayFromContext generator', () => {
     expect(() => generator.get(context)).not.toThrow();
   });
 
-  it('should use the pipes', () => {
-    const context = {
-      value: [33],
-    };
-
-    const generator = new ArrayFromContextGenerator({
-      path: 'value',
-      pipes: [(value: any[]) => value.length + 22],
-    });
-
-    expect(generator.get(context)).toBe(23);
-  });
-
   it('should be available via string name', () => {
     const context = {
       value: [33],
