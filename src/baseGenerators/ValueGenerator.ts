@@ -1,8 +1,23 @@
 import { ValuePipe } from '../pipes/value';
 import { GenerationContext } from '../schema/generationContext';
+import { randomBoolean } from '../utils/random/boolean';
 
-export type SingleValue = string | number | boolean | (any & {});
-export type GeneratedValue = SingleValue | SingleValue[];
+export type NullLikeValue = undefined | null
+
+export type SingleValue = string | number | boolean | (any & {}) | NullLikeValue;
+export type GeneratedValue = SingleValue | SingleValue[] | NullLikeValue;
+
+/**
+ * Configures a specification of how to treat possible
+ * (and desired by client) nullability.
+ */
+export interface NullabilityConfiguration {
+  /** Expected probability of null-like value in range [0, 1].  */
+  nullabilityProb: number,
+
+  /** Expected null-like value - undefined or null */
+  nullabilityValue: undefined | null
+}
 
 /**
  * Common configuration for all the value generators
@@ -15,6 +30,7 @@ export type GeneratedValue = SingleValue | SingleValue[];
  */
 export interface ValueGeneratorConfig {
   pipes?: ValuePipe[];
+  nullability?: NullabilityConfiguration
 }
 
 /**
@@ -35,6 +51,18 @@ export abstract class ValueGenerator<
 
   protected constructor(config: Conf) {
     this.config = config;
+  }
+
+  generate = (context: GenerationContext): ValueType => {
+    if (!!this.config.nullability) {
+      const shouldGenerate: boolean = randomBoolean(this.config.nullability.nullabilityProb);
+
+      if (!shouldGenerate) {
+        return this.config.nullability.nullabilityValue as ValueType;
+      }
+    }
+
+    return this.get(context);
   }
 
   /**
