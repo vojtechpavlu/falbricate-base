@@ -9,21 +9,15 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig,
-  NumberFromContextConfig,
-  NumberFromContextGenerator
+  IntegerGeneratorConfig
 } from './numeric';
 import {
   ConstantStringConfig,
   ConstantStringGenerator,
-  StringFromContextConfig,
-  StringFromContextGenerator,
   StringGeneratorConfig,
   StringOfLengthGenerator
 } from './string';
 import {
-  ArrayFromContextConfig,
-  ArrayFromContextGenerator,
   ArrayPicker,
   ArrayPickerConfig,
   ArraySampleConfig,
@@ -32,11 +26,10 @@ import {
   ConstantArrayGenerator
 } from './array';
 import {
-  ObjectFromContextConfig,
-  ObjectFromContextGenerator,
   ObjectFromSchemaConfig,
   ObjectFromSchemaGenerator
 } from './object';
+import { ContextAccessor, ContextAccessorConfig } from './other';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -52,10 +45,7 @@ export type ValueGeneratorName =
   | 'array-picker'
   | 'constant-array'
   | 'array-sample'
-  | 'string-in-context'
-  | 'number-in-context'
-  | 'array-in-context'
-  | 'object-in-context'
+  | 'context-input'
   | 'object-from-schema'
   );
 
@@ -185,25 +175,13 @@ registerValueGenerator(
   (config: ArraySampleConfig) => new ArraySampleGenerator(config)
 );
 registerValueGenerator(
-  'string-in-context',
-  (config: StringFromContextConfig) => new StringFromContextGenerator(config)
-);
-registerValueGenerator(
-  'number-in-context',
-  (config: NumberFromContextConfig) => new NumberFromContextGenerator(config)
-);
-registerValueGenerator(
-  'array-in-context',
-  (config: ArrayFromContextConfig) => new ArrayFromContextGenerator(config)
-);
-registerValueGenerator(
-  'object-in-context',
-  (config: ObjectFromContextConfig) => new ObjectFromContextGenerator(config)
-);
-registerValueGenerator(
   'object-from-schema',
   (config: ObjectFromSchemaConfig) => new ObjectFromSchemaGenerator(config)
-)
+);
+registerValueGenerator(
+  'context-input',
+  (config: ContextAccessorConfig) => new ContextAccessor(config)
+);
 
 export * from './ValueGenerator';
 export * from './numeric';

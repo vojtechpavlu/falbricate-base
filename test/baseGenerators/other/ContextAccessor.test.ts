@@ -1,6 +1,18 @@
-import { ContextAccessor } from '../../../src';
+import { ContextAccessor, get } from '../../../src';
 
 describe('ContextAccessor value generator', () => {
+  it('should be accessible via name', () => {
+    expect(() => get('context-input', {
+      path: 'not.relevant'
+    })).not.toThrow()
+
+    const generator = get('context-input', {
+      path: 'not.relevant'
+    })
+
+    expect(generator).not.toBeUndefined()
+  })
+
   it('should access a string-based value on path', () => {
     const generator = new ContextAccessor({
       path: "data.value.myValue"

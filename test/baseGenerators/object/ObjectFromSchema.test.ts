@@ -5,7 +5,7 @@ const generatorName = 'object-from-schema'
 const nested: SchemaInput = {
   fields: {
     test: { type: 'range-integer', config: { max: 20 } },
-    parent: { type: 'number-in-context', config: { path: "parent.test" }}
+    parent: { type: 'context-input', config: { path: "parent.test" }}
   }
 }
 

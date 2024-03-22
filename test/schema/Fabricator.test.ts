@@ -58,7 +58,7 @@ describe('Fabricator generate function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'string-in-context',
+          type: 'context-input',
           config: { path: 'data.key' }
         }
       }
@@ -118,7 +118,7 @@ describe('Fabricator generateMany function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'string-in-context',
+          type: 'context-input',
           config: { path: 'data.key' }
         }
       }
@@ -136,7 +136,7 @@ describe('Fabricator generateMany function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'number-in-context',
+          type: 'context-input',
           config: {
             path: 'index'
           }
@@ -156,7 +156,7 @@ describe('Fabricator generateMany function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'object-in-context',
+          type: 'context-input',
           config: {
             path: 'previous'
           }
