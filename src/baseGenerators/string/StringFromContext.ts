@@ -49,6 +49,6 @@ export class StringFromContextGenerator extends ValueGenerator<
       throw new Error(`Retrieved value from context is actually not a string`);
     }
 
-    return this.pipe(valueOnPath);
+    return valueOnPath
   };
 }

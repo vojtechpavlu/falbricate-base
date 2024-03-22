@@ -31,14 +31,4 @@ describe('ArrayPicker generator class', () => {
     // @ts-ignore
     expect(() => new ArrayPicker({ array })).toThrow();
   });
-
-  it('should pipe the value', () => {
-    const array: any[] = ['a'];
-    const generator = new ArrayPicker({
-      array,
-      pipes: [(value: string) => value.toUpperCase()],
-    });
-
-    expect(generator.get()).toBe('A');
-  });
 });

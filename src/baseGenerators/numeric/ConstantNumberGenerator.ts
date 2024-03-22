@@ -31,6 +31,6 @@ export class ConstantNumberGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    return this.pipe(this.config.num);
+    return this.config.num;
   };
 }

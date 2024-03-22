@@ -49,6 +49,6 @@ export class ObjectFromContextGenerator extends ValueGenerator<
       throw new Error(`Retrieved value from context is actually not an object`);
     }
 
-    return this.pipe(valueOnPath);
+    return valueOnPath;
   };
 }

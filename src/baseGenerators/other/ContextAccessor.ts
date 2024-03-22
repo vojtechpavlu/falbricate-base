@@ -1,8 +1,4 @@
-import {
-  GeneratedValue,
-  ValueGenerator,
-  ValueGeneratorConfig,
-} from '../ValueGenerator';
+import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 import { accessProperty, PathSeparator } from '../../utils/common/propertyAccessor';
 import { GenerationContext } from '../../schema/generationContext';
 
@@ -38,13 +34,11 @@ export class ContextAccessor extends ValueGenerator<
   }
 
   get = (context: GenerationContext): GeneratedValue => {
-    const valueOnPath = accessProperty(
+    return accessProperty(
       context,
       this.config.path,
       this.config.sep,
-      this.config.handleError ? {errorValue: this.config.useErrorValue} : undefined
-    );
-
-    return this.pipe(valueOnPath);
+      this.config.handleError ? { errorValue: this.config.useErrorValue } : undefined
+    )
   };
 }

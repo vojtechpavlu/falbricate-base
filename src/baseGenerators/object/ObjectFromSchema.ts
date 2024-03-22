@@ -41,7 +41,6 @@ export class ObjectFromSchemaGenerator extends ValueGenerator<
       current: undefined
     }
 
-    const generated = this.fabricator.generate(context);
-    return this.pipe(generated);
+    return this.fabricator.generate(context);
   }
 }

@@ -49,6 +49,6 @@ export class ArrayFromContextGenerator extends ValueGenerator<
       throw new Error(`Retrieved value from context is actually not an array`);
     }
 
-    return this.pipe(valueOnPath);
+    return valueOnPath;
   };
 }

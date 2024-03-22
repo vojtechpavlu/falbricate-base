@@ -49,6 +49,6 @@ export class NumberFromContextGenerator extends ValueGenerator<
       throw new Error(`Retrieved value from context is actually not a number`);
     }
 
-    return this.pipe(valueOnPath);
+    return valueOnPath;
   };
 }

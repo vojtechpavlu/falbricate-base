@@ -1,9 +1,5 @@
 import { Charset, randomStringOfLength } from '../../utils';
-import {
-  GeneratedValue,
-  ValueGenerator,
-  ValueGeneratorConfig,
-} from '../ValueGenerator';
+import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
 
 /**
  * Configuration for the String generator of a specified length
@@ -48,7 +44,6 @@ export class StringOfLengthGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    let value = randomStringOfLength(this.config.charset, this.config.length);
-    return this.pipe(value);
+    return randomStringOfLength(this.config.charset, this.config.length);
   };
 }

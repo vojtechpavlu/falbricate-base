@@ -33,7 +33,7 @@ export class ConstantArrayGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    return this.pipe(this.arrayDeepCopy(this.config.array));
+    return this.arrayDeepCopy(this.config.array);
   };
 
   private arrayDeepCopy = (arr: any[]) => {

@@ -102,19 +102,6 @@ describe('StringFromContext generator', () => {
     expect(() => generator.get(context)).not.toThrow();
   });
 
-  it('should use the pipes', () => {
-    const context = {
-      value: 'test',
-    };
-
-    const generator = new StringFromContextGenerator({
-      path: 'value',
-      pipes: [(value: string) => value.toUpperCase()],
-    });
-
-    expect(generator.get(context)).toBe('TEST');
-  });
-
   it('should be available via string name', () => {
     const context = {
       value: 'test',

@@ -102,19 +102,6 @@ describe('NumberFromContext generator', () => {
     expect(() => generator.get(context)).not.toThrow();
   });
 
-  it('should use the pipes', () => {
-    const context = {
-      value: 33,
-    };
-
-    const generator = new NumberFromContextGenerator({
-      path: 'value',
-      pipes: [(value: number) => value + 11],
-    });
-
-    expect(generator.get(context)).toBe(44);
-  });
-
   it('should be available via string name', () => {
     const context = {
       value: 33,

@@ -32,7 +32,6 @@ export class ArrayPicker extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    let value = randomItemFromArray(this.config.array);
-    return this.pipe(value);
+    return randomItemFromArray(this.config.array);
   };
 }
