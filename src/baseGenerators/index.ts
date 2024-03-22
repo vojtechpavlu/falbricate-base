@@ -1,7 +1,7 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig
+  ValueGeneratorConfig,
 } from './ValueGenerator';
 import {
   ConstantNumberConfig,
@@ -9,13 +9,13 @@ import {
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
-  IntegerGeneratorConfig
+  IntegerGeneratorConfig,
 } from './numeric';
 import {
   ConstantStringConfig,
   ConstantStringGenerator,
   StringGeneratorConfig,
-  StringOfLengthGenerator
+  StringOfLengthGenerator,
 } from './string';
 import {
   ArrayPicker,
@@ -23,12 +23,9 @@ import {
   ArraySampleConfig,
   ArraySampleGenerator,
   ConstantArrayConfig,
-  ConstantArrayGenerator
+  ConstantArrayGenerator,
 } from './array';
-import {
-  ObjectFromSchemaConfig,
-  ObjectFromSchemaGenerator
-} from './object';
+import { ObjectFromSchemaConfig, ObjectFromSchemaGenerator } from './object';
 import { ContextAccessor, ContextAccessorConfig } from './other';
 
 /**
@@ -37,17 +34,17 @@ import { ContextAccessor, ContextAccessorConfig } from './other';
 export type ValueGeneratorName =
   | string
   | (
-  | 'range-integer'
-  | 'range-float'
-  | 'constant-number'
-  | 'string-of-length'
-  | 'constant-string'
-  | 'array-picker'
-  | 'constant-array'
-  | 'array-sample'
-  | 'context-input'
-  | 'object-from-schema'
-  );
+      | 'range-integer'
+      | 'range-float'
+      | 'constant-number'
+      | 'string-of-length'
+      | 'constant-string'
+      | 'array-picker'
+      | 'constant-array'
+      | 'array-sample'
+      | 'context-input'
+      | 'object-from-schema'
+    );
 
 /**
  * Type definition for builders of ValueGenerators
@@ -94,7 +91,7 @@ export const get = <
   Conf extends ValueGeneratorConfig,
 >(
   name: ValueGeneratorName,
-  config: Conf & any
+  config: Conf & any,
 ): ValueGenerator<GenValue, Conf> => {
   const generatorBuilderFunction = VALUE_GENERATOR_REGISTRY[name];
 
@@ -113,7 +110,7 @@ export const get = <
  */
 export const hasGenerator = (name: ValueGeneratorName): boolean => {
   return !!Object.keys(VALUE_GENERATOR_REGISTRY).find(
-    (key: string) => key === name
+    (key: string) => key === name,
   );
 };
 
@@ -128,11 +125,11 @@ export const registerValueGenerator = <
   GivenConfig extends ValueGeneratorConfig,
 >(
   name: string,
-  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>
+  builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
 ) => {
   if (hasGenerator(name)) {
     throw new Error(
-      `There is already one value generator with name '${name}' registered`
+      `There is already one value generator with name '${name}' registered`,
     );
   }
 
@@ -144,43 +141,43 @@ const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
 registerValueGenerator(
   'range-integer',
-  (config: IntegerGeneratorConfig) => new IntegerGenerator(config)
+  (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
 );
 registerValueGenerator(
   'range-float',
-  (config: FloatGeneratorConfig) => new FloatGenerator(config)
+  (config: FloatGeneratorConfig) => new FloatGenerator(config),
 );
 registerValueGenerator(
   'constant-number',
-  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config)
+  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
 );
 registerValueGenerator(
   'string-of-length',
-  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config)
+  (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
 );
 registerValueGenerator(
   'constant-string',
-  (config: ConstantStringConfig) => new ConstantStringGenerator(config)
+  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
 );
 registerValueGenerator(
   'array-picker',
-  (config: ArrayPickerConfig) => new ArrayPicker(config)
+  (config: ArrayPickerConfig) => new ArrayPicker(config),
 );
 registerValueGenerator(
   'constant-array',
-  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config)
+  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
 );
 registerValueGenerator(
   'array-sample',
-  (config: ArraySampleConfig) => new ArraySampleGenerator(config)
+  (config: ArraySampleConfig) => new ArraySampleGenerator(config),
 );
 registerValueGenerator(
   'object-from-schema',
-  (config: ObjectFromSchemaConfig) => new ObjectFromSchemaGenerator(config)
+  (config: ObjectFromSchemaConfig) => new ObjectFromSchemaGenerator(config),
 );
 registerValueGenerator(
   'context-input',
-  (config: ContextAccessorConfig) => new ContextAccessor(config)
+  (config: ContextAccessorConfig) => new ContextAccessor(config),
 );
 
 export * from './ValueGenerator';

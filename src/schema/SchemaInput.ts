@@ -1,7 +1,8 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig, ValueGeneratorName
+  ValueGeneratorConfig,
+  ValueGeneratorName,
 } from '../baseGenerators';
 import { FalsumPipe } from '../pipes';
 

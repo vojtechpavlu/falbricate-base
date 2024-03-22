@@ -1,5 +1,9 @@
 import { Charset, randomStringOfLength } from '../../utils';
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 
 /**
  * Configuration for the String generator of a specified length

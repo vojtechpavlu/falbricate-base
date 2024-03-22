@@ -9,7 +9,7 @@ import { GeneratedValue } from '../../baseGenerators';
  */
 export const trimString = (value: GeneratedValue): GeneratedValue => {
   if (value === undefined || value === null) {
-    return value
+    return value;
   } else if (typeof value === 'string') {
     return value.trim();
   } else {
@@ -29,7 +29,7 @@ export const trimString = (value: GeneratedValue): GeneratedValue => {
  */
 export const singleSpace = (value: GeneratedValue): GeneratedValue => {
   if (value === undefined || value === null) {
-    return value
+    return value;
   } else if (typeof value === 'string') {
     return value.replace(/\s+/g, ' ');
   } else {

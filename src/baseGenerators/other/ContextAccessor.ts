@@ -1,5 +1,12 @@
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
-import { accessProperty, PathSeparator } from '../../utils/common/propertyAccessor';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
+import {
+  accessProperty,
+  PathSeparator,
+} from '../../utils/common/propertyAccessor';
 import { GenerationContext } from '../../schema/generationContext';
 
 /**
@@ -9,8 +16,8 @@ import { GenerationContext } from '../../schema/generationContext';
 export type ContextAccessorConfig = {
   path: string;
   sep?: PathSeparator;
-  handleError?: boolean
-  useErrorValue?: any
+  handleError?: boolean;
+  useErrorValue?: any;
 } & ValueGeneratorConfig;
 
 /**
@@ -38,7 +45,9 @@ export class ContextAccessor extends ValueGenerator<
       context,
       this.config.path,
       this.config.sep,
-      this.config.handleError ? { errorValue: this.config.useErrorValue } : undefined
-    )
+      this.config.handleError
+        ? { errorValue: this.config.useErrorValue }
+        : undefined,
+    );
   };
 }

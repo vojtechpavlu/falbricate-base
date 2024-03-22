@@ -1,4 +1,8 @@
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 import { randomFloat } from '../../utils';
 
 export type FloatGeneratorConfig = {
@@ -27,6 +31,6 @@ export class FloatGenerator extends ValueGenerator<
       this.config.min ?? 0,
       this.config.max,
       this.config.decimalDigits ?? 2,
-    )
+    );
   };
 }

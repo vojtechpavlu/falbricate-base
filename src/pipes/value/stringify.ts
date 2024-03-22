@@ -7,7 +7,7 @@ import { GeneratedValue } from '../../baseGenerators';
  */
 export const stringify = (value: GeneratedValue): string => {
   if (value === undefined || value === null) {
-    return value
+    return value;
   }
 
   return JSON.stringify(value);

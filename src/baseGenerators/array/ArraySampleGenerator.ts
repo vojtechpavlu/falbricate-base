@@ -44,6 +44,6 @@ export class ArraySampleGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    return randomSampleFromArray(this.config.array, this.config.sampleSize)
+    return randomSampleFromArray(this.config.array, this.config.sampleSize);
   };
 }

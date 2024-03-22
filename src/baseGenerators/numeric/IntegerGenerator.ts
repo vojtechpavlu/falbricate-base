@@ -1,4 +1,8 @@
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 import { randomInteger } from '../../utils';
 
 export type IntegerGeneratorConfig = {

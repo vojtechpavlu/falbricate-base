@@ -1,6 +1,6 @@
 /** Simple object describing what value to use when any error occurs */
 export interface ErrorHandleObject {
-  errorValue: any
+  errorValue: any;
 }
 
 /** Separators usable to distinguish the movement in the structure */
@@ -26,7 +26,7 @@ export const accessProperty = (
   obj: Accessible,
   path: string,
   sep: PathSeparator = '.',
-  onError?: ErrorHandleObject
+  onError?: ErrorHandleObject,
 ) => {
   const pathSteps = path.split(sep);
   let current = obj;
@@ -36,19 +36,19 @@ export const accessProperty = (
     if (Array.isArray(current)) {
       return handleError(
         `Can't access '${step}' at position (${idx}) in '${path}' - arrays are not supported`,
-        onError
+        onError,
       );
     } else if (!current || Object.keys(current).length === 0) {
       return handleError(
         `Can't access '${step}' at position (${idx}) in '${path}' - does not exist`,
-        onError
+        onError,
       );
     } else if (typeof current === 'object') {
       current = current[step];
     } else {
       return handleError(
         `Can't access '${step}' at position (${idx}) in '${path}' - unexpected type (${typeof current})`,
-        onError
+        onError,
       );
     }
   }
@@ -60,12 +60,15 @@ export const accessProperty = (
   return JSON.parse(JSON.stringify(current));
 };
 
-const handleError = (message: string, errorHandleObject?: ErrorHandleObject) => {
+const handleError = (
+  message: string,
+  errorHandleObject?: ErrorHandleObject,
+) => {
   if (!!errorHandleObject) {
     // throw errorHandleObject
-    console.log(errorHandleObject.errorValue)
-    return errorHandleObject.errorValue
+    console.log(errorHandleObject.errorValue);
+    return errorHandleObject.errorValue;
   } else {
     throw new Error(message);
   }
-}
+};
