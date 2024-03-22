@@ -13,10 +13,10 @@ export type GeneratedValue = SingleValue | SingleValue[] | NullLikeValue;
  */
 export interface NullabilityConfiguration {
   /** Expected probability of null-like value in range [0, 1].  */
-  nullabilityProb: number,
+  probability: number,
 
   /** Expected null-like value - undefined or null */
-  nullabilityValue: undefined | null
+  nullValue: undefined | null
 }
 
 /**
@@ -29,7 +29,10 @@ export interface NullabilityConfiguration {
  * </ul>
  */
 export interface ValueGeneratorConfig {
+  /** Pipes to be used for modifying the generated value */
   pipes?: ValuePipe[];
+
+  /** Description of how the nulls should be treated */
   nullability?: NullabilityConfiguration
 }
 
@@ -61,14 +64,14 @@ export abstract class ValueGenerator<
    */
   generate = (context: GenerationContext): ValueType => {
     if (!!this.config.nullability) {
-      const shouldGenerate: boolean = randomBoolean(this.config.nullability.nullabilityProb);
+      const shouldGenerate: boolean = randomBoolean(this.config.nullability.probability);
 
       if (!shouldGenerate) {
-        return this.config.nullability.nullabilityValue as ValueType;
+        return this.pipe(this.config.nullability.nullValue as ValueType);
       }
     }
 
-    return this.get(context);
+    return this.pipe(this.get(context));
   }
 
   /**
