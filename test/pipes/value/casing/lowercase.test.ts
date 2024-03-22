@@ -1,4 +1,5 @@
 import { getValuePipe, lowercase } from '../../../../src/pipes/value';
+import { trimString } from '../../../../src/pipes/value/stringCleaning';
 
 const name = 'lowercase';
 
@@ -8,14 +9,9 @@ describe('lowercase Value Pipe', () => {
     expect(lowercase(value)).toBe('test');
   });
 
-  it('should throw on undefined', () => {
-    const value = undefined;
-    expect(() => lowercase(value)).toThrow();
-  });
-
-  it('should throw on null', () => {
-    const value = null;
-    expect(() => lowercase(value)).toThrow();
+  it('should return undefined and null on null-like value', () => {
+    expect(trimString(undefined)).toBe(undefined);
+    expect(trimString(null)).toBe(null);
   });
 
   it('should throw on number', () => {

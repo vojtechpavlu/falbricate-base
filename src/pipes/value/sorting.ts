@@ -10,7 +10,9 @@ import { sortArray, sortString } from '../../utils';
  * @throws {Error} When the given array is not an array of primitives
  */
 export const sortAsc = (value: GeneratedValue): GeneratedValue => {
-  if (Array.isArray(value)) {
+  if (value === undefined || value === null) {
+    return value
+  } else if (Array.isArray(value)) {
     return sortArray(value, 'asc');
   } else if (typeof value === 'string') {
     return sortString(value, 'asc');

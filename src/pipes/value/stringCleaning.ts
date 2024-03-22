@@ -8,7 +8,9 @@ import { GeneratedValue } from '../../baseGenerators';
  * @throws {Error} When the given value is not of type string
  */
 export const trimString = (value: GeneratedValue): GeneratedValue => {
-  if (typeof value === 'string') {
+  if (value === undefined || value === null) {
+    return value
+  } else if (typeof value === 'string') {
     return value.trim();
   } else {
     throw new Error(
@@ -26,7 +28,9 @@ export const trimString = (value: GeneratedValue): GeneratedValue => {
  * @throws {Error} When the given value is not of type string
  */
 export const singleSpace = (value: GeneratedValue): GeneratedValue => {
-  if (typeof value === 'string') {
+  if (value === undefined || value === null) {
+    return value
+  } else if (typeof value === 'string') {
     return value.replace(/\s+/g, ' ');
   } else {
     throw new Error(

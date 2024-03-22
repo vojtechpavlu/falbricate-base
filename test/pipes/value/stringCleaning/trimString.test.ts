@@ -16,9 +16,9 @@ describe('trimString Value Pipe', () => {
     expect(() => trimString({})).toThrow();
   });
 
-  it('should throw on undefined and null', () => {
-    expect(() => trimString(undefined)).toThrow();
-    expect(() => trimString(null)).toThrow();
+  it('should return undefined and null on null-like value', () => {
+    expect(trimString(undefined)).toBe(undefined);
+    expect(trimString(null)).toBe(null);
   });
 
   it('should be found on its name', () => {
