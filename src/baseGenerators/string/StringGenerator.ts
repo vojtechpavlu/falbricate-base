@@ -48,7 +48,6 @@ export class StringOfLengthGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    let value = randomStringOfLength(this.config.charset, this.config.length);
-    return this.pipe(value);
+    return randomStringOfLength(this.config.charset, this.config.length);
   };
 }

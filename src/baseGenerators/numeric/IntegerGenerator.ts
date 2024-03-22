@@ -28,7 +28,6 @@ export class IntegerGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    let value = randomInteger(this.config.min ?? 0, this.config.max);
-    return this.pipe(value);
+    return randomInteger(this.config.min ?? 0, this.config.max);
   };
 }

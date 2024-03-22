@@ -1,5 +1,9 @@
 import { Fabricator, SchemaInput } from '../../schema';
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../ValueGenerator';
 import { GenerationContext } from '../../schema/generationContext';
 
 /**
@@ -7,7 +11,7 @@ import { GenerationContext } from '../../schema/generationContext';
  * to generate this field.
  */
 export type ObjectFromSchemaConfig = {
-  schema: SchemaInput
+  schema: SchemaInput;
 } & ValueGeneratorConfig;
 
 /**
@@ -18,7 +22,6 @@ export class ObjectFromSchemaGenerator extends ValueGenerator<
   GeneratedValue,
   ObjectFromSchemaConfig
 > {
-
   private readonly fabricator: Fabricator;
 
   constructor(config: ObjectFromSchemaConfig) {
@@ -33,15 +36,13 @@ export class ObjectFromSchemaGenerator extends ValueGenerator<
   }
 
   get = (context: GenerationContext): GeneratedValue => {
-
     context = {
       index: 0,
       data: context.data,
       parent: context.current,
-      current: undefined
-    }
+      current: undefined,
+    };
 
-    const generated = this.fabricator.generate(context);
-    return this.pipe(generated);
-  }
+    return this.fabricator.generate(context);
+  };
 }

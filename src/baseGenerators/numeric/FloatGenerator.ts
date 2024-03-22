@@ -27,12 +27,10 @@ export class FloatGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    const value = randomFloat(
+    return randomFloat(
       this.config.min ?? 0,
       this.config.max,
       this.config.decimalDigits ?? 2,
     );
-
-    return this.pipe(value);
   };
 }

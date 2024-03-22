@@ -3,20 +3,20 @@ import {
   FloatGenerator,
   IntegerGenerator,
   ObjectFalsum,
-  SchemaInput
+  SchemaInput,
 } from '../../src';
 
 const schemaInput: SchemaInput = {
   fields: {
     test1: {
       type: 'range-integer',
-      config: { min: 10, max: 50 }
+      config: { min: 10, max: 50 },
     },
     test2: {
       type: 'range-float',
-      config: { min: 10, max: 50 }
-    }
-  }
+      config: { min: 10, max: 50 },
+    },
+  },
 };
 
 describe('Fabricator constructor', () => {
@@ -58,15 +58,15 @@ describe('Fabricator generate function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'string-in-context',
-          config: { path: 'data.key' }
-        }
-      }
+          type: 'context-input',
+          config: { path: 'data.key' },
+        },
+      },
     };
 
     const fabricator = new Fabricator(schema);
     const falsum = fabricator.generate({
-      data: { key: 'value' }
+      data: { key: 'value' },
     }) as ObjectFalsum;
 
     expect(falsum.test).toBe('value');
@@ -118,30 +118,32 @@ describe('Fabricator generateMany function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'string-in-context',
-          config: { path: 'data.key' }
-        }
-      }
+          type: 'context-input',
+          config: { path: 'data.key' },
+        },
+      },
     };
 
     const fabricator = new Fabricator(schema);
-    const falsa = fabricator.generateMany(5,  { key: 'value' }) as ObjectFalsum[];
+    const falsa = fabricator.generateMany(5, {
+      key: 'value',
+    }) as ObjectFalsum[];
 
     falsa.forEach((falsum) => {
-      expect(falsum.test).toBe("value");
-    })
+      expect(falsum.test).toBe('value');
+    });
   });
 
   it('should pass the index', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'number-in-context',
+          type: 'context-input',
           config: {
-            path: 'index'
-          }
-        }
-      }
+            path: 'index',
+          },
+        },
+      },
     };
 
     const fabricator = new Fabricator(schema);
@@ -156,12 +158,12 @@ describe('Fabricator generateMany function', () => {
     const schema: SchemaInput = {
       fields: {
         test: {
-          type: 'object-in-context',
+          type: 'context-input',
           config: {
-            path: 'previous'
-          }
-        }
-      }
+            path: 'previous',
+          },
+        },
+      },
     };
 
     const fabricator = new Fabricator(schema);

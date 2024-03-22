@@ -31,6 +31,6 @@ export class ConstantStringGenerator extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-    return this.pipe(this.config.text);
+    return this.config.text;
   };
 }

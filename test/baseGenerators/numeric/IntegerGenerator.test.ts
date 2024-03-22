@@ -12,15 +12,4 @@ describe('IntegerGenerator class', () => {
     expect(generator.get()).toBeGreaterThanOrEqual(0);
     expect(generator.get()).toBeLessThanOrEqual(3);
   });
-
-  it('should trigger the pipe', () => {
-    const conf: IntegerGeneratorConfig = {
-      min: 0,
-      max: 3,
-      pipes: [() => 'test'],
-    };
-
-    const generator = new IntegerGenerator(conf);
-    expect(generator.get()).toBe('test');
-  });
 });

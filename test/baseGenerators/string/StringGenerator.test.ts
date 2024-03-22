@@ -26,16 +26,4 @@ describe('StringGenerator class', () => {
       expect(generatedString.includes(char)).toBe(true);
     });
   });
-
-  it('should use pipes', () => {
-    const conf: StringGeneratorConfig = {
-      length: 1,
-      charset: ['a', 'b'],
-      pipes: [() => 73],
-    };
-
-    const generator = new StringOfLengthGenerator(conf);
-
-    expect(generator.get()).toBe(73);
-  });
 });

@@ -36,13 +36,12 @@ export class Fabricator {
     let falsum: any = {};
 
     // When not given, create empty one
-    context = context ?? {}
+    context = context ?? {};
 
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
       // Add falsum which is currently being generated
       context = { ...context, current: falsum };
-
 
       // Generate a new value with the whole context
       falsum[property] = this.schema.fields[property]?.generate(context);
@@ -67,11 +66,11 @@ export class Fabricator {
    */
   public generateMany = (
     n: number,
-    data: GenerationContext = {}
+    data: GenerationContext = {},
   ): Falsum[] | ObjectFalsum[] => {
     if (!n || n < 0) {
       throw new Error(
-        `Expected a positive number of how many items should be created: ${n}`
+        `Expected a positive number of how many items should be created: ${n}`,
       );
     }
 
@@ -80,10 +79,10 @@ export class Fabricator {
 
     for (let index = 0; index < n; index++) {
       const context = {
-        index,    // Add index
+        index, // Add index
         previous, // Add previous item
-        data      // Add client context
-      }
+        data, // Add client context
+      };
 
       const item = this.generate(context);
 

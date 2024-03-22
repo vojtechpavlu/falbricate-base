@@ -26,15 +26,4 @@ describe('FloatGenerator class', () => {
     expect(generator.get()).toBeLessThanOrEqual(3);
     expect(`${generator.get()}`.split('.')[1]!.length).toBeLessThanOrEqual(4);
   });
-
-  it('should trigger the pipe', () => {
-    const conf: FloatGeneratorConfig = {
-      min: 0,
-      max: 3,
-      pipes: [() => 'test'],
-    };
-
-    const generator = new FloatGenerator(conf);
-    expect(generator.get()).toBe('test');
-  });
 });

@@ -11,7 +11,7 @@ import { sortArray, sortString } from '../../utils';
  */
 export const sortAsc = (value: GeneratedValue): GeneratedValue => {
   if (value === undefined || value === null) {
-    return value
+    return value;
   } else if (Array.isArray(value)) {
     return sortArray(value, 'asc');
   } else if (typeof value === 'string') {

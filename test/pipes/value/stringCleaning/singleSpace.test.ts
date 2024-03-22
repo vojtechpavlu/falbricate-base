@@ -1,4 +1,7 @@
-import { singleSpace, trimString } from '../../../../src/pipes/value/stringCleaning';
+import {
+  singleSpace,
+  trimString,
+} from '../../../../src/pipes/value/stringCleaning';
 import { getValuePipe } from '../../../../src/pipes/value';
 
 const pipeName = 'single-space';

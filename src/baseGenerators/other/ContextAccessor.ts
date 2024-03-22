@@ -3,29 +3,32 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../ValueGenerator';
-import { accessProperty, PathSeparator } from '../../utils/common/propertyAccessor';
+import {
+  accessProperty,
+  PathSeparator,
+} from '../../utils/common/propertyAccessor';
 import { GenerationContext } from '../../schema/generationContext';
 
 /**
  * Configuration specifying what property should be taken
  * from the given context.
  */
-export type NumberFromContextConfig = {
+export type ContextAccessorConfig = {
   path: string;
   sep?: PathSeparator;
-  handleError?: boolean
-  useErrorValue?: any
+  handleError?: boolean;
+  useErrorValue?: any;
 } & ValueGeneratorConfig;
 
 /**
- * This generator simply returns the string specified at the path
+ * This generator simply returns the value specified at the path
  * from the given context.
  */
-export class NumberFromContextGenerator extends ValueGenerator<
+export class ContextAccessor extends ValueGenerator<
   GeneratedValue,
-  NumberFromContextConfig
+  ContextAccessorConfig
 > {
-  constructor(config: NumberFromContextConfig) {
+  constructor(config: ContextAccessorConfig) {
     config.sep = config.sep ?? '.';
 
     if (!config.path) {
@@ -38,17 +41,13 @@ export class NumberFromContextGenerator extends ValueGenerator<
   }
 
   get = (context: GenerationContext): GeneratedValue => {
-    const valueOnPath = accessProperty(
+    return accessProperty(
       context,
       this.config.path,
       this.config.sep,
-      this.config.handleError ? {errorValue: this.config.useErrorValue} : undefined
+      this.config.handleError
+        ? { errorValue: this.config.useErrorValue }
+        : undefined,
     );
-
-    if (!!valueOnPath && typeof valueOnPath !== 'number') {
-      throw new Error(`Retrieved value from context is actually not a number`);
-    }
-
-    return this.pipe(valueOnPath);
   };
 }
