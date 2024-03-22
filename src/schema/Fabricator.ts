@@ -31,9 +31,12 @@ export class Fabricator {
   /**
    * Generates a single Falsum fitting the schema given in constructor.
    */
-  public generate = (context: GenerationContext = {}): Falsum | ObjectFalsum => {
+  public generate = (context?: GenerationContext): Falsum | ObjectFalsum => {
     // Future ObjectFalsum
     let falsum: any = {};
+
+    // When not given, create empty one
+    context = context ?? {}
 
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
@@ -42,7 +45,7 @@ export class Fabricator {
 
 
       // Generate a new value with the whole context
-      falsum[property] = this.schema.fields[property]?.get(context);
+      falsum[property] = this.schema.fields[property]?.generate(context);
     });
 
     // Pipe the value through all the Falsum Pipes

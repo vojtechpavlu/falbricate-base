@@ -53,6 +53,12 @@ export abstract class ValueGenerator<
     this.config = config;
   }
 
+  /**
+   * Method to autonomously decide if the value shall be generated or not;
+   * based on specified optional nullability configuration.
+   *
+   * @param context Context to be used for value generation.
+   */
   generate = (context: GenerationContext): ValueType => {
     if (!!this.config.nullability) {
       const shouldGenerate: boolean = randomBoolean(this.config.nullability.nullabilityProb);
