@@ -1,5 +1,5 @@
 import { ValuePipe } from '../pipes/value';
-import { GenerationContext } from '../schema/generationContext';
+import { FabricationContext } from '../schema/fabricationContext';
 import { randomBoolean } from '../utils/random/boolean';
 
 export type NullLikeValue = undefined | null;
@@ -67,7 +67,7 @@ export abstract class ValueGenerator<
    *
    * @param context Context to be used for value generation.
    */
-  generate = (context: GenerationContext): ValueType => {
+  generate = (context: FabricationContext): ValueType => {
     if (!!this.config.nullability) {
       const shouldGenerate: boolean = randomBoolean(
         this.config.nullability.probability,
@@ -84,7 +84,7 @@ export abstract class ValueGenerator<
   /**
    * Returns a generated value
    */
-  abstract get: (context: GenerationContext) => ValueType;
+  abstract get: (context: FabricationContext) => ValueType;
 
   /**
    * Pipes the given value through the defined pipes to modify the

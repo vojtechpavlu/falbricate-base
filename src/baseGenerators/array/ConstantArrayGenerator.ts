@@ -25,8 +25,6 @@ export class ConstantArrayGenerator extends ValueGenerator<
       throw new Error(`Property 'array' is required`);
     } else if (!Array.isArray(config.array)) {
       throw new Error(`Property 'array' must be of type 'array'`);
-    } else if (config.array.length < 1) {
-      throw new Error(`Property 'array' must have at least one item`);
     }
 
     super(config);

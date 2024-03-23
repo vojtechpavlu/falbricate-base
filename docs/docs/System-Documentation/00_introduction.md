@@ -1,6 +1,11 @@
-# Building Blocks
+# Introduction
 
 The whole ecosystem is based on various building blocks. This section aims on giving an introduction into them.
+
+
+## Fabrication Pipeline
+
+Fabrication Pipeline represents the whole flow of the falsa generation.
 
 
 ## Fabricator
@@ -13,6 +18,16 @@ maintaining of the whole falsa generation - _fabrication pipeline_.
 
 Schema is an internal representation of what the client described in his [Schema Input](#schema-input) provided
 to [Fabricator](#fabricator) and what is he expected to have at the end of the fabrication pipeline.
+
+
+
+## Schema Input
+
+Schema Input represents client given declaration of how should the generated falsa look like.
+
+This input is then compiled inside in the Fabricator into the actual Schema that is being used in the
+Fabrication Pipeline.
+
 
 
 ## Value Generator
@@ -40,10 +55,4 @@ const generator = get('my-custom-generator', {
     requiredParam2: 123
 });
 ```
-
-
-## Schema Input
-
-
-## Fabrication Pipeline
 

@@ -1,7 +1,7 @@
 import { Schema } from './Schema';
 import { GeneratedValue } from '../baseGenerators';
 import { SchemaInput } from './SchemaInput';
-import { GenerationContext } from './generationContext';
+import { FabricationContext } from './fabricationContext';
 
 /**
  * Falsum is a randomly generated object by the given schema.
@@ -31,7 +31,7 @@ export class Fabricator {
   /**
    * Generates a single Falsum fitting the schema given in constructor.
    */
-  public generate = (context?: GenerationContext): Falsum | ObjectFalsum => {
+  public generate = (context?: FabricationContext): Falsum | ObjectFalsum => {
     // Future ObjectFalsum
     let falsum: any = {};
 
@@ -41,7 +41,11 @@ export class Fabricator {
     // Generate all properties
     Object.keys(this.schema.fields).forEach((property) => {
       // Add falsum which is currently being generated
-      context = { ...context, current: falsum };
+      context = {
+        index: 0,
+        current: falsum,
+        ...context
+      };
 
       // Generate a new value with the whole context
       falsum[property] = this.schema.fields[property]?.generate(context);
@@ -66,7 +70,7 @@ export class Fabricator {
    */
   public generateMany = (
     n: number,
-    data: GenerationContext = {},
+    data: FabricationContext = {},
   ): Falsum[] | ObjectFalsum[] => {
     if (!n || n < 0) {
       throw new Error(
@@ -81,7 +85,7 @@ export class Fabricator {
       const context = {
         index, // Add index
         previous, // Add previous item
-        data, // Add client context
+        ...data, // Add client context
       };
 
       const item = this.generate(context);

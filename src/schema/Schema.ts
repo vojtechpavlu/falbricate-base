@@ -1,6 +1,6 @@
 import {
   GeneratedValue,
-  get,
+  getValueGenerator,
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../baseGenerators';
@@ -50,7 +50,7 @@ export class Schema {
         compiled[key] = inputField;
       } else {
         inputField = inputField as DeclarativeFieldDefinition;
-        compiled[key] = get(inputField.type, inputField.config);
+        compiled[key] = getValueGenerator(inputField.type, inputField.config);
       }
     });
 

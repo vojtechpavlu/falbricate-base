@@ -19,12 +19,6 @@ describe('ConstantArrayGenerator class', () => {
     });
   });
 
-  it('should throw on empty array', () => {
-    const array: any[] = [];
-
-    expect(() => new ConstantArrayGenerator({ array })).toThrow();
-  });
-
   it('should throw on null', () => {
     const array = null;
     // @ts-ignore

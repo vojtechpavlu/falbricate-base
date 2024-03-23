@@ -1,4 +1,4 @@
-import { Fabricator, get, ObjectFalsum, SchemaInput } from '../../../src';
+import { Fabricator, getValueGenerator, ObjectFalsum, SchemaInput } from '../../../src';
 
 const generatorName = 'object-from-schema';
 
@@ -19,10 +19,10 @@ const schema: SchemaInput = {
 describe('ObjectFromSchema generator', () => {
   it('should be found by name', () => {
     expect(() =>
-      get(generatorName, schema.fields.nested?.config),
+      getValueGenerator(generatorName, schema.fields.nested?.config),
     ).not.toThrow();
 
-    const generator = get(generatorName, schema.fields.nested?.config);
+    const generator = getValueGenerator(generatorName, schema.fields.nested?.config);
 
     expect(generator).not.toBeUndefined();
   });

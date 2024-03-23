@@ -119,7 +119,7 @@ describe('Fabricator generateMany function', () => {
       fields: {
         test: {
           type: 'context-input',
-          config: { path: 'data.key' },
+          config: { path: 'key' },
         },
       },
     };
