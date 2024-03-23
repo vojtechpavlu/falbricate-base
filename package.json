@@ -1,12 +1,13 @@
 {
   "name": "@falbricate/base",
-  "version": "1.2.2",
-  "description": "Base for falbricate - tool to Fabricate Falsa",
+  "version": "1.2.3",
+  "description": "Base for falbricate - tool for Falsa Fabrication",
   "keywords": [
-    "mocking"
+    "mocking", "falbricate"
   ],
   "author": "vojtechpavlu",
   "license": "MIT",
+  "homepage": "https://vojtechpavlu.github.io/falbricate-base/",
   "repository": {
     "type": "git",
     "url": "https://github.com/vojtechpavlu/falbricate-base.git"
