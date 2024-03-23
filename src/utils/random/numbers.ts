@@ -12,7 +12,7 @@ import { getRandomizer, Randomizer, RandomizerName } from './randomizer';
  * @throws {Error} When the given lower bound is greater
  * than the upper bound
  */
-export const randomInteger = (min: number, max: number, randomizer: RandomizerName = 'default'): number => {
+export const randomInteger = (min: number, max: number, randomizer?: RandomizerName): number => {
   if (min > max) {
     throw new Error(
       `Lower bound of the interval can't be greater than the upper bound: ${min} > ${max}`,
@@ -42,7 +42,7 @@ export const randomFloat = (
   min: number,
   max: number,
   decimalDigits: number = 2,
-  randomizer: RandomizerName = 'default'
+  randomizer?: RandomizerName
 ): number => {
   if (min > max) {
     throw new Error(
