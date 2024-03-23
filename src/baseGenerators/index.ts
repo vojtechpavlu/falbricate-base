@@ -86,7 +86,7 @@ interface ValueGeneratorRegistry<
  *
  * @return {ValueGenerator} Configured and prepared value generator
  */
-export const get = <
+export const getValueGenerator = <
   GenValue extends GeneratedValue,
   Conf extends ValueGeneratorConfig,
 >(

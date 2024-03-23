@@ -7,7 +7,7 @@ import {
   accessProperty,
   PathSeparator,
 } from '../../utils/common/propertyAccessor';
-import { GenerationContext } from '../../schema/generationContext';
+import { FabricationContext } from '../../schema/fabricationContext';
 
 /**
  * Configuration specifying what property should be taken
@@ -40,7 +40,7 @@ export class ContextAccessor extends ValueGenerator<
     super(config);
   }
 
-  get = (context: GenerationContext): GeneratedValue => {
+  get = (context: FabricationContext): GeneratedValue => {
     return accessProperty(
       context,
       this.config.path,

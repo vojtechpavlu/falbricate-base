@@ -4,7 +4,7 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../ValueGenerator';
-import { GenerationContext } from '../../schema/generationContext';
+import { FabricationContext } from '../../schema/fabricationContext';
 
 /**
  * Configuration specifying the schema to be used
@@ -35,7 +35,7 @@ export class ObjectFromSchemaGenerator extends ValueGenerator<
     this.fabricator = new Fabricator(config.schema);
   }
 
-  get = (context: GenerationContext): GeneratedValue => {
+  get = (context: FabricationContext): GeneratedValue => {
     context = {
       index: 0,
       data: context.data,
