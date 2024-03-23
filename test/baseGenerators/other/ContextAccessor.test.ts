@@ -1,14 +1,14 @@
-import { ContextAccessor, get } from '../../../src';
+import { ContextAccessor, getValueGenerator } from '../../../src';
 
 describe('ContextAccessor value generator', () => {
   it('should be accessible via name', () => {
     expect(() =>
-      get('context-input', {
+      getValueGenerator('context-input', {
         path: 'not.relevant',
       }),
     ).not.toThrow();
 
-    const generator = get('context-input', {
+    const generator = getValueGenerator('context-input', {
       path: 'not.relevant',
     });
 
