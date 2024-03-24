@@ -1,4 +1,4 @@
-import { ValuePipe } from '../pipes/value';
+import { getValuePipe, ValuePipe, ValuePipeName } from '../pipes/value';
 import { FabricationContext } from '../schema/fabricationContext';
 import { randomBoolean } from '../utils/random/boolean';
 
@@ -35,7 +35,7 @@ export interface NullabilityConfiguration {
  */
 export interface ValueGeneratorConfig {
   /** Pipes to be used for modifying the generated value */
-  pipes?: ValuePipe[];
+  pipes?: (ValuePipe | string)[];
 
   /** Description of how the nulls should be treated */
   nullability?: NullabilityConfiguration;
@@ -67,7 +67,10 @@ export abstract class ValueGenerator<
    *
    * @param context Context to be used for value generation.
    */
-  generate = (context: FabricationContext): ValueType => {
+  generate = (context?: FabricationContext): ValueType => {
+
+    context = context ?? {}
+
     if (!!this.config.nullability) {
       const shouldGenerate: boolean = randomBoolean(
         this.config.nullability.probability,
@@ -84,7 +87,7 @@ export abstract class ValueGenerator<
   /**
    * Returns a generated value
    */
-  abstract get: (context: FabricationContext) => ValueType;
+  protected abstract get: (context: FabricationContext) => ValueType;
 
   /**
    * Pipes the given value through the defined pipes to modify the
@@ -98,7 +101,10 @@ export abstract class ValueGenerator<
    * </ul>
    */
   protected pipe = (value: ValueType): GeneratedValue => {
-    this.config.pipes?.forEach((pipe: ValuePipe) => {
+    this.config.pipes?.forEach((pipe: ValuePipe | ValuePipeName) => {
+      if (typeof pipe === 'string') {
+        pipe = getValuePipe(pipe);
+      }
       value = pipe(value);
     });
 

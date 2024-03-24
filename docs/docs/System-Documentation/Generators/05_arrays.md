@@ -23,7 +23,7 @@ it needs to be at least one item long.
     
     const generator = new ArrayPicker(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"
@@ -96,7 +96,7 @@ but must be defined.
     
     const generator = new ConstantArrayGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"

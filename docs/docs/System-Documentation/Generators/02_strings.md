@@ -23,7 +23,7 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     const generator = new StringOfLengthGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"
@@ -99,7 +99,7 @@ it throws an Error. Can be empty string (`''`).
     
     const generator = new ConstantStringGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"

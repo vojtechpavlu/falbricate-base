@@ -30,7 +30,7 @@ export class ConstantArrayGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return this.arrayDeepCopy(this.config.array);
   };
 

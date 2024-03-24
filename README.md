@@ -2,6 +2,10 @@
 
 Simple and lightweight tool for mocking data in a shape you describe.
 
+[Here](https://vojtechpavlu.github.io/falbricate-base/) you can find full documentation for this tool, 
+feel free to visit!
+
+
 ## Install
 
 To install this package, you only need to enter:

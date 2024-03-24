@@ -51,7 +51,7 @@ export class DateTimeInRangeGenerator extends ValueGenerator<
     return new Date(value);
   };
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomDateTime(
       this.config.from as Date,
       this.config.to as Date

@@ -43,7 +43,7 @@ export class ArraySampleGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomSampleFromArray(this.config.array, this.config.sampleSize);
   };
 }

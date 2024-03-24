@@ -27,7 +27,7 @@ export class IntegerGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomInteger(this.config.min ?? 0, this.config.max);
   };
 }

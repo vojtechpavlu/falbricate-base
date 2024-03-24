@@ -80,7 +80,7 @@ Here you can see how to define the whole configuration:
     
     const generator = new DateTimeInRangeGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"

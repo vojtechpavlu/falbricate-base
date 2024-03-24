@@ -8,7 +8,7 @@ describe('StringGenerator class', () => {
     };
 
     const generator = new StringOfLengthGenerator(conf);
-    const value = generator.get();
+    const value = generator.generate();
 
     expect(value.length).toBe(5);
   });
@@ -20,7 +20,7 @@ describe('StringGenerator class', () => {
     };
 
     const generator = new StringOfLengthGenerator(conf);
-    const generatedString = generator.get();
+    const generatedString = generator.generate();
 
     generatedString.split('').forEach((char: any) => {
       expect(generatedString.includes(char)).toBe(true);

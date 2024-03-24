@@ -31,7 +31,7 @@ export class ArrayPicker extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomItemFromArray(this.config.array);
   };
 }

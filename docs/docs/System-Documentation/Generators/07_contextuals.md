@@ -71,7 +71,7 @@ path the value shall be at.
         }
     }
 
-    console.log(generator.get(context));
+    console.log(generator.generate(context));
     ```
     
     !!! abstract "Output"
@@ -97,7 +97,7 @@ path the value shall be at.
         }
     }
 
-    console.log(generator.get(context));
+    console.log(generator.generate(context));
     ```
     
     !!! abstract "Output"

@@ -33,7 +33,7 @@ export class ProbableBooleanGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomBoolean(this.config.probability);
   };
 }

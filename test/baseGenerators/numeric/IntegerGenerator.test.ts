@@ -9,7 +9,7 @@ describe('IntegerGenerator class', () => {
 
     const generator = new IntegerGenerator(conf);
 
-    expect(generator.get()).toBeGreaterThanOrEqual(0);
-    expect(generator.get()).toBeLessThanOrEqual(3);
+    expect(generator.generate()).toBeGreaterThanOrEqual(0);
+    expect(generator.generate()).toBeLessThanOrEqual(3);
   });
 });

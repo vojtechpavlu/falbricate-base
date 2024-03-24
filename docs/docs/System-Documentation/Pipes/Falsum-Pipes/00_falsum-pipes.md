@@ -3,19 +3,17 @@
 Falsum Pipes are Pipes transforming the generated falsum into another form.
 
 They usually have an influence on the whole falsum object and are populating
-these changes in depth (possibly nested fields). 
-
-## Description
-
-Falsum Pipe is technically a function taking the given Falsum (as an object)
-and truning it into another object (usually Object, but can be also done also 
-for reductions).
+these changes in depth (possibly nested fields).
 
 
 ## What really Falsum Pipes are
 
+Falsum Pipe is technically a function taking the given Falsum (as an object)
+and truning it into another object (usually Object, but can be used for object
+or array reductions).
+
 In the two following examples, you can see what Falsum Pipe might look like.
-At both of them, you can see they can be very simple but very useful.
+At both of them, you can see they can be very simple but very powerful.
 
 === "Plain example"
 
@@ -26,12 +24,17 @@ At both of them, you can see they can be very simple but very useful.
       email: 'email@example.com'
     }
     
-    // Find the Falsum Pipe by name
+    // Define your Falsum Pipe
     const falsumPipe = (value: any) => JSON.stringify(value);
     
-    // Result: '{"username":"my-test-username","email":"email@example.com"}'
     console.log(falsumPipe(falsum));
     ```
+    
+    !!! abstract "Output"
+    
+        ```
+        '{"username":"my-test-username","email":"email@example.com"}'
+        ```
 
 === "Example with Falbricate"
 
@@ -45,28 +48,22 @@ At both of them, you can see they can be very simple but very useful.
     // Find the Falsum Pipe by name
     const falsumPipe = getFalsumPipe('stringify');
     
-    // Result: '{"username":"my-test-username","email":"email@example.com"}'
     console.log(falsumPipe(falsum));
     ```
+    
+    !!! abstract "Output"
+    
+        ```
+        '{"username":"my-test-username","email":"email@example.com"}'
+        ```
 
 
 ## How to use Falsum Pipes
 
 Falsum Pipes are meant to be used as a part of the [Schema Input](../../Building-Blocks/02_schema-input.md), 
 alongside with the fields declaration. The existence of an array containing these Falsum Pipes makes 
-the Fabricator to pipe the generated falsum through just before its returned as result.
-
-!!! note
-
-    Falsum Pipes declaration in the Schema Input is optional; when not provided, the Fabricator
-    just returns what was generated - without any modifications.
-    
-    However, when specified, keep in mind it needs to be an `array`.
-
-
-As seen above, there is an internal registry for Falsum Pipes, so you can easily access
-them by providing the name. You can also pass a function as a Falsum Pipe (more in 
-[Custom Falsum Pipes](#custom-falsum-pipes)).
+the [Fabricator](../../Building-Blocks/04_fabricator.md) to pipe the generated falsum through - just 
+before it's returned as fabrication result.
 
 
 !!! example "Schema Input with Pipes"
@@ -82,8 +79,20 @@ them by providing the name. You can also pass a function as a Falsum Pipe (more 
     }
     ```
 
-Keeping this organization in mind, you can use it to modify the whole result Falsum as you
-wish. Have a look at the following example:
+!!! note
+
+    Falsum Pipes declaration in the Schema Input is optional; when not provided, the Fabricator
+    just returns what was generated - without any modifications.
+    
+    However, when specified, keep in mind it needs to be an `array`.
+
+
+As seen above, there is an internal registry for Falsum Pipes, so you can easily access
+them by providing the name. You can also pass a function as a Falsum Pipe (more in 
+[Custom Falsum Pipes](#custom-falsum-pipes)).
+
+Keeping this design in mind, you can use it to modify the whole result Falsum
+(just before it's returned) as you wish. Have a look at the following example:
 
 
 !!! example "Example of Schema Input with Falsum Pipes"
@@ -118,7 +127,13 @@ wish. Have a look at the following example:
     console.log(fabricator.generate());
     ```
 
-!!! danger "Order matters!"
+    !!! abstract "Output"
+    
+        ```
+        '{"random_username":"l8wx3ml6k7wp3","random_languages":["C/C++","Java","Python"]}'
+        ```
+
+!!! warning "Order matters!"
 
     Order in which you declare the Falsum Pipes in the schema matters - result of the 
     first one is being passed to the second one. Result from the second one is piped 
