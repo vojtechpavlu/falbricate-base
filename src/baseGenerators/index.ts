@@ -28,6 +28,7 @@ import {
 import { ObjectFromSchemaConfig, ObjectFromSchemaGenerator } from './object';
 import { ContextAccessor, ContextAccessorConfig } from './other';
 import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
+import { DateTimeInRangeGenerator, DateTimeInRangeGeneratorConfig } from './date';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -46,6 +47,7 @@ export type ValueGeneratorName =
       | 'context-input'
       | 'object-from-schema'
       | 'probable-boolean'
+      | 'range-date-time'
     );
 
 /**
@@ -126,7 +128,7 @@ export const registerValueGenerator = <
   GeneratorValueType extends GeneratedValue,
   GivenConfig extends ValueGeneratorConfig,
 >(
-  name: string,
+  name: ValueGeneratorName,
   builder: ValueGeneratorBuilder<GeneratorValueType, GivenConfig>,
 ) => {
   if (hasGenerator(name)) {
@@ -185,6 +187,10 @@ registerValueGenerator(
   'probable-boolean',
   (config: ProbableBooleanGeneratorConfig) => new ProbableBooleanGenerator(config)
 );
+registerValueGenerator(
+  'range-date-time',
+  (config: DateTimeInRangeGeneratorConfig) => new DateTimeInRangeGenerator(config)
+);
 
 export * from './ValueGenerator';
 export * from './numeric';
@@ -193,3 +199,4 @@ export * from './array';
 export * from './object';
 export * from './other';
 export * from './boolean';
+export * from './date';
