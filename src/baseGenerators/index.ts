@@ -27,7 +27,7 @@ import {
 } from './array';
 import { ObjectFromSchemaConfig, ObjectFromSchemaGenerator } from './object';
 import { ContextAccessor, ContextAccessorConfig } from './other';
-import { ProbableBooleanGenerator, BooleanGeneratorConfig } from './boolean';
+import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -183,7 +183,7 @@ registerValueGenerator(
 );
 registerValueGenerator(
   'probable-boolean',
-  (config: BooleanGeneratorConfig) => new ProbableBooleanGenerator(config)
+  (config: ProbableBooleanGeneratorConfig) => new ProbableBooleanGenerator(config)
 );
 
 export * from './ValueGenerator';

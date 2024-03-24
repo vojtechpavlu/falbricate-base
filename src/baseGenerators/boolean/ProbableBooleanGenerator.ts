@@ -9,7 +9,7 @@ import { randomBoolean } from '../../utils/random/boolean';
  * This configuration specifies how probably should be
  * `true` generated.
  */
-export type BooleanGeneratorConfig = {
+export type ProbableBooleanGeneratorConfig = {
   probability?: number
 } & ValueGeneratorConfig;
 
@@ -18,9 +18,9 @@ export type BooleanGeneratorConfig = {
  */
 export class ProbableBooleanGenerator extends ValueGenerator<
   GeneratedValue,
-  BooleanGeneratorConfig
+  ProbableBooleanGeneratorConfig
 > {
-  constructor(config: BooleanGeneratorConfig) {
+  constructor(config: ProbableBooleanGeneratorConfig) {
 
     config.probability = config.probability === undefined ? 0.5 : config.probability
 
