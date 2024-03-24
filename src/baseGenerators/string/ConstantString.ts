@@ -30,7 +30,7 @@ export class ConstantStringGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return this.config.text;
   };
 }

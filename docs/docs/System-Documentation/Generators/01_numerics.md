@@ -24,7 +24,7 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     const generator = new IntegerGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"
@@ -109,7 +109,7 @@ when the `decimalDigits` is negative.
     
     const generator = new FloatGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"
@@ -185,7 +185,7 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     const generator = new ConstantNumberGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.generate());
     ```
     
     !!! abstract "Output"

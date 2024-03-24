@@ -47,7 +47,7 @@ export class StringOfLengthGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomStringOfLength(this.config.charset, this.config.length);
   };
 }

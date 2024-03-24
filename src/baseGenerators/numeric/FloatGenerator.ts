@@ -26,7 +26,7 @@ export class FloatGenerator extends ValueGenerator<
     super(config);
   }
 
-  get = (): GeneratedValue => {
+  protected get = (): GeneratedValue => {
     return randomFloat(
       this.config.min ?? 0,
       this.config.max,
