@@ -23,8 +23,14 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     const generator = new StringOfLengthGenerator(config);
     
-    const value = generator.get();
+    console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        bccbdaddacdbd
+        ```
 
 
 === "Declarative access"
@@ -39,6 +45,12 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     const value = generator.get({});
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        bccbdaddacdbd
+        ```
 
 === "Schema access"
 
@@ -59,6 +71,12 @@ it throws an error; so it does when the `length` is negative. Both fields are re
         
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'bccbdaddacdbd' }
+        ```
 
 
 ## Constant String
@@ -83,6 +101,12 @@ it throws an Error. Can be empty string (`''`).
     
     console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        my constant string
+        ```
 
 
 === "Declarative access"
@@ -96,6 +120,12 @@ it throws an Error. Can be empty string (`''`).
     
     console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        my constant string
+        ```
 
 === "Schema access"
 
@@ -115,3 +145,9 @@ it throws an Error. Can be empty string (`''`).
     
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'my constant string' }
+        ```

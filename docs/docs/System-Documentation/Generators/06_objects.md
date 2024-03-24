@@ -33,8 +33,14 @@ schema object will be used to generate nested falsum.
     
     const generator = new ObjectFromSchemaGenerator(config);
     
-    const value = generator.get();
+    console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'd' }
+        ```
 
 
 === "Declarative access"
@@ -60,6 +66,12 @@ schema object will be used to generate nested falsum.
     
     const value = generator.get({});
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'd' }
+        ```
 
 === "Schema access"
 
@@ -78,7 +90,7 @@ schema object will be used to generate nested falsum.
 
     const schema: SchemaInput = {
         fields: {
-            value: {
+            nested: {
                 type: 'object-from-schema',
                 config: {
                     schema: fieldSchema
@@ -91,3 +103,9 @@ schema object will be used to generate nested falsum.
         
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { nested: { value: 'd' } }
+        ```

@@ -23,8 +23,14 @@ it needs to be at least one item long.
     
     const generator = new ArrayPicker(config);
     
-    const value = generator.get();
+    console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        a
+        ```
 
 
 === "Declarative access"
@@ -38,6 +44,12 @@ it needs to be at least one item long.
     
     const value = generator.get({});
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        a
+        ```
 
 === "Schema access"
 
@@ -57,6 +69,12 @@ it needs to be at least one item long.
         
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'a' }
+        ```
 
 
 ## Constant Array
@@ -80,6 +98,12 @@ but must be defined.
     
     console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        [ 'a', 'b', 'c', 'd' ]
+        ```
 
 
 === "Declarative access"
@@ -93,6 +117,12 @@ but must be defined.
     
     console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        [ 'a', 'b', 'c', 'd' ]
+        ```
 
 === "Schema access"
 
@@ -112,6 +142,12 @@ but must be defined.
     
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: [ 'a', 'b', 'c', 'd' ] }
+        ```
 
 
 ## Array Sample
@@ -138,8 +174,14 @@ sample size is greater than the length of the given array.
     
     const generator = new ArraySampleGenerator(config);
     
-    console.log(generator.get());
+    console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        [ 'd', 'b' ]
+        ```
 
 
 === "Declarative access"
@@ -154,6 +196,12 @@ sample size is greater than the length of the given array.
     
     console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        [ 'd', 'b' ]
+        ```
 
 === "Schema access"
 
@@ -174,3 +222,9 @@ sample size is greater than the length of the given array.
     
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: [ 'd', 'b' ] }
+        ```

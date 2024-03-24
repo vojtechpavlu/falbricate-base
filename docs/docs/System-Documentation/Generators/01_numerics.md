@@ -24,8 +24,14 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     const generator = new IntegerGenerator(config);
     
-    const value = generator.get();
+    console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        39
+        ```
 
 
 === "Declarative access"
@@ -40,6 +46,12 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     const value = generator.get({});
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        39
+        ```
 
 === "Schema access"
 
@@ -60,6 +72,12 @@ Throws an error when `min` > `max` or when `max` is not provided.
         
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 39 }
+        ```
 
 
 ## Random Float
@@ -93,6 +111,12 @@ when the `decimalDigits` is negative.
     
     console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        67.4635403
+        ```
 
 
 === "Declarative access"
@@ -108,6 +132,12 @@ when the `decimalDigits` is negative.
     
     console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        67.4635403
+        ```
 
 === "Schema access"
 
@@ -129,6 +159,12 @@ when the `decimalDigits` is negative.
     
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 67.4635403 }
+        ```
 
 
 ## Constant Number
@@ -151,6 +187,12 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     console.log(generator.get());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        13
+        ```
 
 
 === "Declarative access"
@@ -164,6 +206,12 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     console.log(generator.get({}));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        13
+        ```
 
 === "Schema access"
 
@@ -183,3 +231,9 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     console.log(fabricator.generate());
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 13 }
+        ```
