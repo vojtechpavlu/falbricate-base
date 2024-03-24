@@ -24,7 +24,7 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     
     const generator = new ProbableBooleanGenerator(config);
     
-    const value = generator.get();
+    console.log(generator.get());
     ```
     
     !!! abstract "Output"

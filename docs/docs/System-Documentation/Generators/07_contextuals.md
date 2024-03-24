@@ -71,8 +71,14 @@ path the value shall be at.
         }
     }
 
-    const value = generator.get(context);
+    console.log(generator.get(context));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        Value given from outside
+        ```
 
 
 === "Declarative access"
@@ -91,8 +97,14 @@ path the value shall be at.
         }
     }
 
-    const value = generator.get(context);
+    console.log(generator.get(context));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        Value given from outside
+        ```
 
 === "Schema access"
 
@@ -119,3 +131,9 @@ path the value shall be at.
     
     console.log(fabricator.generate(context));
     ```
+    
+    !!! abstract "Output"
+
+        ``` json
+        { value: 'Value given from outside' }
+        ```
