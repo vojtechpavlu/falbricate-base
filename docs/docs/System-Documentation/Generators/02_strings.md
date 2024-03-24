@@ -28,7 +28,7 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         bccbdaddacdbd
         ```
 
@@ -48,7 +48,7 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         bccbdaddacdbd
         ```
 
@@ -74,7 +74,7 @@ it throws an error; so it does when the `length` is negative. Both fields are re
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'bccbdaddacdbd' }
         ```
 
@@ -104,7 +104,7 @@ it throws an Error. Can be empty string (`''`).
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         my constant string
         ```
 
@@ -123,7 +123,7 @@ it throws an Error. Can be empty string (`''`).
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         my constant string
         ```
 
@@ -148,6 +148,6 @@ it throws an Error. Can be empty string (`''`).
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'my constant string' }
         ```
