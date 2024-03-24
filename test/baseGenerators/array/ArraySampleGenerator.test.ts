@@ -8,7 +8,7 @@ describe('ArraySampleGenerator class', () => {
       sampleSize: 2,
     });
 
-    expect(generator.get().length).toBe(2);
+    expect(generator.generate().length).toBe(2);
   });
 
   it('should return a subset of the configured array', () => {
@@ -18,7 +18,7 @@ describe('ArraySampleGenerator class', () => {
       sampleSize: 2,
     });
 
-    const generatedItems = generator.get();
+    const generatedItems = generator.generate();
 
     generatedItems.forEach((item: string) => {
       expect(array.includes(item)).toBe(true);

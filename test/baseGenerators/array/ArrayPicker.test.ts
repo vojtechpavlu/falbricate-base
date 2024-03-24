@@ -4,7 +4,7 @@ describe('ArrayPicker generator class', () => {
   it('should return an item from the given array', () => {
     const array = ['a', 'b', 'c'];
     const generator = new ArrayPicker({ array });
-    expect(array.includes(generator.get())).toBe(true);
+    expect(array.includes(generator.generate())).toBe(true);
   });
 
   it('should fail on empty array', () => {

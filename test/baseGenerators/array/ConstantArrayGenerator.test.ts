@@ -5,14 +5,14 @@ describe('ConstantArrayGenerator class', () => {
     const array = ['a', 'b', 'c'];
     const generator = new ConstantArrayGenerator({ array });
 
-    expect(generator.get().length).toBe(array.length);
+    expect(generator.generate().length).toBe(array.length);
   });
 
   it('should return exactly same array as given', () => {
     const array = ['a', 'b', 'c'];
     const generator = new ConstantArrayGenerator({ array });
 
-    const generated = generator.get();
+    const generated = generator.generate();
 
     generated.forEach((item: any, idx: number) => {
       expect(item).toBe(array[idx]);

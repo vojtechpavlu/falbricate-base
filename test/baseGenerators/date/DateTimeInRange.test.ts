@@ -22,7 +22,7 @@ describe('DateTimeInRange generator', () => {
 
     const generator = getValueGenerator(generatorName, config);
 
-    expect(generator.get({})).toBeInstanceOf(Date)
+    expect(generator.generate({})).toBeInstanceOf(Date)
   })
 
   it('should return a date within the given range', () => {
@@ -33,7 +33,7 @@ describe('DateTimeInRange generator', () => {
     }
 
     const generator = getValueGenerator(generatorName, config);
-    const value = generator.get({}) as Date;
+    const value = generator.generate({}) as Date;
 
     expect(value.getTime()).toBeGreaterThanOrEqual(config.from.getTime())
     expect(value.getTime()).toBeLessThanOrEqual(config.to.getTime())

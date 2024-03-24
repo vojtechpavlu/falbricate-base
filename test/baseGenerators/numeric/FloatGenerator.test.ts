@@ -9,8 +9,8 @@ describe('FloatGenerator class', () => {
 
     const generator = new FloatGenerator(conf);
 
-    expect(generator.get()).toBeGreaterThanOrEqual(0);
-    expect(generator.get()).toBeLessThanOrEqual(3);
+    expect(generator.generate()).toBeGreaterThanOrEqual(0);
+    expect(generator.generate()).toBeLessThanOrEqual(3);
   });
 
   it('should return a float within a given range (with precision)', () => {
@@ -22,8 +22,8 @@ describe('FloatGenerator class', () => {
 
     const generator = new FloatGenerator(conf);
 
-    expect(generator.get()).toBeGreaterThanOrEqual(0);
-    expect(generator.get()).toBeLessThanOrEqual(3);
-    expect(`${generator.get()}`.split('.')[1]!.length).toBeLessThanOrEqual(4);
+    expect(generator.generate()).toBeGreaterThanOrEqual(0);
+    expect(generator.generate()).toBeLessThanOrEqual(3);
+    expect(`${generator.generate()}`.split('.')[1]!.length).toBeLessThanOrEqual(4);
   });
 });

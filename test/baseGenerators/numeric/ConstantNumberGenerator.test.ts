@@ -6,7 +6,7 @@ describe('StringGenerator class', () => {
       num: 3,
     });
 
-    expect(generator.get()).toBe(3);
+    expect(generator.generate()).toBe(3);
   });
 
   it('should raise an error on undefined value', () => {

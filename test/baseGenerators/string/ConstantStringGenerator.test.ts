@@ -6,7 +6,7 @@ describe('StringGenerator class', () => {
       text: 'TEST',
     });
 
-    expect(generator.get()).toBe('TEST');
+    expect(generator.generate()).toBe('TEST');
   });
 
   it('should raise an error on empty string', () => {
