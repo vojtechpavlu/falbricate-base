@@ -25,7 +25,12 @@ import {
   ConstantArrayConfig,
   ConstantArrayGenerator,
 } from './array';
-import { ObjectFromSchemaConfig, ObjectFromSchemaGenerator } from './object';
+import {
+  ListOfObjectsFromSchemaConfig,
+  ListOfObjectsFromSchemaGenerator,
+  ObjectFromSchemaConfig,
+  ObjectFromSchemaGenerator
+} from './object';
 import { ContextAccessor, ContextAccessorConfig } from './other';
 import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
 import { DateTimeInRangeGenerator, DateTimeInRangeGeneratorConfig } from './date';
@@ -48,6 +53,7 @@ export type ValueGeneratorName =
       | 'object-from-schema'
       | 'probable-boolean'
       | 'range-date-time'
+      | 'list-of-schema'
     );
 
 /**
@@ -190,6 +196,10 @@ registerValueGenerator(
 registerValueGenerator(
   'range-date-time',
   (config: DateTimeInRangeGeneratorConfig) => new DateTimeInRangeGenerator(config)
+);
+registerValueGenerator(
+  'list-of-schema',
+  (config: ListOfObjectsFromSchemaConfig) => new ListOfObjectsFromSchemaGenerator(config)
 );
 
 export * from './ValueGenerator';
