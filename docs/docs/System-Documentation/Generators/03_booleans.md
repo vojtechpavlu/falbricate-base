@@ -29,7 +29,7 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         true
         ```
 
@@ -48,7 +48,7 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         true
         ```
 
@@ -73,6 +73,6 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: true }
         ```

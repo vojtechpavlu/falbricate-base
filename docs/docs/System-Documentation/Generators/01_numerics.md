@@ -29,7 +29,7 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         39
         ```
 
@@ -49,7 +49,7 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         39
         ```
 
@@ -75,7 +75,7 @@ Throws an error when `min` > `max` or when `max` is not provided.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 39 }
         ```
 
@@ -114,7 +114,7 @@ when the `decimalDigits` is negative.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         67.4635403
         ```
 
@@ -135,7 +135,7 @@ when the `decimalDigits` is negative.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         67.4635403
         ```
 
@@ -162,7 +162,7 @@ when the `decimalDigits` is negative.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 67.4635403 }
         ```
 
@@ -190,7 +190,7 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         13
         ```
 
@@ -209,7 +209,7 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         13
         ```
 
@@ -234,6 +234,6 @@ Configuration requires to have a field `num` of type number; otherwise it throws
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 13 }
         ```

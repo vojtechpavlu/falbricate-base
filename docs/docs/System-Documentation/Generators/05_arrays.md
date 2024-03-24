@@ -28,7 +28,7 @@ it needs to be at least one item long.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         a
         ```
 
@@ -47,7 +47,7 @@ it needs to be at least one item long.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         a
         ```
 
@@ -72,7 +72,7 @@ it needs to be at least one item long.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'a' }
         ```
 
@@ -101,7 +101,7 @@ but must be defined.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         [ 'a', 'b', 'c', 'd' ]
         ```
 
@@ -120,7 +120,7 @@ but must be defined.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         [ 'a', 'b', 'c', 'd' ]
         ```
 
@@ -145,7 +145,7 @@ but must be defined.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: [ 'a', 'b', 'c', 'd' ] }
         ```
 
@@ -179,7 +179,7 @@ sample size is greater than the length of the given array.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         [ 'd', 'b' ]
         ```
 
@@ -199,7 +199,7 @@ sample size is greater than the length of the given array.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         [ 'd', 'b' ]
         ```
 
@@ -225,6 +225,6 @@ sample size is greater than the length of the given array.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: [ 'd', 'b' ] }
         ```

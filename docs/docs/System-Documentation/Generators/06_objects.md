@@ -38,7 +38,7 @@ schema object will be used to generate nested falsum.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'd' }
         ```
 
@@ -69,7 +69,7 @@ schema object will be used to generate nested falsum.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'd' }
         ```
 
@@ -106,6 +106,6 @@ schema object will be used to generate nested falsum.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { nested: { value: 'd' } }
         ```

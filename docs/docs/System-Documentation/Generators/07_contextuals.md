@@ -76,7 +76,7 @@ path the value shall be at.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         Value given from outside
         ```
 
@@ -102,7 +102,7 @@ path the value shall be at.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         Value given from outside
         ```
 
@@ -134,6 +134,6 @@ path the value shall be at.
     
     !!! abstract "Output"
 
-        ``` json
+        ```
         { value: 'Value given from outside' }
         ```
