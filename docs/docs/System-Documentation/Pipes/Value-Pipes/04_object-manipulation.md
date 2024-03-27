@@ -34,15 +34,15 @@ This value pipe turns the given object into a list.
     const fieldSchema: SchemaInput = {
         fields: {
             prop1: {
-                type: 'constant-string',
+                type: 'constant-value',
                 config: {
-                    text: 'my prop value'
+                    value: 'my prop value'
                 }
             },
             prop2: {
-                type: 'constant-string',
+                type: 'constant-value',
                 config: {
-                    text: 'my another prop value'
+                    value: 'my another prop value'
                 }
             }
         }

@@ -30,8 +30,8 @@ the given string.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
-        text: '  my string\t\n',
+    const generator = getValueGenerator('constant-value', {
+        value: '  my string\t\n',
         pipes: [
             'trim'
         ]
@@ -48,7 +48,7 @@ the given string.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
 
 ## Single Space Value Pipe
@@ -74,8 +74,8 @@ This Value Pipe removes multiple spaces and turns them into a single one.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
-        text: 'my  string    with spaces',
+    const generator = getValueGenerator('constant-value', {
+        value: 'my  string    with spaces',
         pipes: [
             'single-space'
         ]
@@ -92,5 +92,5 @@ This Value Pipe removes multiple spaces and turns them into a single one.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:

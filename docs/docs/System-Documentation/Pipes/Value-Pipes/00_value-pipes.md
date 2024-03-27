@@ -57,14 +57,14 @@ returned as the result of the Value Generator.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const config: ConstantStringConfig = {
-        text: 'my constant string',
+    const config: ConstantValueConfig = {
+        value: 'my constant string',
         pipes: [
             'uppercase'
         ]
     }
 
-    const generator = getValueGenerator('constant-string', config);
+    const generator = getValueGenerator('constant-value', config);
 
     console.log(generator.generate());
     ```
@@ -81,9 +81,9 @@ returned as the result of the Value Generator.
     const schema: SchemaInput = {
         fields: {
             value: {
-                type: 'constant-string',
+                type: 'constant-value',
                 config: {
-                    text: 'my testing value',
+                    value: 'my testing value',
                     pipes: [
                         'uppercase'
                     ]
@@ -112,9 +112,9 @@ defined and if so, it pipes it through all of them, one by one.
 !!! example "Value Generator Configuration with Pipes"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
+    const generator = getValueGenerator('constant-value', {
         // Fields required by the Value Generator you choose
-        text: 'my constant string',
+        value: 'my constant string',
 
         // Value Pipes declaration
         pipes: [
@@ -134,7 +134,7 @@ defined and if so, it pipes it through all of them, one by one.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
 
 !!! note
@@ -170,9 +170,9 @@ it will try to use it.
 !!! example "Single-purpose Value Pipe Example"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
+    const generator = getValueGenerator('constant-value', {
         // Fields required by the Value Generator you choose
-        text: 'my constant string',
+        value: 'my constant string',
 
         // Value Pipes declaration
         pipes: [
@@ -191,7 +191,7 @@ it will try to use it.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
 
 ### Registration of Custom Value Pipes
@@ -227,14 +227,14 @@ When you define your custom pipe, then you can use it anywhere you want.
 !!! example "Using of a Custom Value Pipe"
 
     ``` typescript linenums="1"
-    const config: ConstantNumberConfig = {
-        num: 4,
+    const config: ConstantValueGenerator = {
+        value: 4,
         pipes: [
             'my-custom-value-pipe'
         ]
     }
 
-    const generator = getValueGenerator('constant-number', config);
+    const generator = getValueGenerator('constant-value', config);
 
     console.log(generator.generate());
     ```
@@ -247,5 +247,5 @@ When you define your custom pipe, then you can use it anywhere you want.
 
     !!! tip
 
-        This example uses [Constant Number Generator](../../Generators/01_numerics.md#constant-number).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
