@@ -44,7 +44,7 @@ export class Fabricator {
       context = {
         index: 0,
         current: falsum,
-        ...context
+        ...context,
       };
 
       // Generate a new value with the whole context

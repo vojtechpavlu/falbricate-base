@@ -2,7 +2,7 @@ import { Fabricator, SchemaInput } from '../../schema';
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig
+  ValueGeneratorConfig,
 } from '../ValueGenerator';
 import { FabricationContext } from '../../schema/fabricationContext';
 
@@ -11,7 +11,7 @@ import { FabricationContext } from '../../schema/fabricationContext';
  * and number of items expected.
  */
 export type ListOfObjectsFromSchemaConfig = {
-  n: number,
+  n: number;
   schema: SchemaInput;
 } & ValueGeneratorConfig;
 
@@ -26,7 +26,9 @@ export class ListOfObjectsFromSchemaGenerator extends ValueGenerator<
 
   constructor(config: ListOfObjectsFromSchemaConfig) {
     if (!config.n || config.n < 1) {
-      throw new Error(`Property 'schema' is required and must be greater than zero`);
+      throw new Error(
+        `Property 'schema' is required and must be greater than zero`,
+      );
     }
 
     if (!config.schema) {

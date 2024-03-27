@@ -4,36 +4,38 @@ import {
   ValueGeneratorConfig,
 } from './ValueGenerator';
 import {
-  ConstantNumberConfig,
-  ConstantNumberGenerator,
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
   IntegerGeneratorConfig,
 } from './numeric';
-import {
-  ConstantStringConfig,
-  ConstantStringGenerator,
-  StringGeneratorConfig,
-  StringOfLengthGenerator,
-} from './string';
+import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
 import {
   ArrayPicker,
   ArrayPickerConfig,
   ArraySampleConfig,
   ArraySampleGenerator,
-  ConstantArrayConfig,
-  ConstantArrayGenerator,
 } from './array';
 import {
   ListOfObjectsFromSchemaConfig,
   ListOfObjectsFromSchemaGenerator,
   ObjectFromSchemaConfig,
-  ObjectFromSchemaGenerator
+  ObjectFromSchemaGenerator,
 } from './object';
-import { ContextAccessor, ContextAccessorConfig } from './other';
-import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
-import { DateTimeInRangeGenerator, DateTimeInRangeGeneratorConfig } from './date';
+import {
+  ConstantValue,
+  ConstantValueConfig,
+  ContextAccessor,
+  ContextAccessorConfig,
+} from './other';
+import {
+  ProbableBooleanGenerator,
+  ProbableBooleanGeneratorConfig,
+} from './boolean';
+import {
+  DateTimeInRangeGenerator,
+  DateTimeInRangeGeneratorConfig,
+} from './date';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -43,17 +45,15 @@ export type ValueGeneratorName =
   | (
       | 'range-integer'
       | 'range-float'
-      | 'constant-number'
       | 'string-of-length'
-      | 'constant-string'
       | 'array-picker'
-      | 'constant-array'
       | 'array-sample'
       | 'context-input'
       | 'object-from-schema'
       | 'probable-boolean'
       | 'range-date-time'
       | 'list-of-schema'
+      | 'constant-value'
     );
 
 /**
@@ -158,24 +158,12 @@ registerValueGenerator(
   (config: FloatGeneratorConfig) => new FloatGenerator(config),
 );
 registerValueGenerator(
-  'constant-number',
-  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
-);
-registerValueGenerator(
   'string-of-length',
   (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
 );
 registerValueGenerator(
-  'constant-string',
-  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
-);
-registerValueGenerator(
   'array-picker',
   (config: ArrayPickerConfig) => new ArrayPicker(config),
-);
-registerValueGenerator(
-  'constant-array',
-  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
 );
 registerValueGenerator(
   'array-sample',
@@ -191,15 +179,22 @@ registerValueGenerator(
 );
 registerValueGenerator(
   'probable-boolean',
-  (config: ProbableBooleanGeneratorConfig) => new ProbableBooleanGenerator(config)
+  (config: ProbableBooleanGeneratorConfig) =>
+    new ProbableBooleanGenerator(config),
 );
 registerValueGenerator(
   'range-date-time',
-  (config: DateTimeInRangeGeneratorConfig) => new DateTimeInRangeGenerator(config)
+  (config: DateTimeInRangeGeneratorConfig) =>
+    new DateTimeInRangeGenerator(config),
 );
 registerValueGenerator(
   'list-of-schema',
-  (config: ListOfObjectsFromSchemaConfig) => new ListOfObjectsFromSchemaGenerator(config)
+  (config: ListOfObjectsFromSchemaConfig) =>
+    new ListOfObjectsFromSchemaGenerator(config),
+);
+registerValueGenerator(
+  'constant-value',
+  (config: ConstantValueConfig) => new ConstantValue(config),
 );
 
 export * from './ValueGenerator';

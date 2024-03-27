@@ -2,7 +2,6 @@
 
 Here is a list of predefined generators for generating numeric values.
 
-
 ## Random Integer
 
 Random integer generator returns a number in a specified range.
@@ -21,18 +20,17 @@ Throws an error when `min` > `max` or when `max` is not provided.
         min: 13,
         max: 77
     }
-    
+
     const generator = new IntegerGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         39
         ```
-
 
 === "Declarative access"
 
@@ -41,12 +39,12 @@ Throws an error when `min` > `max` or when `max` is not provided.
         min: 13,
         max: 77
     }
-    
+
     const generator = getValueGenerator('range-integer', config);
-    
+
     const value = generator.get({});
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -67,18 +65,17 @@ Throws an error when `min` > `max` or when `max` is not provided.
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-        
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         { value: 39 }
         ```
-
 
 ## Random Float
 
@@ -95,7 +92,6 @@ Configuration fields are `min`, `max` and `decimalDigits`. Fields `min` and `dec
 It throws an error when `min` > `max`, when `max` is not provided or
 when the `decimalDigits` is negative.
 
-
 ### Examples
 
 === "Instance access"
@@ -106,18 +102,17 @@ when the `decimalDigits` is negative.
         max: 77,
         decimalDigits: 7
     }
-    
+
     const generator = new FloatGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         67.4635403
         ```
-
 
 === "Declarative access"
 
@@ -127,12 +122,12 @@ when the `decimalDigits` is negative.
         max: 77,
         decimalDigits: 7
     }
-    
+
     const generator = getValueGenerator('range-float', config);
-    
+
     console.log(generator.get({}));
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -154,86 +149,14 @@ when the `decimalDigits` is negative.
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-    
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         { value: 67.4635403 }
-        ```
-
-
-## Constant Number
-
-This generator simply returns a given number.
-
-Configuration requires to have a field `num` of type number; otherwise it throws an error.
-
-
-### Examples
-
-=== "Instance access"
-
-    ``` typescript linenums="1"
-    const config: ConstantNumberConfig = {
-        num: 13
-    }
-    
-    const generator = new ConstantNumberGenerator(config);
-    
-    console.log(generator.generate());
-    ```
-    
-    !!! abstract "Output"
-
-        ```
-        13
-        ```
-
-
-=== "Declarative access"
-
-    ``` typescript linenums="1"
-    const config: ConstantNumberConfig = {
-        num: 13
-    }
-    
-    const generator = getValueGenerator('constant-number', config);
-    
-    console.log(generator.get({}));
-    ```
-    
-    !!! abstract "Output"
-
-        ```
-        13
-        ```
-
-=== "Schema access"
-
-    ``` javascript linenums="1"
-    const schema: SchemaInput = {
-        fields: {
-            value: {
-                type: 'constant-number',
-                config: {
-                    num: 13
-                }
-            }
-        }
-    }
-        
-    const fabricator = new Fabricator(schema);
-    
-    console.log(fabricator.generate());
-    ```
-    
-    !!! abstract "Output"
-
-        ```
-        { value: 13 }
         ```

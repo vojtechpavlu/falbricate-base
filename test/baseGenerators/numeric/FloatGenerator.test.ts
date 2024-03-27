@@ -24,6 +24,8 @@ describe('FloatGenerator class', () => {
 
     expect(generator.generate()).toBeGreaterThanOrEqual(0);
     expect(generator.generate()).toBeLessThanOrEqual(3);
-    expect(`${generator.generate()}`.split('.')[1]!.length).toBeLessThanOrEqual(4);
+    expect(`${generator.generate()}`.split('.')[1]!.length).toBeLessThanOrEqual(
+      4,
+    );
   });
 });
