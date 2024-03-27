@@ -2,9 +2,8 @@
 
 This generator simply generates a deep copy of the value specified in the configuration.
 
-As the given value in the configuration, you can use whatever value you need - string, number, array, object, 
+As the given value in the configuration, you can use whatever value you need - string, number, array, object,
 array of objects, undefined or null.
-
 
 ### Examples
 
@@ -14,18 +13,17 @@ array of objects, undefined or null.
     const config: ConstantValueConfig = {
         value: 'my constant value'
     }
-    
+
     const generator = new ConstantValue(config);
 
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         'my constant value'
         ```
-
 
 === "Declarative access"
 
@@ -33,12 +31,12 @@ array of objects, undefined or null.
     const config: ConstantValueConfig = {
         value: 'my constant value'
     }
-    
+
     const generator = getValueGenerator('constant-value', config);
 
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -58,12 +56,12 @@ array of objects, undefined or null.
             }
         }
     }
-    
+
     const fabricator = new Fabricator(schema);
-    
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```

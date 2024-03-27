@@ -3,10 +3,9 @@ import { ConstantValueConfig, getValueGenerator } from '../../../src';
 const generatorName = 'constant-value';
 
 describe('ConstantValue generator', () => {
-
   it('should be found using its name', () => {
     const config: ConstantValueConfig = {
-      value: 'test'
+      value: 'test',
     };
 
     expect(() => getValueGenerator(generatorName, config)).not.toThrow();
@@ -14,7 +13,7 @@ describe('ConstantValue generator', () => {
 
   it('should generate a string', () => {
     const config: ConstantValueConfig = {
-      value: 'test'
+      value: 'test',
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -25,7 +24,7 @@ describe('ConstantValue generator', () => {
 
   it('should generate a number', () => {
     const config: ConstantValueConfig = {
-      value: 76
+      value: 76,
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -36,7 +35,7 @@ describe('ConstantValue generator', () => {
 
   it('should generate an undefined', () => {
     const config: ConstantValueConfig = {
-      value: undefined
+      value: undefined,
     };
 
     expect(getValueGenerator(generatorName, config).generate()).toBeUndefined();
@@ -44,7 +43,7 @@ describe('ConstantValue generator', () => {
 
   it('should generate a null', () => {
     const config: ConstantValueConfig = {
-      value: null
+      value: null,
     };
 
     expect(getValueGenerator(generatorName, config).generate()).toBeNull();
@@ -52,10 +51,13 @@ describe('ConstantValue generator', () => {
 
   it('should generate an array', () => {
     const config: ConstantValueConfig = {
-      value: ['a', 'b', 'c']
+      value: ['a', 'b', 'c'],
     };
 
-    const values = getValueGenerator(generatorName, config).generate() as string[];
+    const values = getValueGenerator(
+      generatorName,
+      config,
+    ).generate() as string[];
 
     expect(values.length).toBe(config.value.length);
 
@@ -68,8 +70,8 @@ describe('ConstantValue generator', () => {
     const config: ConstantValueConfig = {
       value: {
         a: 'test a',
-        b: 'test b'
-      }
+        b: 'test b',
+      },
     };
 
     const values = getValueGenerator(generatorName, config).generate() as any;
@@ -82,8 +84,8 @@ describe('ConstantValue generator', () => {
   it('should create a deep copy', () => {
     const config: ConstantValueConfig = {
       value: {
-        a: 'test a'
-      }
+        a: 'test a',
+      },
     };
 
     const values = getValueGenerator(generatorName, config).generate() as any;

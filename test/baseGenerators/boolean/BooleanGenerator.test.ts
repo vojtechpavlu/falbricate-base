@@ -12,7 +12,10 @@ describe('BooleanGenerator', () => {
   });
 
   it('should be return a boolean value', () => {
-    const generator = getValueGenerator(generatorName, {}) as ProbableBooleanGenerator;
+    const generator = getValueGenerator(
+      generatorName,
+      {},
+    ) as ProbableBooleanGenerator;
 
     const value = generator.generate();
 
@@ -21,7 +24,7 @@ describe('BooleanGenerator', () => {
 
   it('should return true on probability === 1', () => {
     const generator = getValueGenerator(generatorName, {
-      probability: 1
+      probability: 1,
     }) as ProbableBooleanGenerator;
 
     const value = generator.generate();
@@ -31,7 +34,7 @@ describe('BooleanGenerator', () => {
 
   it('should return false on probability === 0', () => {
     const generator = getValueGenerator(generatorName, {
-      probability: 0
+      probability: 0,
     }) as ProbableBooleanGenerator;
 
     const value = generator.generate();

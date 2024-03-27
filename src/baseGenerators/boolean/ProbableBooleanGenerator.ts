@@ -10,7 +10,7 @@ import { randomBoolean } from '../../utils/random/boolean';
  * `true` generated.
  */
 export type ProbableBooleanGeneratorConfig = {
-  probability?: number
+  probability?: number;
 } & ValueGeneratorConfig;
 
 /**
@@ -21,13 +21,17 @@ export class ProbableBooleanGenerator extends ValueGenerator<
   ProbableBooleanGeneratorConfig
 > {
   constructor(config: ProbableBooleanGeneratorConfig) {
-
-    config.probability = config.probability === undefined ? 0.5 : config.probability
+    config.probability =
+      config.probability === undefined ? 0.5 : config.probability;
 
     if (config.probability > 1) {
-      throw new Error(`Given probability must be less or equal to 1: ${config.probability}`);
+      throw new Error(
+        `Given probability must be less or equal to 1: ${config.probability}`,
+      );
     } else if (config.probability < 0) {
-      throw new Error(`Given probability must not be negative: ${config.probability}`)
+      throw new Error(
+        `Given probability must not be negative: ${config.probability}`,
+      );
     }
 
     super(config);

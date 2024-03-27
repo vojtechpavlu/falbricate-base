@@ -1,20 +1,18 @@
 # Contextuals
 
-Here is a list of predefined generators retrieving values from 
+Here is a list of predefined generators retrieving values from
 [Fabrication Context](../Building-Blocks/05_context.md).
-
 
 ## Context Accessor
 
-Returns a value from the received context. The value is reached by the given 
+Returns a value from the received context. The value is reached by the given
 path the value shall be at.
 
-
 === "Configuration Declaration"
-    
+
     The configuration is a bit more complex for this type of generator. Its declaration
     looks like this:
-    
+
     ``` typescript linenums="1"
     export type ContextAccessorConfig = {
       path: string;
@@ -23,7 +21,6 @@ path the value shall be at.
       useErrorValue?: any;
     } & ValueGeneratorConfig;
     ```
-
 
 === "Configuration Example"
 
@@ -48,10 +45,9 @@ path the value shall be at.
 
 - `handleError` tells the accessor that if there is no value on the path or it comes into another
   issue, if it should try to handle or should fail in the first place. By default, it lets the error
-  to be thrown. Otherwise, it uses *null-like* value specified in `useErrorValue`
+  to be thrown. Otherwise, it uses _null-like_ value specified in `useErrorValue`
 
 - `useErrorValue` value to be used when an error occurs (the recommended option is using `undefined`)
-
 
 ### Examples
 
@@ -62,7 +58,7 @@ path the value shall be at.
         path: 'input.value',
         sep: '.'
     }
-    
+
     const generator = new ContextAccessor(config);
 
     const context: FabricationContext = {
@@ -73,13 +69,12 @@ path the value shall be at.
 
     console.log(generator.generate(context));
     ```
-    
+
     !!! abstract "Output"
 
         ```
         Value given from outside
         ```
-
 
 === "Declarative access"
 
@@ -88,9 +83,9 @@ path the value shall be at.
         path: 'input.value',
         sep: '.'
     }
-    
+
     const generator = getValueGenerator('context-input', config);
-    
+
     const context: FabricationContext = {
         input: {
             value: "Value given from outside"
@@ -99,7 +94,7 @@ path the value shall be at.
 
     console.log(generator.generate(context));
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -120,18 +115,18 @@ path the value shall be at.
             }
         }
     }
-    
+
     const fabricator = new Fabricator(schema);
-    
+
     const context: FabricationContext = {
         input: {
             value: "Value given from outside"
         }
     }
-    
+
     console.log(fabricator.generate(context));
     ```
-    
+
     !!! abstract "Output"
 
         ```

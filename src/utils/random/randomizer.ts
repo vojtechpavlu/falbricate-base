@@ -1,4 +1,4 @@
-import {randomBytes} from 'crypto';
+import { randomBytes } from 'crypto';
 
 /**
  * Random float generator based on crypto library
@@ -9,12 +9,11 @@ const cryptoGenerator = (): number => {
   let float: number = (bytes[0]! % 32) / 32;
 
   bytes.subarray(1).forEach((byte) => {
-    float = (float + byte) / 256
-  })
+    float = (float + byte) / 256;
+  });
 
   return float - Math.floor(float);
-}
-
+};
 
 /**
  * Declaration of a function generating a random number.
@@ -22,24 +21,24 @@ const cryptoGenerator = (): number => {
  * This function requires to generate a random number
  * in range [0, 1].
  */
-export type Randomizer = () => number
+export type Randomizer = () => number;
 
 /** Declaration of Randomizer Name */
-export type RandomizerName = string | 'default' | 'crypto'
+export type RandomizerName = string | 'default' | 'crypto';
 
 /** Declaration of Randomizer registry */
 interface RandomizerRegistry {
-  [name: RandomizerName]: Randomizer
+  [name: RandomizerName]: Randomizer;
 }
 
 /** The actual randomizer registry */
 const RANDOMIZER_REGISTRY: RandomizerRegistry = {
   /** Default randomizer based on Math.random() */
-  'default': Math.random,
+  default: Math.random,
 
   /** Proprietary */
-  'crypto': cryptoGenerator
-}
+  crypto: cryptoGenerator,
+};
 
 /**
  * Sets the randomizer globally.
@@ -50,11 +49,11 @@ const RANDOMIZER_REGISTRY: RandomizerRegistry = {
  */
 export const useRandomizer = (name: RandomizerName): void => {
   if (!hasRandomizer(name)) {
-    throw new Error(`Randomizer with name '${name}' not found`)
+    throw new Error(`Randomizer with name '${name}' not found`);
   }
 
   RANDOMIZER = getRandomizer(name);
-}
+};
 
 /**
  * Returns a randomizer by the given name.
@@ -72,11 +71,11 @@ export const getRandomizer = (name?: RandomizerName): Randomizer => {
   const randomizer = RANDOMIZER_REGISTRY[name];
 
   if (!randomizer) {
-    throw new Error(`No randomizer with name '${name}' found`)
+    throw new Error(`No randomizer with name '${name}' found`);
   }
 
   return randomizer;
-}
+};
 
 /**
  * Returns if there is a randomizer with this name registered.
@@ -85,7 +84,7 @@ export const getRandomizer = (name?: RandomizerName): Randomizer => {
  */
 export const hasRandomizer = (name: RandomizerName): boolean => {
   return !!Object.keys(RANDOMIZER_REGISTRY).find((k) => k === name);
-}
+};
 
 /**
  * Stores a custom randomizer to be used.
@@ -97,18 +96,18 @@ export const hasRandomizer = (name: RandomizerName): boolean => {
  */
 export const storeRandomizer = (
   name: RandomizerName,
-  randomizer: Randomizer
+  randomizer: Randomizer,
 ) => {
   if (!name) {
-    throw new Error(`No randomizer name provided`)
+    throw new Error(`No randomizer name provided`);
   } else if (hasRandomizer(name)) {
-    throw new Error(`Randomizer name '${name}' is already used`)
+    throw new Error(`Randomizer name '${name}' is already used`);
   } else if (!randomizer) {
-    throw new Error(`Given empty randomizer`)
+    throw new Error(`Given empty randomizer`);
   }
 
-  RANDOMIZER_REGISTRY[name] = randomizer
-}
+  RANDOMIZER_REGISTRY[name] = randomizer;
+};
 
 /** Currently set randomizer to be used */
 let RANDOMIZER = getRandomizer('default');

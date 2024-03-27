@@ -10,7 +10,6 @@ The configuration object is required to have `schema` field containing
 a [Schema Input](../Building-Blocks/02_schema-input.md) object. This configured
 schema object will be used to generate nested falsum.
 
-
 ### Examples
 
 === "Instance access"
@@ -26,18 +25,17 @@ schema object will be used to generate nested falsum.
             }
         }
     }
-    
+
     const generator = new ObjectFromSchemaGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         { value: 'd' }
         ```
-
 
 === "Declarative access"
 
@@ -57,12 +55,12 @@ schema object will be used to generate nested falsum.
     const config: ObjectFromSchemaConfig = {
         schema: fieldSchema
     }
-    
+
     const generator = getValueGenerator('object-from-schema', config);
-    
+
     const value = generator.generate();
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -93,18 +91,17 @@ schema object will be used to generate nested falsum.
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-        
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         { nested: { value: 'd' } }
         ```
-
 
 ## List of Objects from Schema
 
@@ -115,7 +112,6 @@ a [Schema Input](../Building-Blocks/02_schema-input.md) object. This configured
 schema object will be used to generate nested falsum.
 
 It also expects field `n` describing how many items should it generate.
-
 
 ### Examples
 
@@ -141,12 +137,12 @@ It also expects field `n` describing how many items should it generate.
             }
         }
     }
-    
+
     const generator = new ListOfObjectsFromSchemaGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -156,7 +152,6 @@ It also expects field `n` describing how many items should it generate.
             { testField1: 'testValue', testField2: 'testValue' }
         ]
         ```
-
 
 === "Declarative access"
 
@@ -180,12 +175,12 @@ It also expects field `n` describing how many items should it generate.
             }
         }
     }
-    
+
     const generator = getValueGenerator('list-of-schema', config);
-    
+
     const value = generator.generate();
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -221,12 +216,12 @@ It also expects field `n` describing how many items should it generate.
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-        
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```

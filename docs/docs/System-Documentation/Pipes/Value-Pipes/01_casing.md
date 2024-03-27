@@ -6,7 +6,6 @@ These pipes are used to change the casing of the characters.
 
     These pipes are only applicable on string inputs
 
-
 ## Uppercase Value Pipe
 
 This Value Pipe sets all the characters in the given value to uppercase.
@@ -15,14 +14,14 @@ This Value Pipe sets all the characters in the given value to uppercase.
 
     ``` typescript linenums="1"
     const value = 'mY sTrInG';
-    
+
     const pipe = getValuePipe('uppercase');
 
     console.log(pipe(value))
     ```
 
     !!! abstract "Output"
-        
+
         ```
         'MY STRING'
         ```
@@ -36,18 +35,18 @@ This Value Pipe sets all the characters in the given value to uppercase.
             'uppercase'
         ]
     });
-    
+
     console.log(generator.generate())
     ```
 
     !!! abstract "Output"
-        
+
         ```
         'MY STRING'
         ```
-    
+
     !!! tip
-    
+
         This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
         You may want to check it out :wink:
 
@@ -55,19 +54,18 @@ This Value Pipe sets all the characters in the given value to uppercase.
 
 This Value Pipe sets all the characters in the given value to lowercase.
 
-
 === "Plain example"
 
     ``` typescript linenums="1"
     const value = 'mY sTrInG';
-    
+
     const pipe = getValuePipe('lowercase');
 
     console.log(pipe(value))
     ```
 
     !!! abstract "Output"
-        
+
         ```
         'my string'
         ```
@@ -81,17 +79,17 @@ This Value Pipe sets all the characters in the given value to lowercase.
             'lowercase'
         ]
     });
-    
+
     console.log(generator.generate())
     ```
 
     !!! abstract "Output"
-        
+
         ```
         'my string'
         ```
-    
+
     !!! tip
-    
+
         This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
         You may want to check it out :wink:

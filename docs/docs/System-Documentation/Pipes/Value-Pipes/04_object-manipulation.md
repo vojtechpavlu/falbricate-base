@@ -2,7 +2,6 @@
 
 These pipes are used to manipulate objects.
 
-
 ## Object into list
 
 This value pipe turns the given object into a list.
@@ -14,14 +13,14 @@ This value pipe turns the given object into a list.
         prop1: "my prop value",
         prop2: "my another prop value"
     };
-    
+
     const pipe = getValuePipe('object-to-list');
 
     console.log(pipe(value))
     ```
 
     !!! abstract "Output"
-        
+
         ```
         [
             { key: 'prop1', value: 'my prop value' },
@@ -55,20 +54,20 @@ This value pipe turns the given object into a list.
             'object-to-list'
         ]
     });
-    
+
     console.log(generator.generate())
     ```
 
     !!! abstract "Output"
-        
+
         ```
         [
             { key: 'prop1', value: 'my prop value' },
             { key: 'prop2', value: 'my another prop value' }
         ]
         ```
-    
+
     !!! tip
-    
+
         This example uses [Object Generator](../../Generators/06_objects.md#object-from-schema).
         You may want to check it out :wink:

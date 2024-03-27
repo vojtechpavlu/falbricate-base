@@ -23,7 +23,7 @@ bounds definition in the configuration. Have a look on these examples:
 === "String-based date"
 
     ``` typescript
-    // Using string-based declaration of date 
+    // Using string-based declaration of date
     const declaration1: DateTimeDeclaration = '1999-12-31';
 
     // Using string-based declaration of date and time without ms
@@ -46,7 +46,6 @@ bounds definition in the configuration. Have a look on these examples:
     const declaration2: DateTimeDeclaration = -1413157945123;
     ```
 
-
 Here you can see how to define the whole configuration:
 
 === "Configuration definition"
@@ -67,7 +66,6 @@ Here you can see how to define the whole configuration:
     };
     ```
 
-
 ### Examples
 
 === "Instance access"
@@ -77,18 +75,17 @@ Here you can see how to define the whole configuration:
       from: '1999-12-31T11:25:31.975',
       to: 1413157945123
     };
-    
+
     const generator = new DateTimeInRangeGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         2006-01-17T09:42:39.858Z
         ```
-
 
 === "Declarative access"
 
@@ -97,12 +94,12 @@ Here you can see how to define the whole configuration:
       from: '1999-12-31T11:25:31.975',
       to: 1413157945123
     };
-    
+
     const generator = getValueGenerator('range-date-time', config);
-    
+
     const value = generator.get({});
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -123,12 +120,12 @@ Here you can see how to define the whole configuration:
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-        
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```

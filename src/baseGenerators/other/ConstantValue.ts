@@ -23,7 +23,6 @@ export class ConstantValue extends ValueGenerator<
   }
 
   get = (): GeneratedValue => {
-
     const value = this.config.value;
 
     if (value === undefined || value === null) {

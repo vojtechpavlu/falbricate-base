@@ -1,12 +1,12 @@
 # Value Generator
 
-Value Generator provides a service to generate a value the Falsum consists of.  These generators are designed to be 
-able to generate a random (or for example to simply pass predefined value from context) and return it. This service is 
+Value Generator provides a service to generate a value the Falsum consists of. These generators are designed to be
+able to generate a random (or for example to simply pass predefined value from context) and return it. This service is
 used for generating a falsum by given schema.
 
-Every Value Generator is of type `ValueGenerator<ValueType, Configuration>` _(internally predefined class)_. 
+Every Value Generator is of type `ValueGenerator<ValueType, Configuration>` _(internally predefined class)_.
 The constructor takes the configuration of type `Configuration` _(which needs to be of type_ `ValueGeneratorConfig`_)_.
-Then, the generator on its `get(context: GenerationContext)` method call returns a value of type `ValueType`. 
+Then, the generator on its `get(context: GenerationContext)` method call returns a value of type `ValueType`.
 
 For example how can you use the generator, have a look on [how to access the generator](#accessing-value-generators).
 
@@ -16,7 +16,7 @@ Value generators are basically classes (or instances if you wish). It can be acc
 class instance you know.
 
 !!! example
-    
+
     Accessing to the generator as to a class instance
 
     ``` typescript
@@ -27,28 +27,25 @@ class instance you know.
 But this is not the only way you can use these generators. The Falbricate ecosystem also enables you to
 access these generators from internal registry of generators - accessing by generator name.
 
-
 !!! tip
 
     It is highly recommended to refer to the Value Generators using their name, not to pass them directly.
 
-
 !!! example
 
     Accessing to the generator using registry
-    
+
     ``` typescript
     const generator = getValueGenerator('range-integer', { max: 17 });
     const value = generator.get({});
     ```
-
 
 ## Configuration
 
 Every Value Generator needs to be configured during its initialization.
 For this purpose, there's a mutual type defined looking like this:
 
-``` typescript
+```typescript
 export interface ValueGeneratorConfig {
   /** Pipes to be used for modifying the generated value */
   pipes?: ValuePipe[];
@@ -61,16 +58,15 @@ export interface ValueGeneratorConfig {
 Each Value Generator Configuration consists of these two optional fields:
 
 - `pipes` - Declares a list of Value Pipes for minor modifications of the generated value (
-more at [Introduction to Value Pipes](../Pipes/Value-Pipes/00_value-pipes.md))
+  more at [Introduction to Value Pipes](../Pipes/Value-Pipes/00_value-pipes.md))
 
 - `nullability` - Declares how should be _null_-like values treated. It means whether the fields
-should or should not be empty values (more at [Nullability](../Nullability/00_nullability.md))
+  should or should not be empty values (more at [Nullability](../Nullability/00_nullability.md))
 
 ## Custom Value Generators
 
 You can find yourself the predefined value generators do not meet your requirements. Feel free to define
 your own Value Generators!
-
 
 ### Creating a custom generator
 
@@ -79,7 +75,6 @@ To create a Value Generator and to use it within the ecosystem, you need to foll
 1. The generator needs to extend an abstract and generic class `ValueGenerator<ValueType, Configuration>`
 2. Yours configuration must be a superset of the `ValueGeneratorConfig` type
 3. _(Optional) if you want to register your value generator, you must follow [these instructions](#register-custom-value-generator)_
-
 
 !!! example
 
@@ -93,34 +88,33 @@ To create a Value Generator and to use it within the ecosystem, you need to foll
           minStars: number,
           maxStars: number
         } & ValueGeneratorConfig;
-        
-    
+
+
         /** Custom generator providing the actual service of random value generation */
         class RatingGenerator extends ValueGenerator<string, RatingGeneratorConfig>{
-        
+
           /** Constructor taking the configuration */
           constructor(config: RatingGeneratorConfig) {
             super(config)
           }
-        
+
           /** Implementation of the actual generator */
           get = (): string => {
             const numberOfStars = randomInteger(this.config.minStars, this.config.maxStars);
             return `${numberOfStars} Stars`
           }
         }
-        
-    
+
+
         // Creating the instance of the Rating generator with specified configuration
         const ratingGenerator = new RatingGenerator({
           minStars: 1,
           maxStars: 5
         });
-        
+
         // Do something with the value
         console.log(ratingGenerator.get())
     ```
-
 
 ### Register Custom Value Generator
 
@@ -132,7 +126,6 @@ ecosystem _(it is recommended approach anyway)_. Then, you can easily access it 
     Keep in mind the name you choose must be unique and can't collide with any already existing!
     When it does, the registration will throw an Error.
 
-
 !!! example
 
     ``` typescript linenums="1"
@@ -141,12 +134,11 @@ ecosystem _(it is recommended approach anyway)_. Then, you can easily access it 
         'my-star-rating-generator',
         (config: RatingGeneratorConfig) => new RatingGenerator(config),
     );
-    
-    
+
+
     // Accessing your Value Generator in code
     const generator = getValueGenerator('my-star-rating-generator', {
         minStars: 1,
         maxStars: 10
     });
     ```
-

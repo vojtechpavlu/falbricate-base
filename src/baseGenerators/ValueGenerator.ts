@@ -68,8 +68,7 @@ export abstract class ValueGenerator<
    * @param context Context to be used for value generation.
    */
   generate = (context?: FabricationContext): ValueType => {
-
-    context = context ?? {}
+    context = context ?? {};
 
     if (!!this.config.nullability) {
       const shouldGenerate: boolean = randomBoolean(

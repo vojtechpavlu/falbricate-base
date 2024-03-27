@@ -2,7 +2,6 @@
 
 Here is a list of predefined generators for generating boolean values.
 
-
 ## Probable boolean
 
 Aims to generating boolean values considering a given probability. This specified
@@ -12,7 +11,6 @@ The optional configuration field `probability` is expected to be a number in ran
 `[0, 1]`, while the higher the value is, the more probable is that `true` will be generated.
 When not provided at all, it uses `0.5` (probabilities for `true` and `false` are equal).
 
-
 ### Examples
 
 === "Instance access"
@@ -21,18 +19,17 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     const config: BooleanGeneratorConfig = {
         probability: 0.7
     }
-    
+
     const generator = new ProbableBooleanGenerator(config);
-    
+
     console.log(generator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
         true
         ```
-
 
 === "Declarative access"
 
@@ -40,12 +37,12 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
     const config: BooleanGeneratorConfig = {
         probability: 0.7
     }
-    
+
     const generator = getValueGenerator('probable-boolean', config);
-    
+
     const value = generator.get({});
     ```
-    
+
     !!! abstract "Output"
 
         ```
@@ -65,12 +62,12 @@ When not provided at all, it uses `0.5` (probabilities for `true` and `false` ar
             }
         }
     }
-        
+
     const fabricator = new Fabricator(schema);
-        
+
     console.log(fabricator.generate());
     ```
-    
+
     !!! abstract "Output"
 
         ```
