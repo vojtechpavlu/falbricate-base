@@ -7,15 +7,15 @@ const config: ListOfObjectsFromSchemaConfig = {
   schema: {
     fields: {
       testField1: {
-        type: "constant-string",
+        type: "constant-value",
         config: {
-          text: "testValue"
+          value: "testValue"
         }
       },
       testField2: {
-        type: "constant-string",
+        type: "constant-value",
         config: {
-          text: "testValue"
+          value: "testValue"
         }
       }
     }

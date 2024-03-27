@@ -4,16 +4,12 @@ import {
   ValueGeneratorConfig,
 } from './ValueGenerator';
 import {
-  ConstantNumberConfig,
-  ConstantNumberGenerator,
   FloatGenerator,
   FloatGeneratorConfig,
   IntegerGenerator,
   IntegerGeneratorConfig,
 } from './numeric';
 import {
-  ConstantStringConfig,
-  ConstantStringGenerator,
   StringGeneratorConfig,
   StringOfLengthGenerator,
 } from './string';
@@ -22,8 +18,6 @@ import {
   ArrayPickerConfig,
   ArraySampleConfig,
   ArraySampleGenerator,
-  ConstantArrayConfig,
-  ConstantArrayGenerator,
 } from './array';
 import {
   ListOfObjectsFromSchemaConfig,
@@ -43,11 +37,8 @@ export type ValueGeneratorName =
   | (
       | 'range-integer'
       | 'range-float'
-      | 'constant-number'
       | 'string-of-length'
-      | 'constant-string'
       | 'array-picker'
-      | 'constant-array'
       | 'array-sample'
       | 'context-input'
       | 'object-from-schema'
@@ -159,24 +150,12 @@ registerValueGenerator(
   (config: FloatGeneratorConfig) => new FloatGenerator(config),
 );
 registerValueGenerator(
-  'constant-number',
-  (config: ConstantNumberConfig) => new ConstantNumberGenerator(config),
-);
-registerValueGenerator(
   'string-of-length',
   (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
 );
 registerValueGenerator(
-  'constant-string',
-  (config: ConstantStringConfig) => new ConstantStringGenerator(config),
-);
-registerValueGenerator(
   'array-picker',
   (config: ArrayPickerConfig) => new ArrayPicker(config),
-);
-registerValueGenerator(
-  'constant-array',
-  (config: ConstantArrayConfig) => new ConstantArrayGenerator(config),
 );
 registerValueGenerator(
   'array-sample',
