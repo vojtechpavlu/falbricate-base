@@ -29,8 +29,8 @@ This Value Pipe sets all the characters in the given value to uppercase.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
-        text: 'mY sTrInG',
+    const generator = getValueGenerator('constant-value', {
+        value: 'mY sTrInG',
         pipes: [
             'uppercase'
         ]
@@ -47,7 +47,7 @@ This Value Pipe sets all the characters in the given value to uppercase.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
 
 ## Lowercase Value Pipe
@@ -73,8 +73,8 @@ This Value Pipe sets all the characters in the given value to lowercase.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-string', {
-        text: 'mY sTrInG',
+    const generator = getValueGenerator('constant-value', {
+        value: 'mY sTrInG',
         pipes: [
             'lowercase'
         ]
@@ -91,5 +91,5 @@ This Value Pipe sets all the characters in the given value to lowercase.
 
     !!! tip
 
-        This example uses [Constant String Generator](../../Generators/02_strings.md#constant-string).
+        This example uses [Constant String Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:

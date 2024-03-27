@@ -29,8 +29,8 @@ This value pipe orders the given value in ascending order.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-array', {
-        array: ['b', 'x', 'a', 'm'],
+    const generator = getValueGenerator('constant-value', {
+        value: ['b', 'x', 'a', 'm'],
         pipes: [
             'sort-ascending'
         ]
@@ -47,7 +47,7 @@ This value pipe orders the given value in ascending order.
 
     !!! tip
 
-        This example uses [Constant Array Generator](../../Generators/05_arrays.md#constant-array).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
 
 ## Sort Descending
@@ -73,8 +73,8 @@ This value pipe orders the given value in descending order.
 === "Example with Value Generator"
 
     ``` typescript linenums="1"
-    const generator = getValueGenerator('constant-array', {
-        array: ['b', 'x', 'a', 'm'],
+    const generator = getValueGenerator('constant-value', {
+        value: ['b', 'x', 'a', 'm'],
         pipes: [
             'sort-descending'
         ]
@@ -91,5 +91,5 @@ This value pipe orders the given value in descending order.
 
     !!! tip
 
-        This example uses [Constant Array Generator](../../Generators/05_arrays.md#constant-array).
+        This example uses [Constant Value Generator](../../Generators/08_constants.md).
         You may want to check it out :wink:
