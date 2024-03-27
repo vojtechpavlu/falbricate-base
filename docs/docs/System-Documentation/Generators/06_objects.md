@@ -123,15 +123,15 @@ It also expects field `n` describing how many items should it generate.
         schema: {
             fields: {
                 testField1: {
-                    type: "constant-string",
+                    type: "constant-value",
                     config: {
-                        text: "testValue"
+                        value: "testValue"
                     }
                 },
                 testField2: {
-                    type: "constant-string",
+                    type: "constant-value",
                     config: {
-                        text: "testValue"
+                        value: "testValue"
                     }
                 }
             }
@@ -161,15 +161,15 @@ It also expects field `n` describing how many items should it generate.
         schema: {
             fields: {
                 testField1: {
-                    type: "constant-string",
+                    type: "constant-value",
                     config: {
-                        text: "testValue"
+                        value: "testValue"
                     }
                 },
                 testField2: {
-                    type: "constant-string",
+                    type: "constant-value",
                     config: {
-                        text: "testValue"
+                        value: "testValue"
                     }
                 }
             }
