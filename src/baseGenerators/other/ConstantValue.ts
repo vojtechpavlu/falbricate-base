@@ -3,11 +3,6 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
 } from '../ValueGenerator';
-import {
-  accessProperty,
-  PathSeparator,
-} from '../../utils/common/propertyAccessor';
-import { FabricationContext } from '../../schema/fabricationContext';
 
 /**
  * Configuration specifying what value should be used
