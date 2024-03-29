@@ -38,7 +38,9 @@ export class Schema {
    * Compiles the fields.
    * @param schemaInput
    */
-  public static compileFields = (schemaInput: SchemaInput): FieldsDefinition => {
+  public static compileFields = (
+    schemaInput: SchemaInput,
+  ): FieldsDefinition => {
     const compiled: FieldsDefinition = {};
 
     Object.keys(schemaInput.fields).forEach((key) => {

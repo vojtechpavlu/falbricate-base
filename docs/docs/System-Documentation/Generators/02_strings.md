@@ -75,17 +75,14 @@ it throws an error; so it does when the `length` is negative. Both fields are re
         { value: 'bccbdaddacdbd' }
         ```
 
-
 ## Random String
 
 Generates a random string based on a given `charset` with length within a specified range.
-
 
 ### Configuration
 
 This Value Generator requires configuration describing the attributes of the desired string looking
 as follows:
-
 
 === "Configuration definition"
 
@@ -100,7 +97,6 @@ as follows:
     } & ValueGeneratorConfig;
     ```
 
-
 === "Example"
 
     The following configuration example could be used to generate strings of length
@@ -114,7 +110,6 @@ as follows:
     };
     ```
 
-
 There are some general rules applied to the configuration being checked:
 
 - Property `minLen` is optional. When not provided, zero (`0`) is used.
@@ -122,7 +117,6 @@ There are some general rules applied to the configuration being checked:
 - `minLen` must not be greater then `maxLen`.
 - Both `minLen` and `maxLen` must be positive numbers.
 - `charset` is checked to be a real [Charset](../../Utils/charset.md).
-
 
 ### Examples
 
@@ -190,15 +184,12 @@ There are some general rules applied to the configuration being checked:
         { value: 'acafbedcaf' }
         ```
 
-
 ## String template
 
 This Value Generator is a template String processor. It lets you generate any string you desire by
 the specified template that is being filled up during the generation.
 
-
 ### Configuration
-
 
 === "Configuration definition"
 
@@ -206,21 +197,21 @@ the specified template that is being filled up during the generation.
     // Declaration of variables with values being generated
     export interface StringTemplateVariables {
         [variable: string]: (
-            // This is a description of schema fields in declarative manner 
-            DeclarativeFieldDefinition | 
+            // This is a description of schema fields in declarative manner
+            DeclarativeFieldDefinition |
 
             // Or, you can pass the Value Generator directly as an instance
             ValueGenerator<GeneratedValue, ValueGeneratorConfig>
         );
     }
-    
-    // Declaration of custom charsets assigned to tags - you can use 
-    // these tags in your template string and these will be then replaced 
+
+    // Declaration of custom charsets assigned to tags - you can use
+    // these tags in your template string and these will be then replaced
     // with a random character from the specified set of characters
     export interface CustomCharsets {
         [tag: string]: Charset
     }
-    
+
     // The root configuration declaration
     export type StringTemplateGeneratorConfig = {
         template: string;
@@ -228,7 +219,6 @@ the specified template that is being filled up during the generation.
         customCharsets?: CustomCharsets;
     } & ValueGeneratorConfig;
     ```
-
 
 === "Example"
 
@@ -260,22 +250,21 @@ the specified template that is being filled up during the generation.
     ```
 
     !!! abstract "Expected Output"
-    
+
         Expected output of such complex configuration could look something like
         this:
-        
+
         ```
         'ID-foo_value-foo_value-bar_value-dvUT-73-zx'
         ```
 
-
 #### Variables
 
-Handling variables is one of the basic template features supported. The variable substitution 
-is split into two steps: 
+Handling variables is one of the basic template features supported. The variable substitution
+is split into two steps:
 
 - **Value Generation** - To generate a value being used in the final string, you need to provide
-  the desired Value Generator. You can use for example a Random String generator, Random Number generator 
+  the desired Value Generator. You can use for example a Random String generator, Random Number generator
   or Context Accessor; the only requirement is to be actually a Value generator. Then, when this Template
   String Generator is requested for template generation, it will always generate new values for this
   provisioning. Keep in mind that this value is being reused during the whole single generation.
@@ -284,13 +273,11 @@ is split into two steps:
   Template generator where to put the value to - using `{variableName}`. The whole substring with brackets
   is then replaced with the actual value prepared by the generator specified by the `variableName`.
 
-  
 This generator is very useful for generating random strings of a specific
 form. But it can also be used also (as noted above) to generate strings
 with placeholders - variables.
 
 It always follows this scenario:
-
 
 !!! example
 
@@ -305,7 +292,6 @@ It always follows this scenario:
     }
     ```
 
-
 #### Custom Charsets
 
 Custom charsets is another feature enabling the client to use a custom set of characters
@@ -315,7 +301,6 @@ By defining the tag and assigning the desired Charset, the Value Generator seeks
 in the template and substitutes it with a randomly selected character.
 
 You can specify those in an optional `customCharsets` property.
-
 
 #### Predefined Charsets
 
@@ -327,7 +312,6 @@ character sets.
   start with a zero)
 - `%c` describes any lowercase alphabetic character (like `[a-z]` regular expression)
 - `%C` describes any uppercase alphabetic character (like `[A-Z]` regular expression)
-
 
 ### Examples
 
@@ -349,15 +333,15 @@ character sets.
             '%userClass': ['a', 'x', 'r', 'w']
         }
     };
-    
+
     // Generator using the given configuration
     const generator = new StringTemplateGenerator(config);
-    
+
     // Context passing the userId
     const context: FabricationContext = {
         userId: 123456789
     }
-    
+
     console.log(generator.generate(context));
     ```
 
@@ -388,12 +372,12 @@ character sets.
 
     // Generator using the given configuration
     const generator = getValueGenerator('string-template', config);
-    
+
     // Context passing the userId
     const context: FabricationContext = {
         userId: 123456789
     }
-    
+
     console.log(generator.generate(context));
     ```
 

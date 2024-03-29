@@ -13,7 +13,9 @@ import {
   RandomStringGenerator,
   RandomStringGeneratorConfig,
   StringGeneratorConfig,
-  StringOfLengthGenerator, StringTemplateGenerator, StringTemplateGeneratorConfig
+  StringOfLengthGenerator,
+  StringTemplateGenerator,
+  StringTemplateGeneratorConfig,
 } from './string';
 import {
   ArrayPicker,
@@ -47,8 +49,8 @@ import {
  */
 export type ValueGeneratorName =
   | string
+  // Numerics
   | (
-      // Numerics
       | 'range-integer'
       | 'range-float'
 
@@ -187,7 +189,8 @@ registerValueGenerator(
 );
 registerValueGenerator(
   'string-template',
-  (config: StringTemplateGeneratorConfig) => new StringTemplateGenerator(config),
+  (config: StringTemplateGeneratorConfig) =>
+    new StringTemplateGenerator(config),
 );
 registerValueGenerator(
   'array-picker',
