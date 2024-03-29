@@ -9,7 +9,12 @@ import {
   IntegerGenerator,
   IntegerGeneratorConfig,
 } from './numeric';
-import { StringGeneratorConfig, StringOfLengthGenerator } from './string';
+import {
+  RandomStringGenerator,
+  RandomStringGeneratorConfig,
+  StringGeneratorConfig,
+  StringOfLengthGenerator
+} from './string';
 import {
   ArrayPicker,
   ArrayPickerConfig,
@@ -46,6 +51,7 @@ export type ValueGeneratorName =
       | 'range-integer'
       | 'range-float'
       | 'string-of-length'
+      | 'random-string'
       | 'array-picker'
       | 'array-sample'
       | 'context-input'
@@ -160,6 +166,10 @@ registerValueGenerator(
 registerValueGenerator(
   'string-of-length',
   (config: StringGeneratorConfig) => new StringOfLengthGenerator(config),
+);
+registerValueGenerator(
+  'random-string',
+  (config: RandomStringGeneratorConfig) => new RandomStringGenerator(config),
 );
 registerValueGenerator(
   'array-picker',
