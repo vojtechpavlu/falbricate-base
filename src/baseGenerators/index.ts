@@ -43,6 +43,7 @@ import {
   DateTimeInRangeGenerator,
   DateTimeInRangeGeneratorConfig,
 } from './date';
+import { UUIDGenerator } from './standards';
 
 /**
  * Declaration of the basic Value Generator names for type-hinting purposes
@@ -76,6 +77,7 @@ export type ValueGeneratorName =
       // Other
       | 'context-input'
       | 'constant-value'
+      | 'uuid'
     );
 
 /**
@@ -227,6 +229,10 @@ registerValueGenerator(
   'constant-value',
   (config: ConstantValueConfig) => new ConstantValue(config),
 );
+registerValueGenerator(
+  'uuid',
+  (config: ValueGeneratorConfig) => new UUIDGenerator(config),
+);
 
 export * from './ValueGenerator';
 export * from './numeric';
@@ -236,3 +242,4 @@ export * from './object';
 export * from './other';
 export * from './boolean';
 export * from './date';
+export * from './standards';
