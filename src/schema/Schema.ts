@@ -30,15 +30,17 @@ export class Schema {
   public readonly pipes: FalsumPipe[];
 
   constructor(schemaInput: SchemaInput) {
-    this.fields = this.compileFields(schemaInput);
-    this.pipes = this.compilePipes(schemaInput);
+    this.fields = Schema.compileFields(schemaInput);
+    this.pipes = Schema.compilePipes(schemaInput);
   }
 
   /**
    * Compiles the fields.
    * @param schemaInput
    */
-  private compileFields = (schemaInput: SchemaInput): FieldsDefinition => {
+  public static compileFields = (
+    schemaInput: SchemaInput,
+  ): FieldsDefinition => {
     const compiled: FieldsDefinition = {};
 
     Object.keys(schemaInput.fields).forEach((key) => {
@@ -57,7 +59,7 @@ export class Schema {
     return compiled;
   };
 
-  private compilePipes = (schemaInput: SchemaInput): FalsumPipe[] => {
+  public static compilePipes = (schemaInput: SchemaInput): FalsumPipe[] => {
     const pipes: FalsumPipe[] = [];
 
     schemaInput.pipes?.forEach((pipe) => {

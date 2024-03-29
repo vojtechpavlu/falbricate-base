@@ -73,7 +73,6 @@ it needs to be at least one item long.
         { value: 'a' }
         ```
 
-
 ## Array Sample
 
 This generator creates a deep copy of the specified array and returns

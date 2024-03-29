@@ -23,18 +23,17 @@ export class RandomStringGenerator extends ValueGenerator<
   RandomStringGeneratorConfig
 > {
   constructor(config: RandomStringGeneratorConfig) {
-
     config.minLen = config.minLen ?? 0;
 
     if (!config.maxLen) {
       throw new Error(`Property 'maxLen' is required`);
     } else if (config.minLen < 0 || config.maxLen < 0) {
-      throw new Error(`Both 'minLen' and 'maxLen' must not be negative`)
+      throw new Error(`Both 'minLen' and 'maxLen' must not be negative`);
     } else if (config.minLen > config.maxLen) {
       throw new Error(
         `Maximum string length must be greater or equal than the minimum: ` +
-        `(${config.minLen} > ${config.maxLen})`
-      )
+          `(${config.minLen} > ${config.maxLen})`,
+      );
     } else if (!config.charset) {
       throw new Error(`Property 'charset' is required`);
     }
@@ -43,7 +42,10 @@ export class RandomStringGenerator extends ValueGenerator<
   }
 
   protected get = (): GeneratedValue => {
-    const length = randomInteger(this.config.minLen as number, this.config.maxLen)
+    const length = randomInteger(
+      this.config.minLen as number,
+      this.config.maxLen,
+    );
     return randomStringOfLength(this.config.charset, length);
   };
 }

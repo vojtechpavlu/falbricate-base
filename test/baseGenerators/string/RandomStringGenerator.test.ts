@@ -7,7 +7,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 0,
       maxLen: 20,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
 
     expect(() => getValueGenerator(generatorName, config)).not.toThrow();
@@ -17,7 +17,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 0,
       maxLen: 20,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -29,7 +29,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 0,
       maxLen: 20,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -45,7 +45,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 0,
       maxLen: 20,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -60,7 +60,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: -1,
       maxLen: 20,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
     expect(() => getValueGenerator(generatorName, config)).toThrow();
   });
@@ -69,7 +69,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 20,
       maxLen: 3,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
     expect(() => getValueGenerator(generatorName, config)).toThrow();
   });
@@ -78,7 +78,7 @@ describe('RandomStringGenerator', () => {
     const config: RandomStringGeneratorConfig = {
       minLen: 20,
       maxLen: 3,
-      charset: ['a', 'b', 'c']
+      charset: ['a', 'b', 'c'],
     };
     expect(() => getValueGenerator(generatorName, config)).toThrow();
   });
@@ -88,7 +88,7 @@ describe('RandomStringGenerator', () => {
       minLen: 20,
       maxLen: 3,
       // @ts-ignore
-      charset: 13
+      charset: 13,
     };
     expect(() => getValueGenerator(generatorName, config)).toThrow();
   });
