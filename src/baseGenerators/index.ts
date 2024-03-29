@@ -13,7 +13,7 @@ import {
   RandomStringGenerator,
   RandomStringGeneratorConfig,
   StringGeneratorConfig,
-  StringOfLengthGenerator
+  StringOfLengthGenerator, StringTemplateGenerator, StringTemplateGeneratorConfig
 } from './string';
 import {
   ArrayPicker,
@@ -48,17 +48,31 @@ import {
 export type ValueGeneratorName =
   | string
   | (
+      // Numerics
       | 'range-integer'
       | 'range-float'
+
+      // Strings
       | 'string-of-length'
       | 'random-string'
+      | 'string-template'
+
+      // Boolean
+      | 'probable-boolean'
+
+      // Dates
+      | 'range-date-time'
+
+      // Arrays
       | 'array-picker'
       | 'array-sample'
-      | 'context-input'
+
+      // Objects
       | 'object-from-schema'
-      | 'probable-boolean'
-      | 'range-date-time'
       | 'list-of-schema'
+
+      // Other
+      | 'context-input'
       | 'constant-value'
     );
 
@@ -170,6 +184,10 @@ registerValueGenerator(
 registerValueGenerator(
   'random-string',
   (config: RandomStringGeneratorConfig) => new RandomStringGenerator(config),
+);
+registerValueGenerator(
+  'string-template',
+  (config: StringTemplateGeneratorConfig) => new StringTemplateGenerator(config),
 );
 registerValueGenerator(
   'array-picker',
