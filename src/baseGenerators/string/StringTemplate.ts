@@ -49,8 +49,8 @@ export class StringTemplateGenerator extends ValueGenerator<
 
     super(config);
 
-    const protoCompiled: SchemaInput = {
-      fields: config.variables,
+    let protoCompiled: SchemaInput = {
+      fields: config.variables ?? {},
     };
 
     this.fabricator = new Fabricator(protoCompiled);
