@@ -1,4 +1,4 @@
-import { Charset, getCharset, randomCharacter, randomInteger, randomStringOfLength } from '../../utils';
+import { Charset, getCharset, randomCharacter, randomInteger } from '../../utils';
 import {
   GeneratedValue,
   ValueGenerator,
@@ -7,9 +7,7 @@ import {
 import {
   DeclarativeFieldDefinition,
   Fabricator,
-  FieldsDefinition,
   ObjectFalsum,
-  Schema,
   SchemaInput
 } from '../../schema';
 import { FabricationContext } from '../../schema/fabricationContext';
