@@ -1,9 +1,12 @@
-import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../generators/ValueGenerator';
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../generators';
 
-export type StandardValueGenerator = ValueGenerator<GeneratedValue, ValueGeneratorConfig>
+export type StandardValueGenerator = ValueGenerator<
+  GeneratedValue,
+  ValueGeneratorConfig
+>;
 
-export type StandardValueGeneratorName = (
-  string | (
-    'uuid'
-  )
-);
+export type StandardValueGeneratorName = string | 'uuid';

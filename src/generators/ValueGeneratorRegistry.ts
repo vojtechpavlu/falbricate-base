@@ -4,23 +4,46 @@ import {
   ValueGeneratorConfig,
   ValueGeneratorName,
 } from './ValueGenerator';
-import { FloatGenerator, FloatGeneratorConfig, IntegerGenerator, IntegerGeneratorConfig } from './numeric';
+import {
+  FloatGenerator,
+  FloatGeneratorConfig,
+  IntegerGenerator,
+  IntegerGeneratorConfig,
+} from './numeric';
 import {
   RandomStringGenerator,
   RandomStringGeneratorConfig,
   StringGeneratorConfig,
-  StringOfLengthGenerator, StringTemplateGenerator, StringTemplateGeneratorConfig
+  StringOfLengthGenerator,
+  StringTemplateGenerator,
+  StringTemplateGeneratorConfig,
 } from './string';
-import { ArrayPicker, ArrayPickerConfig, ArraySampleConfig, ArraySampleGenerator } from './array';
+import {
+  ArrayPicker,
+  ArrayPickerConfig,
+  ArraySampleConfig,
+  ArraySampleGenerator,
+} from './array';
 import {
   ListOfObjectsFromSchemaConfig,
   ListOfObjectsFromSchemaGenerator,
   ObjectFromSchemaConfig,
-  ObjectFromSchemaGenerator
+  ObjectFromSchemaGenerator,
 } from './object';
-import { ConstantValue, ConstantValueConfig, ContextAccessor, ContextAccessorConfig } from './other';
-import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
-import { DateTimeInRangeGenerator, DateTimeInRangeGeneratorConfig } from './date';
+import {
+  ConstantValue,
+  ConstantValueConfig,
+  ContextAccessor,
+  ContextAccessorConfig,
+} from './other';
+import {
+  ProbableBooleanGenerator,
+  ProbableBooleanGeneratorConfig,
+} from './boolean';
+import {
+  DateTimeInRangeGenerator,
+  DateTimeInRangeGeneratorConfig,
+} from './date';
 
 /**
  * Type definition for builders of ValueGenerators
@@ -114,7 +137,6 @@ export const registerValueGenerator = <
 
 /** Registry for Value generator builders */
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
-
 
 registerValueGenerator(
   'range-integer',

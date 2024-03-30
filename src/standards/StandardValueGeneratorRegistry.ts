@@ -1,4 +1,7 @@
-import { StandardValueGenerator, StandardValueGeneratorName } from './StandardValueGenerator';
+import {
+  StandardValueGenerator,
+  StandardValueGeneratorName,
+} from './StandardValueGenerator';
 import { UUIDGenerator } from './index';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
@@ -9,7 +12,9 @@ export interface StandardValueGeneratorRegistry {
 
 const REGISTRY: StandardValueGeneratorRegistry = {};
 
-export const getStandard = (name: StandardValueGeneratorName): StandardValueGenerator => {
+export const getStandard = (
+  name: StandardValueGeneratorName,
+): StandardValueGenerator => {
   const standard = REGISTRY[name];
 
   if (!standard) {
@@ -25,7 +30,7 @@ export const hasStandard = (name: StandardValueGeneratorName): boolean => {
 
 export const registerStandard = (
   name: StandardValueGeneratorName,
-  builder: StandardValueGeneratorBuilder
+  builder: StandardValueGeneratorBuilder,
 ) => {
   if (hasStandard(name)) {
     throw new Error(`Name '${name}' is already registered`);
