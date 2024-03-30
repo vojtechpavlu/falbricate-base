@@ -43,6 +43,8 @@ import {
 import {
   DateTimeInRangeGenerator,
   DateTimeInRangeGeneratorConfig,
+  TimestampGenerator,
+  TimestampGeneratorConfig,
 } from './date';
 
 /**
@@ -184,6 +186,10 @@ registerValueGenerator(
   'range-date-time',
   (config: DateTimeInRangeGeneratorConfig) =>
     new DateTimeInRangeGenerator(config),
+);
+registerValueGenerator(
+  'relative-timestamp',
+  (config: TimestampGeneratorConfig) => new TimestampGenerator(config),
 );
 registerValueGenerator(
   'list-of-schema',

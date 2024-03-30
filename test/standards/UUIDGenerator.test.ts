@@ -1,7 +1,7 @@
 import { getStandard } from '../../src';
 
 const generatorName = 'uuid';
-const generatorNameUpper = 'UUID'
+const generatorNameUpper = 'UUID';
 
 describe('UUIDGenerator', () => {
   it('should be able to be found using name (lower)', () => {

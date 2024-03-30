@@ -1,4 +1,10 @@
-import { GeneratedValue, getStandard, getValueGenerator, ValueGenerator, ValueGeneratorConfig } from '../generators';
+import {
+  GeneratedValue,
+  getStandard,
+  getValueGenerator,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../generators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
 import { FalsumPipe, getFalsumPipe } from '../pipes';
 
