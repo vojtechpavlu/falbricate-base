@@ -1,4 +1,4 @@
-import { GeneratedValue } from '../../baseGenerators';
+import { GeneratedValue } from '../../generators';
 
 /**
  * Splits the given string by space

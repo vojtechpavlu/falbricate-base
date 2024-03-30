@@ -3,7 +3,7 @@ import {
   ValueGenerator,
   ValueGeneratorConfig,
   ValueGeneratorName,
-} from '../baseGenerators';
+} from '../generators';
 import { FalsumPipe } from '../pipes';
 
 /**

@@ -2,83 +2,25 @@ import {
   GeneratedValue,
   ValueGenerator,
   ValueGeneratorConfig,
+  ValueGeneratorName,
 } from './ValueGenerator';
-import {
-  FloatGenerator,
-  FloatGeneratorConfig,
-  IntegerGenerator,
-  IntegerGeneratorConfig,
-} from './numeric';
+import { FloatGenerator, FloatGeneratorConfig, IntegerGenerator, IntegerGeneratorConfig } from './numeric';
 import {
   RandomStringGenerator,
   RandomStringGeneratorConfig,
   StringGeneratorConfig,
-  StringOfLengthGenerator,
-  StringTemplateGenerator,
-  StringTemplateGeneratorConfig,
+  StringOfLengthGenerator, StringTemplateGenerator, StringTemplateGeneratorConfig
 } from './string';
-import {
-  ArrayPicker,
-  ArrayPickerConfig,
-  ArraySampleConfig,
-  ArraySampleGenerator,
-} from './array';
+import { ArrayPicker, ArrayPickerConfig, ArraySampleConfig, ArraySampleGenerator } from './array';
 import {
   ListOfObjectsFromSchemaConfig,
   ListOfObjectsFromSchemaGenerator,
   ObjectFromSchemaConfig,
-  ObjectFromSchemaGenerator,
+  ObjectFromSchemaGenerator
 } from './object';
-import {
-  ConstantValue,
-  ConstantValueConfig,
-  ContextAccessor,
-  ContextAccessorConfig,
-} from './other';
-import {
-  ProbableBooleanGenerator,
-  ProbableBooleanGeneratorConfig,
-} from './boolean';
-import {
-  DateTimeInRangeGenerator,
-  DateTimeInRangeGeneratorConfig,
-} from './date';
-import { UUIDGenerator } from './standards';
-
-/**
- * Declaration of the basic Value Generator names for type-hinting purposes
- */
-export type ValueGeneratorName =
-  | string
-  // Numerics
-  | (
-      | 'range-integer'
-      | 'range-float'
-
-      // Strings
-      | 'string-of-length'
-      | 'random-string'
-      | 'string-template'
-
-      // Boolean
-      | 'probable-boolean'
-
-      // Dates
-      | 'range-date-time'
-
-      // Arrays
-      | 'array-picker'
-      | 'array-sample'
-
-      // Objects
-      | 'object-from-schema'
-      | 'list-of-schema'
-
-      // Other
-      | 'context-input'
-      | 'constant-value'
-      | 'uuid'
-    );
+import { ConstantValue, ConstantValueConfig, ContextAccessor, ContextAccessorConfig } from './other';
+import { ProbableBooleanGenerator, ProbableBooleanGeneratorConfig } from './boolean';
+import { DateTimeInRangeGenerator, DateTimeInRangeGeneratorConfig } from './date';
 
 /**
  * Type definition for builders of ValueGenerators
@@ -173,6 +115,7 @@ export const registerValueGenerator = <
 /** Registry for Value generator builders */
 const VALUE_GENERATOR_REGISTRY: ValueGeneratorRegistry<any, any> = {};
 
+
 registerValueGenerator(
   'range-integer',
   (config: IntegerGeneratorConfig) => new IntegerGenerator(config),
@@ -229,17 +172,3 @@ registerValueGenerator(
   'constant-value',
   (config: ConstantValueConfig) => new ConstantValue(config),
 );
-registerValueGenerator(
-  'uuid',
-  (config: ValueGeneratorConfig) => new UUIDGenerator(config),
-);
-
-export * from './ValueGenerator';
-export * from './numeric';
-export * from './string';
-export * from './array';
-export * from './object';
-export * from './other';
-export * from './boolean';
-export * from './date';
-export * from './standards';

@@ -3,7 +3,7 @@ import {
   getValueGenerator,
   ValueGenerator,
   ValueGeneratorConfig,
-} from '../baseGenerators';
+} from '../generators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
 import { FalsumPipe, getFalsumPipe } from '../pipes';
 

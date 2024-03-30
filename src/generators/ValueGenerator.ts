@@ -2,14 +2,52 @@ import { getValuePipe, ValuePipe, ValuePipeName } from '../pipes/value';
 import { FabricationContext } from '../schema/fabricationContext';
 import { randomBoolean } from '../utils/random/boolean';
 
+/**
+ * Declaration of the basic Value Generator names for type-hinting purposes
+ */
+export type ValueGeneratorName =
+  | string
+  // Numerics
+  | (
+      | 'range-integer'
+      | 'range-float'
+
+      // Strings
+      | 'string-of-length'
+      | 'random-string'
+      | 'string-template'
+
+      // Boolean
+      | 'probable-boolean'
+
+      // Dates
+      | 'range-date-time'
+
+      // Arrays
+      | 'array-picker'
+      | 'array-sample'
+
+      // Objects
+      | 'object-from-schema'
+      | 'list-of-schema'
+
+      // Other
+      | 'context-input'
+      | 'constant-value'
+    );
+
+/** Values considered as null-like. */
 export type NullLikeValue = undefined | null;
 
+/** Declaration of how could a generated single value look like */
 export type SingleValue =
   | string
   | number
   | boolean
   | (any & {})
   | NullLikeValue;
+
+/** Declaration of the most general Generated Value type */
 export type GeneratedValue = SingleValue | SingleValue[] | NullLikeValue;
 
 /**

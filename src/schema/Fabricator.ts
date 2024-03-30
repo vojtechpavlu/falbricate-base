@@ -1,5 +1,5 @@
 import { Schema } from './Schema';
-import { GeneratedValue } from '../baseGenerators';
+import { GeneratedValue } from '../generators';
 import { SchemaInput } from './SchemaInput';
 import { FabricationContext } from './fabricationContext';
 
