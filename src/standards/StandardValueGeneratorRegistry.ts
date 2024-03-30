@@ -1,8 +1,9 @@
 import {
   StandardValueGenerator,
-  StandardValueGeneratorName,
+  StandardValueGeneratorName
 } from './StandardValueGenerator';
 import { UUIDGenerator } from './index';
+import { TimestampGenerator } from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
 
@@ -13,7 +14,7 @@ export interface StandardValueGeneratorRegistry {
 const REGISTRY: StandardValueGeneratorRegistry = {};
 
 export const getStandard = (
-  name: StandardValueGeneratorName,
+  name: StandardValueGeneratorName
 ): StandardValueGenerator => {
   const standard = REGISTRY[name];
 
@@ -30,7 +31,7 @@ export const hasStandard = (name: StandardValueGeneratorName): boolean => {
 
 export const registerStandard = (
   name: StandardValueGeneratorName,
-  builder: StandardValueGeneratorBuilder,
+  builder: StandardValueGeneratorBuilder
 ) => {
   if (hasStandard(name)) {
     throw new Error(`Name '${name}' is already registered`);
@@ -39,5 +40,272 @@ export const registerStandard = (
   REGISTRY[name] = builder;
 };
 
+// UUIDs
 registerStandard('uuid', () => new UUIDGenerator());
 registerStandard('UUID', () => new UUIDGenerator({ uppercase: true }));
+
+// Timestamps registration
+const timestampIntervals: any = {
+  seconds: { vals: [1, 5, 10, 15, 30, 45], unit: 's' },
+  minutes: { vals: [1, 5, 10, 15, 30, 45], unit: 'm' },
+  hours: { vals: [1, 3, 6, 9, 12, 15, 18], unit: 'h' },
+  days: { vals: [1, 2, 3, 4, 5, 6, 7, 10, 14, 20, 21, 28], unit: 'd' },
+  months: { vals: [1, 3, 6, 9], unit: 'M' },
+  years: { vals: [1, 2, 3, 5, 10, 20, 50, 100, 200], unit: 'y' }
+};
+
+Object.keys(timestampIntervals).forEach((unitKey: string) => {
+  const unit = timestampIntervals[unitKey];
+  unit.vals.forEach((value: number) => {
+    ['past', 'future'].forEach((direction: string) => {
+      ['timestamp', 'date'].forEach((type: string) => {
+        const config: any = { direction, period: {} };
+        config.period[unitKey] = value;
+        config.asDate = (type === 'date')
+        
+        registerStandard(
+          `${type}-${direction}-${value}${unit.unit}`,
+          () => new TimestampGenerator(config)
+        );
+      })
+    });
+  });
+});
+
+registerStandard(
+  'timestamp-minute-before', () => new TimestampGenerator({
+    period: { minutes: 2 },
+    minimumPeriod: { minutes: 1 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-hour-before', () => new TimestampGenerator({
+    period: { hours: 2 },
+    minimumPeriod: { hours: 1 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-day-before', () => new TimestampGenerator({
+    period: { days: 2 },
+    minimumPeriod: { days: 1 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-week-before', () => new TimestampGenerator({
+    period: { days: 14 },
+    minimumPeriod: { days: 7 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-year-before', () => new TimestampGenerator({
+    period: { years: 2 },
+    minimumPeriod: { years: 1 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-decade-before', () => new TimestampGenerator({
+    period: { years: 20 },
+    minimumPeriod: { years: 10 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-century-before', () => new TimestampGenerator({
+    period: { years: 200 },
+    minimumPeriod: { years: 100 },
+    direction: 'past'
+  })
+)
+
+registerStandard(
+  'timestamp-minute-after', () => new TimestampGenerator({
+    period: { minutes: 2 },
+    minimumPeriod: { minutes: 1 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-hour-after', () => new TimestampGenerator({
+    period: { hours: 2 },
+    minimumPeriod: { hours: 1 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-day-after', () => new TimestampGenerator({
+    period: { days: 2 },
+    minimumPeriod: { days: 1 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-week-after', () => new TimestampGenerator({
+    period: { days: 14 },
+    minimumPeriod: { days: 7 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-year-after', () => new TimestampGenerator({
+    period: { years: 2 },
+    minimumPeriod: { years: 1 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-decade-after', () => new TimestampGenerator({
+    period: { years: 20 },
+    minimumPeriod: { years: 10 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'timestamp-century-after', () => new TimestampGenerator({
+    period: { years: 200 },
+    minimumPeriod: { years: 100 },
+    direction: 'future'
+  })
+)
+
+registerStandard(
+  'date-minute-before', () => new TimestampGenerator({
+    period: { minutes: 2 },
+    minimumPeriod: { minutes: 1 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-hour-before', () => new TimestampGenerator({
+    period: { hours: 2 },
+    minimumPeriod: { hours: 1 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-day-before', () => new TimestampGenerator({
+    period: { days: 2 },
+    minimumPeriod: { days: 1 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-week-before', () => new TimestampGenerator({
+    period: { days: 14 },
+    minimumPeriod: { days: 7 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-year-before', () => new TimestampGenerator({
+    period: { years: 2 },
+    minimumPeriod: { years: 1 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-decade-before', () => new TimestampGenerator({
+    period: { years: 20 },
+    minimumPeriod: { years: 10 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-century-before', () => new TimestampGenerator({
+    period: { years: 200 },
+    minimumPeriod: { years: 100 },
+    direction: 'past',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-minute-after', () => new TimestampGenerator({
+    period: { minutes: 2 },
+    minimumPeriod: { minutes: 1 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-hour-after', () => new TimestampGenerator({
+    period: { hours: 2 },
+    minimumPeriod: { hours: 1 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-day-after', () => new TimestampGenerator({
+    period: { days: 2 },
+    minimumPeriod: { days: 1 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-week-after', () => new TimestampGenerator({
+    period: { days: 14 },
+    minimumPeriod: { days: 7 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-year-after', () => new TimestampGenerator({
+    period: { years: 2 },
+    minimumPeriod: { years: 1 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-decade-after', () => new TimestampGenerator({
+    period: { years: 20 },
+    minimumPeriod: { years: 10 },
+    direction: 'future',
+    asDate: true
+  })
+)
+
+registerStandard(
+  'date-century-after', () => new TimestampGenerator({
+    period: { years: 200 },
+    minimumPeriod: { years: 100 },
+    direction: 'future',
+    asDate: true
+  })
+)
