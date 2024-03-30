@@ -1,4 +1,4 @@
-import { IntegerGenerator, Schema, SchemaInput } from '../../src';
+import { IntegerGenerator, Schema, SchemaInput, UUIDGenerator } from '../../src';
 
 describe('Schema constructor', () => {
   it('should create a schema from ValueGenerators', () => {
@@ -63,5 +63,32 @@ describe('Schema constructor', () => {
     // Check it successfully recognized the right value generator
     expect(gen1!.constructor!.name).toBe(IntegerGenerator.name);
     expect(gen2!.constructor!.name).toBe(IntegerGenerator.name);
+  });
+
+  it('should be able to consume the standard generator without error', () => {
+    const schemaInput: SchemaInput = {
+      fields: {
+        id: 'uuid',
+      },
+    };
+
+    expect(() => new Schema(schemaInput)).not.toThrow()
+  });
+
+  it('should be able to consume and create the standard generator', () => {
+    const schemaInput: SchemaInput = {
+      fields: {
+        id: 'uuid',
+      },
+    };
+
+    const schema = new Schema(schemaInput)
+
+    expect(Object.keys(schema.fields).length).toBe(1)
+    expect(Object.keys(schema.fields)[0]).toBe('id')
+
+    const generator = schema.fields['id'];
+
+    expect(generator!.constructor.name).toBe(UUIDGenerator.name)
   });
 });
