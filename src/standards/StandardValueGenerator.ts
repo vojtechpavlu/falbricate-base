@@ -9,4 +9,7 @@ export type StandardValueGenerator = ValueGenerator<
   ValueGeneratorConfig
 >;
 
-export type StandardValueGeneratorName = string | 'uuid';
+export type StandardValueGeneratorName = string | (
+  'uuid' |
+  'UUID'
+  );

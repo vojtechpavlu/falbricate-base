@@ -1,9 +1,4 @@
-import {
-  GeneratedValue,
-  getValueGenerator,
-  ValueGenerator,
-  ValueGeneratorConfig,
-} from '../generators';
+import { GeneratedValue, getStandard, getValueGenerator, ValueGenerator, ValueGeneratorConfig } from '../generators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
 import { FalsumPipe, getFalsumPipe } from '../pipes';
 
@@ -50,6 +45,8 @@ export class Schema {
       // otherwise transform POJSO into matching ValueGenerator
       if (inputField instanceof ValueGenerator) {
         compiled[key] = inputField;
+      } else if (typeof inputField === 'string') {
+        compiled[key] = getStandard(inputField);
       } else {
         inputField = inputField as DeclarativeFieldDefinition;
         compiled[key] = getValueGenerator(inputField.type, inputField.config);

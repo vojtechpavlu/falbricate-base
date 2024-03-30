@@ -1,8 +1,9 @@
 import {
+  DeclarativeFieldDefinition,
   Fabricator,
   getValueGenerator,
   ObjectFalsum,
-  SchemaInput,
+  SchemaInput
 } from '../../../src';
 
 const generatorName = 'object-from-schema';
@@ -23,13 +24,16 @@ const schema: SchemaInput = {
 
 describe('ObjectFromSchema generator', () => {
   it('should be found by name', () => {
+
+    const config = (schema.fields.nested as DeclarativeFieldDefinition).config;
+
     expect(() =>
-      getValueGenerator(generatorName, schema.fields.nested?.config),
+      getValueGenerator(generatorName, config),
     ).not.toThrow();
 
     const generator = getValueGenerator(
       generatorName,
-      schema.fields.nested?.config,
+      config,
     );
 
     expect(generator).not.toBeUndefined();
