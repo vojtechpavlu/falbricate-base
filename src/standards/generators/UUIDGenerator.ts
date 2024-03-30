@@ -6,11 +6,16 @@ import {
 import { StringTemplateGenerator } from '../../generators';
 import { getCharset } from '../../utils';
 
+export type UUIDGeneratorConfig = {
+  uppercase?: boolean
+} & ValueGeneratorConfig
+
+
 export class UUIDGenerator extends ValueGenerator<
   GeneratedValue,
-  ValueGeneratorConfig
+  UUIDGeneratorConfig
 > {
-  constructor(config?: ValueGeneratorConfig) {
+  constructor(config?: UUIDGeneratorConfig) {
     super(config ?? {});
   }
 
@@ -18,7 +23,7 @@ export class UUIDGenerator extends ValueGenerator<
     new StringTemplateGenerator({
       template: 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx',
       customCharsets: {
-        x: getCharset('hexlower'),
+        x: getCharset(this.config.uppercase ? 'hexupper' : 'hexlower'),
       },
     });
 

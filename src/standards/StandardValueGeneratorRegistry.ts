@@ -40,3 +40,4 @@ export const registerStandard = (
 };
 
 registerStandard('uuid', () => new UUIDGenerator());
+registerStandard('UUID', () => new UUIDGenerator({ uppercase: true }));

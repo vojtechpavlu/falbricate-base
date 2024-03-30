@@ -1,8 +1,8 @@
 import {
-  GeneratedValue,
+  GeneratedValue, StandardValueGeneratorName,
   ValueGenerator,
   ValueGeneratorConfig,
-  ValueGeneratorName,
+  ValueGeneratorName
 } from '../generators';
 import { FalsumPipe } from '../pipes';
 
@@ -14,6 +14,13 @@ export interface DeclarativeFieldDefinition {
   type: ValueGeneratorName;
   config: ValueGeneratorConfig & any;
 }
+
+/** Cumulative description of how could a field definition look like */
+export type FieldDeclaration = (
+  DeclarativeFieldDefinition |
+  ValueGenerator<GeneratedValue, ValueGeneratorConfig> |
+  StandardValueGeneratorName
+  );
 
 /**
  * Declaration of a Falsum Pipe client input enabling the client
@@ -34,9 +41,7 @@ export type FalsumPipeInput = FalsumPipe | string;
  */
 export interface SchemaInput {
   fields: {
-    [name: string]:
-      | DeclarativeFieldDefinition
-      | ValueGenerator<GeneratedValue, ValueGeneratorConfig>;
+    [name: string]: FieldDeclaration;
   };
 
   pipes?: FalsumPipeInput[];
