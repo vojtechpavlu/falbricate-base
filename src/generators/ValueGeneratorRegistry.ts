@@ -2,6 +2,7 @@ import {
   GeneratedValue,
   ValueGenerator,
   ValueGeneratorConfig,
+  ValueGeneratorName,
 } from './ValueGenerator';
 import {
   FloatGenerator,
@@ -43,42 +44,6 @@ import {
   DateTimeInRangeGenerator,
   DateTimeInRangeGeneratorConfig,
 } from './date';
-import { UUIDGenerator } from './standards';
-
-/**
- * Declaration of the basic Value Generator names for type-hinting purposes
- */
-export type ValueGeneratorName =
-  | string
-  // Numerics
-  | (
-      | 'range-integer'
-      | 'range-float'
-
-      // Strings
-      | 'string-of-length'
-      | 'random-string'
-      | 'string-template'
-
-      // Boolean
-      | 'probable-boolean'
-
-      // Dates
-      | 'range-date-time'
-
-      // Arrays
-      | 'array-picker'
-      | 'array-sample'
-
-      // Objects
-      | 'object-from-schema'
-      | 'list-of-schema'
-
-      // Other
-      | 'context-input'
-      | 'constant-value'
-      | 'uuid'
-    );
 
 /**
  * Type definition for builders of ValueGenerators
@@ -229,17 +194,3 @@ registerValueGenerator(
   'constant-value',
   (config: ConstantValueConfig) => new ConstantValue(config),
 );
-registerValueGenerator(
-  'uuid',
-  (config: ValueGeneratorConfig) => new UUIDGenerator(config),
-);
-
-export * from './ValueGenerator';
-export * from './numeric';
-export * from './string';
-export * from './array';
-export * from './object';
-export * from './other';
-export * from './boolean';
-export * from './date';
-export * from './standards';

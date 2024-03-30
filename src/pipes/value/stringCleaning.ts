@@ -1,4 +1,4 @@
-import { GeneratedValue } from '../../baseGenerators';
+import { GeneratedValue } from '../../generators';
 
 /**
  * Removes leading and trailing whitespaces in the string.

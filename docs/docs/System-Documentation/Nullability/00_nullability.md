@@ -10,9 +10,9 @@ generated dataset and what actual _null-like_ value should be used.
 
 ```typescript linenums="1"
 const nullabilityConfiguration: NullabilityConfiguration = {
-    probability: 0.73,
-    nullValue: undefined
-}
+  probability: 0.73,
+  nullValue: undefined,
+};
 ```
 
 This configuration describes the used Value Generator should generate 73% of values and

@@ -1,4 +1,4 @@
-import { GeneratedValue } from '../../baseGenerators';
+import { GeneratedValue } from '../../generators';
 import * as manipulation from '../../utils/common/objectManipulation';
 
 /**

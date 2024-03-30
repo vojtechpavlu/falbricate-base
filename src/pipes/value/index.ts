@@ -1,4 +1,4 @@
-import { GeneratedValue } from '../../baseGenerators';
+import { GeneratedValue } from '../../generators';
 import { stringify } from './stringify';
 import { sortAsc, sortDesc } from './sorting';
 import { lowercase, uppercase } from './casing';
