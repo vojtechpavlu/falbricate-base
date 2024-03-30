@@ -22,6 +22,7 @@ export type ValueGeneratorName =
 
       // Dates
       | 'range-date-time'
+      | 'relative-timestamp'
 
       // Arrays
       | 'array-picker'
