@@ -1,4 +1,4 @@
-import { getStandard } from '../../../src';
+import { getStandard } from '../../src';
 
 const generatorName = 'uuid';
 
