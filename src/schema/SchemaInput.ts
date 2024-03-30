@@ -1,8 +1,9 @@
 import {
-  GeneratedValue, StandardValueGeneratorName,
+  GeneratedValue,
+  StandardValueGeneratorName,
   ValueGenerator,
   ValueGeneratorConfig,
-  ValueGeneratorName
+  ValueGeneratorName,
 } from '../generators';
 import { FalsumPipe } from '../pipes';
 
@@ -16,11 +17,10 @@ export interface DeclarativeFieldDefinition {
 }
 
 /** Cumulative description of how could a field definition look like */
-export type FieldDeclaration = (
-  DeclarativeFieldDefinition |
-  ValueGenerator<GeneratedValue, ValueGeneratorConfig> |
-  StandardValueGeneratorName
-  );
+export type FieldDeclaration =
+  | DeclarativeFieldDefinition
+  | ValueGenerator<GeneratedValue, ValueGeneratorConfig>
+  | StandardValueGeneratorName;
 
 /**
  * Declaration of a Falsum Pipe client input enabling the client

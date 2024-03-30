@@ -1,8 +1,4 @@
-import {
-  GeneratedValue,
-  ValueGenerator,
-  ValueGeneratorConfig
-} from '../index';
+import { GeneratedValue, ValueGenerator, ValueGeneratorConfig } from '../index';
 import { randomInteger } from '../../utils';
 import { calculatePeriod, TimePeriod } from '../../utils/common/timePeriod';
 
@@ -19,11 +15,11 @@ export type TimeDirection = 'past' | 'future';
  * (UNIX timestamp) or if it should be a general Date.
  */
 export type TimestampGeneratorConfig = {
-  period: TimePeriod,
-  direction: TimeDirection
-  asDate?: boolean
-  minimumPeriod?: TimePeriod
-} & ValueGeneratorConfig
+  period: TimePeriod;
+  direction: TimeDirection;
+  asDate?: boolean;
+  minimumPeriod?: TimePeriod;
+} & ValueGeneratorConfig;
 
 /**
  * This value generator is responsible for generating random
@@ -33,23 +29,24 @@ export class TimestampGenerator extends ValueGenerator<
   GeneratedValue,
   TimestampGeneratorConfig
 > {
-
   private readonly period: number;
   private readonly minimumPeriod: number;
 
   constructor(config: TimestampGeneratorConfig) {
     super(config);
 
-    this.period = calculatePeriod(this.config.period)
-    this.minimumPeriod = this.config.minimumPeriod ? calculatePeriod(this.config.minimumPeriod) : 0
+    this.period = calculatePeriod(this.config.period);
+    this.minimumPeriod = this.config.minimumPeriod
+      ? calculatePeriod(this.config.minimumPeriod)
+      : 0;
 
     if (this.period < this.minimumPeriod) {
       throw new Error(
         `Periods are not set properly: ` +
-        `There is no suitable timestamp in ${this.config.direction} ` +
-        `where the maximum period of time from now is ${this.period} ms but ` +
-        `the date must be at least ${this.minimumPeriod} ms from now`
-      )
+          `There is no suitable timestamp in ${this.config.direction} ` +
+          `where the maximum period of time from now is ${this.period} ms but ` +
+          `the date must be at least ${this.minimumPeriod} ms from now`,
+      );
     }
   }
 
@@ -63,12 +60,12 @@ export class TimestampGenerator extends ValueGenerator<
     if (this.config.direction === 'past') {
       timestamp = randomInteger(
         currentTimestamp - this.period,
-        currentTimestamp - this.minimumPeriod
+        currentTimestamp - this.minimumPeriod,
       );
     } else {
       timestamp = randomInteger(
         currentTimestamp + this.minimumPeriod,
-        currentTimestamp + this.period
+        currentTimestamp + this.period,
       );
     }
 

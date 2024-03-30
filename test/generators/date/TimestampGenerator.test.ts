@@ -6,9 +6,9 @@ describe('TimestampGenerator', () => {
   it('should be available via name', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        seconds: 20
+        seconds: 20,
       },
-      direction: 'past'
+      direction: 'past',
     };
 
     expect(() => getValueGenerator(generatorName, config)).not.toThrow();
@@ -17,9 +17,9 @@ describe('TimestampGenerator', () => {
   it('should generate number by default', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        seconds: 20
+        seconds: 20,
       },
-      direction: 'past'
+      direction: 'past',
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -30,10 +30,10 @@ describe('TimestampGenerator', () => {
   it('should generate a date when specified', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        seconds: 20
+        seconds: 20,
       },
       direction: 'past',
-      asDate: true
+      asDate: true,
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -44,9 +44,9 @@ describe('TimestampGenerator', () => {
   it('should generate a timestamp in past', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        hours: 100
+        hours: 100,
       },
-      direction: 'past'
+      direction: 'past',
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -59,9 +59,9 @@ describe('TimestampGenerator', () => {
   it('should generate a timestamp in future', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        hours: 100
+        hours: 100,
       },
-      direction: 'future'
+      direction: 'future',
     };
 
     const generator = getValueGenerator(generatorName, config);
@@ -74,17 +74,17 @@ describe('TimestampGenerator', () => {
   it('should generate a timestamp in past within range', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        seconds: 100
+        seconds: 100,
       },
       direction: 'future',
       minimumPeriod: {
-        seconds: 99
-      }
+        seconds: 99,
+      },
     };
 
     const generator = getValueGenerator(generatorName, config);
 
-    const currentDate = Date.now() + (99 * 1000);
+    const currentDate = Date.now() + 99 * 1000;
 
     expect(generator.generate()).toBeGreaterThanOrEqual(currentDate);
   });
@@ -92,17 +92,17 @@ describe('TimestampGenerator', () => {
   it('should generate a timestamp in past within range', () => {
     const config: TimestampGeneratorConfig = {
       period: {
-        seconds: 100
+        seconds: 100,
       },
       direction: 'past',
       minimumPeriod: {
-        seconds: 99
-      }
+        seconds: 99,
+      },
     };
 
     const generator = getValueGenerator(generatorName, config);
 
-    const currentDate = Date.now() - (99 * 1000);
+    const currentDate = Date.now() - 99 * 1000;
 
     expect(generator.generate()).toBeLessThanOrEqual(currentDate);
   });

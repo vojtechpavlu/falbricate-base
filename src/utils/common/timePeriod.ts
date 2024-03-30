@@ -3,15 +3,15 @@ interface FactorizationMap {
 }
 
 export interface TimePeriod {
-  years?: number,
-  months?: number,
-  days?: number,
-  hours?: number,
-  minutes?: number,
-  seconds?: number,
-  milliseconds?: number,
+  years?: number;
+  months?: number;
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
 
-  [key: string]: number | undefined
+  [key: string]: number | undefined;
 }
 
 const FACTORIZATION_MAP: FactorizationMap = {
@@ -21,11 +21,19 @@ const FACTORIZATION_MAP: FactorizationMap = {
   hours: 60 * 60 * 1000,
   days: 24 * 60 * 60 * 1000,
   months: 30 * 24 * 60 * 60 * 1000,
-  years: 12 * 30 * 24 * 60 * 60 * 1000
+  years: 12 * 30 * 24 * 60 * 60 * 1000,
 };
 
 export const calculatePeriod = (period: TimePeriod): number => {
-  const props = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'milliseconds'];
+  const props = [
+    'years',
+    'months',
+    'days',
+    'hours',
+    'minutes',
+    'seconds',
+    'milliseconds',
+  ];
   return Math.ceil(
     props
       .map((unit) => {
@@ -38,6 +46,6 @@ export const calculatePeriod = (period: TimePeriod): number => {
 
         return period[unit] ? period[unit]! * factor : 0;
       })
-      .reduce((acc: number, curr: number) => acc + curr)
+      .reduce((acc: number, curr: number) => acc + curr),
   );
 };

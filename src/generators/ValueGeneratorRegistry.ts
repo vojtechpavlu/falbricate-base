@@ -42,7 +42,9 @@ import {
 } from './boolean';
 import {
   DateTimeInRangeGenerator,
-  DateTimeInRangeGeneratorConfig, TimestampGenerator, TimestampGeneratorConfig
+  DateTimeInRangeGeneratorConfig,
+  TimestampGenerator,
+  TimestampGeneratorConfig,
 } from './date';
 
 /**

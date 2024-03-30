@@ -7,9 +7,8 @@ import { StringTemplateGenerator } from '../../generators';
 import { getCharset } from '../../utils';
 
 export type UUIDGeneratorConfig = {
-  uppercase?: boolean
-} & ValueGeneratorConfig
-
+  uppercase?: boolean;
+} & ValueGeneratorConfig;
 
 export class UUIDGenerator extends ValueGenerator<
   GeneratedValue,
