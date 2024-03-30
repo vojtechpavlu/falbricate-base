@@ -1,3 +1,3 @@
 export * from './StandardValueGenerator';
 export * from './StandardValueGeneratorRegistry';
-export * from './UUIDGenerator';
+export * from './generators/UUIDGenerator';

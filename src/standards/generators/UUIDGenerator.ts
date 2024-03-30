@@ -2,9 +2,9 @@ import {
   GeneratedValue,
   ValueGenerator,
   ValueGeneratorConfig,
-} from '../generators';
-import { StringTemplateGenerator } from '../generators';
-import { getCharset } from '../utils';
+} from '../../generators';
+import { StringTemplateGenerator } from '../../generators';
+import { getCharset } from '../../utils';
 
 export class UUIDGenerator extends ValueGenerator<
   GeneratedValue,
