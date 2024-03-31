@@ -34,19 +34,19 @@ The main two benefits of using Standard Value Generators are:
   same field definition over many schemas - DRY Concept
 
 
-But to be fully transparent, there is one disadvantage - you can't configure it more. For example, 
+But to be fully transparent, there is one disadvantage - you can't configure it anymore. For example, 
 when you want to use [Value Pipes](../Pipes/Value-Pipes/00_value-pipes.md), you'll need to either 
 define your own [Custom Standard](#custom-standards) or to use plain Value Generator.
 
 
 ## Structure
 
-In most cases, the Standard Value Generator are really just preconfigured Value Generators - default settings
+In most cases, the Standard Value Generator are really just preconfigured Value Generators with default settings
 used in real world cases.
 
 For example [UUID Standard](./01_uuid.md) is implemented as a preconfigured 
 [String Template Generator](../Generators/02_strings.md#string-template) following the basic rules defined for
-UUIDs.
+UUIDs - how the result string should look like, what characters can it have at each position and so on.
 
 
 ## Custom Standards
@@ -71,6 +71,12 @@ be sealed (can be a new one or an existing one).
     console.log(generator.generate());
     ```
 
+    !!! abstract "Output"
+    
+        ```
+        'Hello World!'
+        ```
+
 
 ### Custom Standard Registration
 
@@ -90,6 +96,12 @@ registerStandard(
 );
 ```
 
+!!! warning "Unique Name"
+
+    Keep in mind the name is expected to be unique. When does your selected name colide with any other currently used
+    name, the function will throw an error on this attempt.
+
+
 ### Using Custom Standards
 
 Then, you can use it as explained above:
@@ -105,6 +117,12 @@ const fabricator = new Fabricator(schema);
 
 console.log(fabricator.generate());
 ```
+
+!!! abstract "Output"
+
+    ```
+    { myStandardField: 'Hello World!' }
+    ```
 
 
 ### Full example
