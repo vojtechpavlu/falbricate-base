@@ -38,6 +38,6 @@ export class XORGenerator extends ValueGenerator<
     const valueGenerator = this.generators[valueGeneratorName]!;
 
     // Return its value
-    return valueGenerator.generate(context)
+    return valueGenerator.generate(context);
   };
 }

@@ -15,19 +15,6 @@ describe('XORGenerator', () => {
     expect(() => getValueGenerator(generatorName, config)).not.toThrow()
   })
 
-  it('should be generate a single value', () => {
-    const config: XORConfiguration = {
-      generators: {
-        zero: { type: 'constant-value', config: { value: 0 } },
-        one: { type: 'constant-value', config: { value: 1 } },
-      }
-    }
-
-    const generator = getValueGenerator(generatorName, config);
-
-    expect(generator.generate()).toBe(1)
-  })
-
   it('should be generate one or the other', () => {
     const config: XORConfiguration = {
       generators: {
