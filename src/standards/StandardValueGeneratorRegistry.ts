@@ -81,7 +81,7 @@ integerBases.forEach((base, idx) => {
   registerStandard(
     `integer-e${idx + 1}-u`,
     () => new IntegerGenerator({
-      min: base,
+      min: 0,
       max: base * 10
     })
   )
