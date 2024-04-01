@@ -34,7 +34,7 @@ import {
   ConstantValue,
   ConstantValueConfig,
   ContextAccessor,
-  ContextAccessorConfig,
+  ContextAccessorConfig, XORConfiguration, XORGenerator
 } from './other';
 import {
   ProbableBooleanGenerator,
@@ -199,4 +199,8 @@ registerValueGenerator(
 registerValueGenerator(
   'constant-value',
   (config: ConstantValueConfig) => new ConstantValue(config),
+);
+registerValueGenerator(
+  'xor',
+  (config: XORConfiguration) => new XORGenerator(config),
 );

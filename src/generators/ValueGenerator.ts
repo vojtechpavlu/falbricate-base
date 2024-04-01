@@ -35,6 +35,7 @@ export type ValueGeneratorName =
       // Other
       | 'context-input'
       | 'constant-value'
+      | 'xor'
     );
 
 /** Values considered as null-like. */
