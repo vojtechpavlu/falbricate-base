@@ -6,6 +6,7 @@ import {
   ValueGeneratorName,
 } from '../generators';
 import { FalsumPipe } from '../pipes';
+import { ProfileFabricatorName } from '../profiles/ProfileFabricatorRegistry';
 
 /**
  * Plain JavaScript Object representation of a field for which
@@ -44,5 +45,6 @@ export interface SchemaInput {
     [name: string]: FieldDeclaration;
   };
 
+  profiles?: ProfileFabricatorName[];
   pipes?: FalsumPipeInput[];
 }
