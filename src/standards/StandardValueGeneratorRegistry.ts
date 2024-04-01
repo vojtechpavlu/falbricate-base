@@ -2,7 +2,7 @@ import {
   StandardValueGenerator,
   StandardValueGeneratorName,
 } from './StandardValueGenerator';
-import { UUIDGenerator } from './index';
+import { MongoObjectId, UUIDGenerator } from './index';
 import { TimestampGenerator } from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
@@ -43,6 +43,9 @@ export const registerStandard = (
 // UUIDs
 registerStandard('uuid', () => new UUIDGenerator());
 registerStandard('UUID', () => new UUIDGenerator({ uppercase: true }));
+
+// Mongo Object ID
+registerStandard('mongo-object-id', () => new MongoObjectId());
 
 // Timestamps registration
 const timestampIntervals: any = {

@@ -12,8 +12,10 @@ export type StandardValueGenerator = ValueGenerator<
 export type StandardValueGeneratorName =
   | string
   | (
+      // IDs
       | 'uuid'
       | 'UUID'
+      | 'mongo-object-id'
 
       // Past Timestamps
       | 'timestamp-past-1s'
