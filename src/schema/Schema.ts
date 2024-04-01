@@ -7,10 +7,16 @@ import {
 } from '../generators';
 import { DeclarativeFieldDefinition, SchemaInput } from './SchemaInput';
 import { FalsumPipe, getFalsumPipe } from '../pipes';
+import { Fabricator } from './Fabricator';
+import { getProfileFabricator } from '../profiles/ProfileFabricatorRegistry';
 
 /** General declaration of a field definition. */
 export interface FieldsDefinition {
   [name: string]: ValueGenerator<GeneratedValue, ValueGeneratorConfig>;
+}
+
+export interface ProfileFabricators {
+  [name: string]: Fabricator;
 }
 
 /**
@@ -30,9 +36,12 @@ export class Schema {
   /** Pipes used to modify the whole generated falsum */
   public readonly pipes: FalsumPipe[];
 
+  public readonly profiles: ProfileFabricators;
+
   constructor(schemaInput: SchemaInput) {
     this.fields = Schema.compileFields(schemaInput);
     this.pipes = Schema.compilePipes(schemaInput);
+    this.profiles = Schema.compileProfiles(schemaInput);
   }
 
   /**
@@ -76,5 +85,18 @@ export class Schema {
     });
 
     return pipes;
+  };
+
+  public static compileProfiles = (schemaInput: SchemaInput): ProfileFabricators => {
+
+    const profileFabricators: ProfileFabricators = {};
+
+    schemaInput.profiles?.forEach((profile) => {
+
+      const profileFabricator = getProfileFabricator(profile);
+      profileFabricators[profileFabricator.profileKey] = profileFabricator.createFabricator();
+    });
+
+    return profileFabricators;
   };
 }
