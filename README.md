@@ -19,15 +19,16 @@ The following example shows the simplest way of how to declare how your
 data should look like:
 
 ```javascript
-const fabricator= new Fabricator({
+const fabricator = new Fabricator({
   fields: {
+    id: 'uuid',                   // Generate UUID
     username: {
       type: 'string-of-length',   // Generate random string of a given length
       config: {
         charset: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(''),
         length: 10,
         pipes: [                  // Modify the generated value with pipes
-          (value) => value.toLowerCase(),
+          'lowercase',
           (value) => `u/${value}`
         ]
       }
@@ -53,7 +54,12 @@ const falsum: Falsum = fabricator.generate();
 const falsa: Falsum[] = fabricator.generateMany(5);
 
 // Possible output:
-// { username: 'u/ooqne190mc', age: 18, languages: [ 'Python', 'Java', 'JS/TS' ]}
+// { 
+//   id: '5c3c2dc9-905b-4005-4059-40ff821cd2cc', 
+//   username: 'u/ooqne190mc', 
+//   age: 18, 
+//   languages: [ 'Python', 'Java', 'JS/TS' ]
+// }
 ```
 
 ## Disclaimer
