@@ -12,7 +12,7 @@ import { FabricationContext } from '../../schema/fabricationContext';
  */
 export type XORConfiguration = {
   generators: {
-    [name: string]: FieldDeclaration
+    [name: string]: FieldDeclaration;
   };
 } & ValueGeneratorConfig;
 
@@ -23,7 +23,6 @@ export class XORGenerator extends ValueGenerator<
   GeneratedValue,
   XORConfiguration
 > {
-
   private readonly generators: FieldsDefinition;
 
   constructor(config: XORConfiguration) {
@@ -34,7 +33,9 @@ export class XORGenerator extends ValueGenerator<
 
   get = (context?: FabricationContext): GeneratedValue => {
     // Find a random generator form the specified ones
-    const valueGeneratorName = randomItemFromArray(Object.keys(this.generators));
+    const valueGeneratorName = randomItemFromArray(
+      Object.keys(this.generators),
+    );
     const valueGenerator = this.generators[valueGeneratorName]!;
 
     // Return its value

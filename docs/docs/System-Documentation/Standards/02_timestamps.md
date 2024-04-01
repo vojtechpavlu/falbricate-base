@@ -16,7 +16,7 @@ Naming convention for prepared is as follows:
 
 where:
 
-- `<<type>>` describes the type of the output value - if it should be a timestamp (number) or 
+- `<<type>>` describes the type of the output value - if it should be a timestamp (number) or
   a date. Available values are `timestamp` or `date`
 - `<<direction>>` declares the direction in which the generated value shall be - in the future
   or in the past. Available values are `past` and `future`
@@ -24,13 +24,12 @@ where:
 - `<<unit>>` defines which unit shall be used; strongly related to the `<<period-lenght>>`.
   Available values are:
 
-    - `s` for seconds
-    - `m` for minutes
-    - `h` for hours
-    - `d` for days
-    - `M` for months
-    - `y` for years
-
+  - `s` for seconds
+  - `m` for minutes
+  - `h` for hours
+  - `d` for days
+  - `M` for months
+  - `y` for years
 
 For example, you could use `'timestamp-past-15m'` which describes a generator
 returning a number representing a timestamp in past 15 minutes.
@@ -45,26 +44,23 @@ This follows this naming pattern:
 ```
 
 where:
- 
+
 - `<<type>>` describes the type of the output value - if it should be a timestamp (number) or
   a date. Available values are `timestamp` or `date`
-- `<<unit>>` describes the unit used; available values are `minute`, `hour`, `day`, `week`, `month`, 
+- `<<unit>>` describes the unit used; available values are `minute`, `hour`, `day`, `week`, `month`,
   `year`, `decade` and `century`
 - `<<direction>>` declares the direction in which the generated value shall be - in the future
   or in the past. Available values are `before` and `after`
 
 So, for example, you could define your field to have a timestamp from past in range
-of 14 days before now but also up to 7 days before by using this generator 
+of 14 days before now but also up to 7 days before by using this generator
 `timestamp-week-before`.
-
 
 ## Timestamp Standards
 
 Standards of this type are generating a timestamp represented by a number (UNIX timestamp).
 
-
 ### Examples
-
 
 === "Declarative access"
 
@@ -99,12 +95,10 @@ Standards of this type are generating a timestamp represented by a number (UNIX 
         { value: 1711865758409 }
         ```
 
-
 ## Date Standards
 
 Similarly to [Timestamp Standards](#timestamp-standards), these generate a date based
 on the time-range specification. The difference is that the result value is a date.
-
 
 ### Examples
 

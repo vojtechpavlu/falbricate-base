@@ -87,14 +87,15 @@ export class Schema {
     return pipes;
   };
 
-  public static compileProfiles = (schemaInput: SchemaInput): ProfileFabricators => {
-
+  public static compileProfiles = (
+    schemaInput: SchemaInput,
+  ): ProfileFabricators => {
     const profileFabricators: ProfileFabricators = {};
 
     schemaInput.profiles?.forEach((profile) => {
-
       const profileFabricator = getProfileFabricator(profile);
-      profileFabricators[profileFabricator.profileKey] = profileFabricator.createFabricator();
+      profileFabricators[profileFabricator.profileKey] =
+        profileFabricator.createFabricator();
     });
 
     return profileFabricators;

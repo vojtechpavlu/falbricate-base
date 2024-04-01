@@ -54,10 +54,10 @@ const falsum: Falsum = fabricator.generate();
 const falsa: Falsum[] = fabricator.generateMany(5);
 
 // Possible output:
-// { 
-//   id: '5c3c2dc9-905b-4005-4059-40ff821cd2cc', 
-//   username: 'u/ooqne190mc', 
-//   age: 18, 
+// {
+//   id: '5c3c2dc9-905b-4005-4059-40ff821cd2cc',
+//   username: 'u/ooqne190mc',
+//   age: 18,
 //   languages: [ 'Python', 'Java', 'JS/TS' ]
 // }
 ```

@@ -1,7 +1,6 @@
 import { Fabricator, SchemaInput } from '../schema';
 
 export abstract class ProfileFabricator {
-
   public readonly profileKey: string;
   private readonly schemaInput: SchemaInput;
 
@@ -12,5 +11,5 @@ export abstract class ProfileFabricator {
 
   public createFabricator = () => {
     return new Fabricator(this.schemaInput);
-  }
+  };
 }

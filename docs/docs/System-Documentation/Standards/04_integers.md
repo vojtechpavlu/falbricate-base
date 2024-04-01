@@ -3,11 +3,11 @@
 Integer Standard Value Generators lets you generate random integers by a
 predefined ranges.
 
-There are two general declaration patterns; both derived from 
+There are two general declaration patterns; both derived from
 logarithmic (base=10) notation:
 
 - `integer-e<<base>>` - generates a random number within a range.
-  You can declare you want a number in scale of hundreds by using `2` 
+  You can declare you want a number in scale of hundreds by using `2`
   as base (`integer-e2`); the full list of available bases is:
   [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`]. Note this range includes
   also negative numbers.
@@ -15,7 +15,6 @@ logarithmic (base=10) notation:
 - `integer-e<<base>>-u` - similar to the `integer-e<<base>>` pattern;
   by adding the `-u` flag, you specify the generated number has to be
   a positive number.
-
 
 ## Examples
 
@@ -56,7 +55,6 @@ want to get any number within the range with possible negative numbers.
         ```
         { value: -8405 }
         ```
-
 
 ### Unsigned
 

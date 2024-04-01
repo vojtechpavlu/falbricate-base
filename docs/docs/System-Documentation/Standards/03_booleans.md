@@ -18,9 +18,7 @@ You can use any of the predefined standards from one of these groups:
   `boolean-0.75` (about one quarter of the values will be `false`, rest
   will be `true`)
 
-
 ## Examples
-
 
 === "Declarative access"
 

@@ -1,9 +1,14 @@
 import {
   StandardValueGenerator,
-  StandardValueGeneratorName
+  StandardValueGeneratorName,
 } from './StandardValueGenerator';
 import { MongoObjectId, UUIDGenerator } from './index';
-import { ConstantValue, IntegerGenerator, ProbableBooleanGenerator, TimestampGenerator } from '../generators';
+import {
+  ConstantValue,
+  IntegerGenerator,
+  ProbableBooleanGenerator,
+  TimestampGenerator,
+} from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
 
@@ -14,7 +19,7 @@ export interface StandardValueGeneratorRegistry {
 const REGISTRY: StandardValueGeneratorRegistry = {};
 
 export const getStandard = (
-  name: StandardValueGeneratorName
+  name: StandardValueGeneratorName,
 ): StandardValueGenerator => {
   const standard = REGISTRY[name];
 
@@ -31,7 +36,7 @@ export const hasStandard = (name: StandardValueGeneratorName): boolean => {
 
 export const registerStandard = (
   name: StandardValueGeneratorName,
-  builder: StandardValueGeneratorBuilder
+  builder: StandardValueGeneratorBuilder,
 ) => {
   if (hasStandard(name)) {
     throw new Error(`Name '${name}' is already registered`);
@@ -51,42 +56,43 @@ registerStandard('mongo-object-id', () => new MongoObjectId());
 registerStandard('boolean', () => new ProbableBooleanGenerator());
 
 const booleanProbabilities = [
-  0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9
+  0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9,
 ];
 
 booleanProbabilities.forEach((value) => {
   registerStandard(
     `boolean-${value}`,
-    () => new ProbableBooleanGenerator({ probability: value })
+    () => new ProbableBooleanGenerator({ probability: value }),
   );
 });
 
-registerStandard('true', () => new ConstantValue({ value: true }))
-registerStandard('false', () => new ConstantValue({ value: false }))
+registerStandard('true', () => new ConstantValue({ value: true }));
+registerStandard('false', () => new ConstantValue({ value: false }));
 
 // Integer Standards
 const integerBases = [
-  1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000
-]
+  1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000,
+];
 
 integerBases.forEach((base, idx) => {
   registerStandard(
     `integer-e${idx + 1}`,
-    () => new IntegerGenerator({
-      min: base * 10 * (-1),
-      max: base * 10
-    })
-  )
+    () =>
+      new IntegerGenerator({
+        min: base * 10 * -1,
+        max: base * 10,
+      }),
+  );
 
   registerStandard(
     `integer-e${idx + 1}-u`,
-    () => new IntegerGenerator({
-      min: 0,
-      max: base * 10
-    })
-  )
-})
-
+    () =>
+      new IntegerGenerator({
+        min: 0,
+        max: base * 10,
+      }),
+  );
+});
 
 // Timestamps registration
 const timestampIntervals: any = {
@@ -95,7 +101,7 @@ const timestampIntervals: any = {
   hours: { vals: [1, 3, 6, 9, 12, 15, 18], unit: 'h' },
   days: { vals: [1, 2, 3, 4, 5, 6, 7, 10, 14, 20, 21, 28], unit: 'd' },
   months: { vals: [1, 3, 6, 9], unit: 'M' },
-  years: { vals: [1, 2, 3, 5, 10, 20, 50, 100, 200], unit: 'y' }
+  years: { vals: [1, 2, 3, 5, 10, 20, 50, 100, 200], unit: 'y' },
 };
 
 Object.keys(timestampIntervals).forEach((unitKey: string) => {
@@ -109,7 +115,7 @@ Object.keys(timestampIntervals).forEach((unitKey: string) => {
 
         registerStandard(
           `${type}-${direction}-${value}${unit.unit}`,
-          () => new TimestampGenerator(config)
+          () => new TimestampGenerator(config),
         );
       });
     });
@@ -122,8 +128,8 @@ registerStandard(
     new TimestampGenerator({
       period: { minutes: 2 },
       minimumPeriod: { minutes: 1 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -132,8 +138,8 @@ registerStandard(
     new TimestampGenerator({
       period: { hours: 2 },
       minimumPeriod: { hours: 1 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -142,8 +148,8 @@ registerStandard(
     new TimestampGenerator({
       period: { days: 2 },
       minimumPeriod: { days: 1 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -152,8 +158,8 @@ registerStandard(
     new TimestampGenerator({
       period: { days: 14 },
       minimumPeriod: { days: 7 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -162,8 +168,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 2 },
       minimumPeriod: { years: 1 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -172,8 +178,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 20 },
       minimumPeriod: { years: 10 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -182,8 +188,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 200 },
       minimumPeriod: { years: 100 },
-      direction: 'past'
-    })
+      direction: 'past',
+    }),
 );
 
 registerStandard(
@@ -192,8 +198,8 @@ registerStandard(
     new TimestampGenerator({
       period: { minutes: 2 },
       minimumPeriod: { minutes: 1 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -202,8 +208,8 @@ registerStandard(
     new TimestampGenerator({
       period: { hours: 2 },
       minimumPeriod: { hours: 1 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -212,8 +218,8 @@ registerStandard(
     new TimestampGenerator({
       period: { days: 2 },
       minimumPeriod: { days: 1 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -222,8 +228,8 @@ registerStandard(
     new TimestampGenerator({
       period: { days: 14 },
       minimumPeriod: { days: 7 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -232,8 +238,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 2 },
       minimumPeriod: { years: 1 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -242,8 +248,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 20 },
       minimumPeriod: { years: 10 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -252,8 +258,8 @@ registerStandard(
     new TimestampGenerator({
       period: { years: 200 },
       minimumPeriod: { years: 100 },
-      direction: 'future'
-    })
+      direction: 'future',
+    }),
 );
 
 registerStandard(
@@ -263,8 +269,8 @@ registerStandard(
       period: { minutes: 2 },
       minimumPeriod: { minutes: 1 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -274,8 +280,8 @@ registerStandard(
       period: { hours: 2 },
       minimumPeriod: { hours: 1 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -285,8 +291,8 @@ registerStandard(
       period: { days: 2 },
       minimumPeriod: { days: 1 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -296,8 +302,8 @@ registerStandard(
       period: { days: 14 },
       minimumPeriod: { days: 7 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -307,8 +313,8 @@ registerStandard(
       period: { years: 2 },
       minimumPeriod: { years: 1 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -318,8 +324,8 @@ registerStandard(
       period: { years: 20 },
       minimumPeriod: { years: 10 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -329,8 +335,8 @@ registerStandard(
       period: { years: 200 },
       minimumPeriod: { years: 100 },
       direction: 'past',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -340,8 +346,8 @@ registerStandard(
       period: { minutes: 2 },
       minimumPeriod: { minutes: 1 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -351,8 +357,8 @@ registerStandard(
       period: { hours: 2 },
       minimumPeriod: { hours: 1 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -362,8 +368,8 @@ registerStandard(
       period: { days: 2 },
       minimumPeriod: { days: 1 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -373,8 +379,8 @@ registerStandard(
       period: { days: 14 },
       minimumPeriod: { days: 7 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -384,8 +390,8 @@ registerStandard(
       period: { years: 2 },
       minimumPeriod: { years: 1 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -395,8 +401,8 @@ registerStandard(
       period: { years: 20 },
       minimumPeriod: { years: 10 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
 
 registerStandard(
@@ -406,6 +412,6 @@ registerStandard(
       period: { years: 200 },
       minimumPeriod: { years: 100 },
       direction: 'future',
-      asDate: true
-    })
+      asDate: true,
+    }),
 );
