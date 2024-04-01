@@ -1,7 +1,13 @@
 name: Release
 
 on:
-  workflow_dispatch:
+
+  # On push to master branch and only if the package.json has changed
+  push:
+    paths:
+      - ./package.json
+    branches:
+      - master
 
 env:
   NODE_VERSION: 20
