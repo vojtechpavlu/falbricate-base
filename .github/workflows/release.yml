@@ -5,7 +5,7 @@ on:
   # On push to master branch and only if the package.json has changed
   push:
     paths:
-      - ./package.json
+      - package.json
     branches:
       - master
 
