@@ -22,6 +22,24 @@ export type StandardValueGeneratorName =
   | 'true'
   | 'false'
 
+  // Integer Standards
+  | 'integer-e1'
+  | 'integer-e2'
+  | 'integer-e3'
+  | 'integer-e4'
+  | 'integer-e5'
+  | 'integer-e6'
+  | 'integer-e7'
+  | 'integer-e8'
+  | 'integer-e1-u'
+  | 'integer-e2-u'
+  | 'integer-e3-u'
+  | 'integer-e4-u'
+  | 'integer-e5-u'
+  | 'integer-e6-u'
+  | 'integer-e7-u'
+  | 'integer-e8-u'
+
   // Past Timestamps
   | 'timestamp-past-1s'
   | 'timestamp-past-5s'

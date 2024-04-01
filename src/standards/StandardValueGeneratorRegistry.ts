@@ -3,7 +3,7 @@ import {
   StandardValueGeneratorName
 } from './StandardValueGenerator';
 import { MongoObjectId, UUIDGenerator } from './index';
-import { ConstantValue, ProbableBooleanGenerator, TimestampGenerator } from '../generators';
+import { ConstantValue, IntegerGenerator, ProbableBooleanGenerator, TimestampGenerator } from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
 
@@ -63,6 +63,30 @@ booleanProbabilities.forEach((value) => {
 
 registerStandard('true', () => new ConstantValue({ value: true }))
 registerStandard('false', () => new ConstantValue({ value: false }))
+
+// Integer Standards
+const integerBases = [
+  1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000
+]
+
+integerBases.forEach((base, idx) => {
+  registerStandard(
+    `integer-e${idx + 1}`,
+    () => new IntegerGenerator({
+      min: base * 10 * (-1),
+      max: base * 10
+    })
+  )
+
+  registerStandard(
+    `integer-e${idx + 1}-u`,
+    () => new IntegerGenerator({
+      min: base,
+      max: base * 10
+    })
+  )
+})
+
 
 // Timestamps registration
 const timestampIntervals: any = {
