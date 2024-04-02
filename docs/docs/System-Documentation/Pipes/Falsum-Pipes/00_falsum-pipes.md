@@ -193,7 +193,7 @@ to register it into internal registry of Falsum Pipes.
     }
 
     // Register the Falsum Pipe
-    storeFalsumPipe('my-custom-falsum-pipe', myCustomFalsumPipe);
+    registerFalsumPipe('my-custom-falsum-pipe', myCustomFalsumPipe);
     ```
 
 !!! danger "Unique names"
