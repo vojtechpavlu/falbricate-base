@@ -77,7 +77,7 @@ export const getFalsumPipe = (name: string): FalsumPipe => {
  * @throws {Error} When a falsy pipe was provided
  * @throws {Error} When there already is a pipe registered under this name
  */
-export const storeFalsumPipe = (name: string, pipe: FalsumPipe) => {
+export const registerFalsumPipe = (name: string, pipe: FalsumPipe) => {
   if (!pipe) {
     throw new Error(`Falsum Pipe not provided`);
   } else if (hasFalsumPipe(name)) {
@@ -101,21 +101,21 @@ export const hasFalsumPipe = (name: string): boolean => {
 };
 
 // Falsum field names modifications
-storeFalsumPipe('snake-case-props', fieldsToSnake);
-storeFalsumPipe('camel-case-props', fieldsToCamel);
+registerFalsumPipe('snake-case-props', fieldsToSnake);
+registerFalsumPipe('camel-case-props', fieldsToCamel);
 
 // Timestamps
-storeFalsumPipe('generated-timestamp-date', addGeneratedTimestampDate);
-storeFalsumPipe('generated-timestamp-number', addGeneratedTimestampNumber);
+registerFalsumPipe('generated-timestamp-date', addGeneratedTimestampDate);
+registerFalsumPipe('generated-timestamp-number', addGeneratedTimestampNumber);
 
 // Pruners
-storeFalsumPipe('prune-undefined', pruneUndefined);
-storeFalsumPipe('prune-null', pruneNulls);
-storeFalsumPipe('prune-empty-arrays', pruneEmptyArrays);
+registerFalsumPipe('prune-undefined', pruneUndefined);
+registerFalsumPipe('prune-null', pruneNulls);
+registerFalsumPipe('prune-empty-arrays', pruneEmptyArrays);
 
 // Stringification
-storeFalsumPipe('stringify', stringify);
-storeFalsumPipe('stringify-indented', stringifyWithIndentation);
+registerFalsumPipe('stringify', stringify);
+registerFalsumPipe('stringify-indented', stringifyWithIndentation);
 
 // Object Manipulation
-storeFalsumPipe('object-to-list', objectFalsumToList);
+registerFalsumPipe('object-to-list', objectFalsumToList);

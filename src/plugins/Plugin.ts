@@ -4,10 +4,10 @@ import {
   ValueGeneratorBuilder,
   ValueGeneratorConfig
 } from '../generators';
-import { Charset, storeCharset } from '../utils';
+import { Charset, registerCharset } from '../utils';
 import { ProfileFabricatorBuilder, registerProfileFabricator } from '../profiles/ProfileFabricatorRegistry';
-import { FalsumPipe, storeFalsumPipe } from '../pipes';
-import { storeValuePipe, ValuePipe } from '../pipes/value';
+import { FalsumPipe, registerFalsumPipe } from '../pipes';
+import { registerValuePipe, ValuePipe } from '../pipes/value';
 
 /**
  * Common interface declaring that every registrable
@@ -74,7 +74,7 @@ export const registerPlugin = (plugin: Plugin) => {
   });
 
   plugin.charsets?.forEach((plugin) => {
-    storeCharset(plugin.key, plugin.charset);
+    registerCharset(plugin.key, plugin.charset);
   });
 
   plugin.profiles?.forEach((plugin) => {
@@ -82,10 +82,10 @@ export const registerPlugin = (plugin: Plugin) => {
   });
 
   plugin.falsumPipes?.forEach((plugin) => {
-    storeFalsumPipe(plugin.key, plugin.builder);
+    registerFalsumPipe(plugin.key, plugin.builder);
   });
 
   plugin.valuePipes?.forEach((plugin) => {
-    storeValuePipe(plugin.key, plugin.builder);
+    registerValuePipe(plugin.key, plugin.builder);
   });
 };

@@ -82,7 +82,7 @@ export const hasValuePipe = (name: ValuePipeName): boolean => {
  * @throws {Error} When the name is already taken
  * @throws {Error} When the given pipe is not defined
  */
-export const storeValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
+export const registerValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
   if (!name) {
     throw new Error(`Name is required`);
   } else if (hasValuePipe(name)) {
@@ -97,19 +97,19 @@ export const storeValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
 };
 
 // String value pipes
-storeValuePipe('stringify', stringify);
-storeValuePipe('trim', trimString);
-storeValuePipe('single-space', singleSpace);
-storeValuePipe('uppercase', uppercase);
-storeValuePipe('lowercase', lowercase);
-storeValuePipe('space-split', splitBySpace);
+registerValuePipe('stringify', stringify);
+registerValuePipe('trim', trimString);
+registerValuePipe('single-space', singleSpace);
+registerValuePipe('uppercase', uppercase);
+registerValuePipe('lowercase', lowercase);
+registerValuePipe('space-split', splitBySpace);
 
 // Sorting
-storeValuePipe('sort-ascending', sortAsc);
-storeValuePipe('sort-descending', sortDesc);
+registerValuePipe('sort-ascending', sortAsc);
+registerValuePipe('sort-descending', sortDesc);
 
 // Object manipulation
-storeValuePipe('object-to-list', objectValueToList);
+registerValuePipe('object-to-list', objectValueToList);
 
 export * from './stringify';
 export * from './casing';

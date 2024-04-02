@@ -127,7 +127,7 @@ export const hasCharset = (name: CharsetName): boolean => {
  * @throws {Error} When the given charset does not match the requirements
  * @throws {Error} When there already is a charset of such name registered
  */
-export const storeCharset = (name: string, charset: Charset) => {
+export const registerCharset = (name: string, charset: Charset) => {
   if (!isCharset(charset)) {
     throw new Error(
       `Given argument is not charset (non-empty array of single-character strings)`,
