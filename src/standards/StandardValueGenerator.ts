@@ -1,21 +1,44 @@
-import {
-  GeneratedValue,
-  ValueGenerator,
-  ValueGeneratorConfig,
-} from '../generators';
-
-export type StandardValueGenerator = ValueGenerator<
-  GeneratedValue,
-  ValueGeneratorConfig
->;
-
 export type StandardValueGeneratorName =
   | string
+  // IDs
   | (
-      // IDs
       | 'uuid'
       | 'UUID'
       | 'mongo-object-id'
+
+      // Boolean Standards
+      | 'boolean'
+      | 'boolean-0.1'
+      | 'boolean-0.2'
+      | 'boolean-0.25'
+      | 'boolean-0.3'
+      | 'boolean-0.4'
+      | 'boolean-0.5'
+      | 'boolean-0.6'
+      | 'boolean-0.7'
+      | 'boolean-0.75'
+      | 'boolean-0.8'
+      | 'boolean-0.9'
+      | 'true'
+      | 'false'
+
+      // Integer Standards
+      | 'integer-e1'
+      | 'integer-e2'
+      | 'integer-e3'
+      | 'integer-e4'
+      | 'integer-e5'
+      | 'integer-e6'
+      | 'integer-e7'
+      | 'integer-e8'
+      | 'integer-e1-u'
+      | 'integer-e2-u'
+      | 'integer-e3-u'
+      | 'integer-e4-u'
+      | 'integer-e5-u'
+      | 'integer-e6-u'
+      | 'integer-e7-u'
+      | 'integer-e8-u'
 
       // Past Timestamps
       | 'timestamp-past-1s'
@@ -227,3 +250,14 @@ export type StandardValueGeneratorName =
       | 'date-century-after'
       | 'date-future-200y'
     );
+
+import {
+  GeneratedValue,
+  ValueGenerator,
+  ValueGeneratorConfig,
+} from '../generators';
+
+export type StandardValueGenerator = ValueGenerator<
+  GeneratedValue,
+  ValueGeneratorConfig
+>;

@@ -39,7 +39,7 @@ export class Fabricator {
     context = {
       index: 0,
       profiles: {},
-      ...context
+      ...context,
     };
 
     // Generate profile data
@@ -54,7 +54,7 @@ export class Fabricator {
       // Add falsum which is currently being generated
       context = {
         ...context,
-        current: falsum
+        current: falsum,
       };
 
       // Generate a new value with the whole context
@@ -80,11 +80,11 @@ export class Fabricator {
    */
   public generateMany = (
     n: number,
-    data: FabricationContext = {}
+    data: FabricationContext = {},
   ): Falsum[] | ObjectFalsum[] => {
     if (!n || n < 0) {
       throw new Error(
-        `Expected a positive number of how many items should be created: ${n}`
+        `Expected a positive number of how many items should be created: ${n}`,
       );
     }
 
@@ -95,7 +95,7 @@ export class Fabricator {
       const context = {
         index, // Add index
         previous, // Add previous item
-        ...data // Add client context
+        ...data, // Add client context
       };
 
       const item = this.generate(context);

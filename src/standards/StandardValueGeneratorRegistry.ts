@@ -3,7 +3,12 @@ import {
   StandardValueGeneratorName,
 } from './StandardValueGenerator';
 import { MongoObjectId, UUIDGenerator } from './index';
-import { TimestampGenerator } from '../generators';
+import {
+  ConstantValue,
+  IntegerGenerator,
+  ProbableBooleanGenerator,
+  TimestampGenerator,
+} from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
 
@@ -46,6 +51,48 @@ registerStandard('UUID', () => new UUIDGenerator({ uppercase: true }));
 
 // Mongo Object ID
 registerStandard('mongo-object-id', () => new MongoObjectId());
+
+// Boolean Standards
+registerStandard('boolean', () => new ProbableBooleanGenerator());
+
+const booleanProbabilities = [
+  0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9,
+];
+
+booleanProbabilities.forEach((value) => {
+  registerStandard(
+    `boolean-${value}`,
+    () => new ProbableBooleanGenerator({ probability: value }),
+  );
+});
+
+registerStandard('true', () => new ConstantValue({ value: true }));
+registerStandard('false', () => new ConstantValue({ value: false }));
+
+// Integer Standards
+const integerBases = [
+  1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000,
+];
+
+integerBases.forEach((base, idx) => {
+  registerStandard(
+    `integer-e${idx + 1}`,
+    () =>
+      new IntegerGenerator({
+        min: base * 10 * -1,
+        max: base * 10,
+      }),
+  );
+
+  registerStandard(
+    `integer-e${idx + 1}-u`,
+    () =>
+      new IntegerGenerator({
+        min: 0,
+        max: base * 10,
+      }),
+  );
+});
 
 // Timestamps registration
 const timestampIntervals: any = {

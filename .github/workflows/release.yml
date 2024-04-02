@@ -1,7 +1,6 @@
 name: Release
 
 on:
-
   # On push to master branch and only if the package.json has changed
   push:
     paths:

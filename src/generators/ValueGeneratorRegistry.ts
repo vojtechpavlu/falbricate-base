@@ -34,7 +34,9 @@ import {
   ConstantValue,
   ConstantValueConfig,
   ContextAccessor,
-  ContextAccessorConfig, XORConfiguration, XORGenerator
+  ContextAccessorConfig,
+  XORConfiguration,
+  XORGenerator,
 } from './other';
 import {
   ProbableBooleanGenerator,

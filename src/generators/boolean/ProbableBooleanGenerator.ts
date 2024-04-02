@@ -20,7 +20,9 @@ export class ProbableBooleanGenerator extends ValueGenerator<
   GeneratedValue,
   ProbableBooleanGeneratorConfig
 > {
-  constructor(config: ProbableBooleanGeneratorConfig) {
+  constructor(config?: ProbableBooleanGeneratorConfig) {
+    config = config ?? {};
+
     config.probability =
       config.probability === undefined ? 0.5 : config.probability;
 

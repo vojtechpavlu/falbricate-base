@@ -1,14 +1,12 @@
 # Other Generators
 
-These generators are providing services of generating values in very different manner 
+These generators are providing services of generating values in very different manner
 and can't be easily categorized as others.
-
 
 ## XOR Generator
 
 This type of generator chooses between given Value Generators and selects one randomly
 to generate the result value while others remain idle.
-
 
 ### Examples
 
