@@ -36,6 +36,9 @@ export type ValueGeneratorName =
       | 'context-input'
       | 'constant-value'
       | 'xor'
+
+      // Specifics
+      | 'ip-address'
     );
 
 /** Values considered as null-like. */
