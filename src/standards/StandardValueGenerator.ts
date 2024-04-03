@@ -249,6 +249,9 @@ export type StandardValueGeneratorName =
       | 'date-future-100y'
       | 'date-century-after'
       | 'date-future-200y'
+
+      // IP Addresses
+      | 'random-ip-address'
     );
 
 import {

@@ -34,9 +34,9 @@ import {
   ConstantValue,
   ConstantValueConfig,
   ContextAccessor,
-  ContextAccessorConfig,
+  ContextAccessorConfig, IPAddressConfig, IPAddressValueGenerator,
   XORConfiguration,
-  XORGenerator,
+  XORGenerator
 } from './other';
 import {
   ProbableBooleanGenerator,
@@ -210,4 +210,8 @@ registerValueGenerator(
 registerValueGenerator(
   'xor',
   (config: XORConfiguration) => new XORGenerator(config),
+);
+registerValueGenerator(
+  'ip-address',
+  (config: IPAddressConfig) => new IPAddressValueGenerator(config),
 );

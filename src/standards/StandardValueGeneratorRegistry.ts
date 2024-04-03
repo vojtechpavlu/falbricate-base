@@ -5,9 +5,9 @@ import {
 import { MongoObjectId, UUIDGenerator } from './index';
 import {
   ConstantValue,
-  IntegerGenerator,
+  IntegerGenerator, IPAddressValueGenerator,
   ProbableBooleanGenerator,
-  TimestampGenerator,
+  TimestampGenerator
 } from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
@@ -418,4 +418,14 @@ registerStandard(
       direction: 'future',
       asDate: true,
     }),
+);
+
+registerStandard(
+  'random-ip-address',
+  () => new IPAddressValueGenerator({
+    octet1: { min: 1, max: 254 },
+    octet2: { min: 1, max: 254 },
+    octet3: { min: 1, max: 254 },
+    octet4: { min: 1, max: 254 }
+  })
 );
