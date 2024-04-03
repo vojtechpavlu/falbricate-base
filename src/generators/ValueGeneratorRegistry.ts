@@ -73,6 +73,11 @@ interface ValueGeneratorRegistry<
   [name: ValueGeneratorName]: ValueGeneratorBuilder<ValueType, Conf>;
 }
 
+/** Return all the registered Value Generator names */
+export const getAllValueGeneratorNames = () => {
+  return Object.keys(VALUE_GENERATOR_REGISTRY);
+}
+
 /**
  * Tries to find a builder for value generator by the given name and builds it
  * with given configuration.
