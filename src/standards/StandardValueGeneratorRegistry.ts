@@ -18,6 +18,10 @@ export interface StandardValueGeneratorRegistry {
 
 const REGISTRY: StandardValueGeneratorRegistry = {};
 
+export const getAllStandardValues = () => {
+  return Object.keys(REGISTRY);
+}
+
 export const getStandard = (
   name: StandardValueGeneratorName,
 ): StandardValueGenerator => {

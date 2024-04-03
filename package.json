@@ -1,6 +1,6 @@
 {
   "name": "@falbricate/base",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Base for falbricate - tool for Falsa Fabrication",
   "keywords": [
     "mocking",
