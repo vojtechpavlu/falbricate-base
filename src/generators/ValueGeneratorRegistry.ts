@@ -34,9 +34,11 @@ import {
   ConstantValue,
   ConstantValueConfig,
   ContextAccessor,
-  ContextAccessorConfig, IPAddressConfig, IPAddressValueGenerator,
+  ContextAccessorConfig,
+  IPAddressConfig,
+  IPAddressValueGenerator,
   XORConfiguration,
-  XORGenerator
+  XORGenerator,
 } from './other';
 import {
   ProbableBooleanGenerator,
@@ -76,7 +78,7 @@ interface ValueGeneratorRegistry<
 /** Return all the registered Value Generator names */
 export const getAllValueGeneratorNames = () => {
   return Object.keys(VALUE_GENERATOR_REGISTRY);
-}
+};
 
 /**
  * Tries to find a builder for value generator by the given name and builds it

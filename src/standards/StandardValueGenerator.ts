@@ -1,8 +1,8 @@
 export type StandardValueGeneratorName =
   | string
+  // Context Referencing shorthand
   | (
-      // Context Referencing shorthand
-      '!ref-'
+      | '!ref-'
 
       // IDs
       | 'uuid'

@@ -7,7 +7,8 @@ To describe to the [Fabricator](../Building-Blocks/04_fabricator.md) you want to
 generator in your schema, you only need to attach the standard's name to the field.
 
 !!! example
-``` typescript linenums="1"
+
+````typescript linenums="1"
 const schema: SchemaInput = {
 fields: {
 myStandardField: 'some-standard-name',
@@ -55,7 +56,7 @@ be sealed (can be a new one or an existing one).
 
     This is just a simple generator always returning a value `'Hello World!'` - nothing useful but can show the basics.
 
-    ``` typescript linenums="1"
+    ```typescript linenums="1"
     class HelloWorldStandard extends ConstantValue {
       constructor(config: ValueGeneratorConfig) {
         super({ ...config, value: "Hello World!" });
@@ -81,7 +82,7 @@ function. This is basically a function defined like this:
 
 ```typescript
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
-```
+````
 
 This means the builder function is just returning your Standard Value Generator on demand (on invocation). To
 actually perform the registration, pick a unique name and store it like this:
