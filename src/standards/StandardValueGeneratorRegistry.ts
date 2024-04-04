@@ -5,9 +5,11 @@ import {
 import { MongoObjectId, UUIDGenerator } from './index';
 import {
   ConstantValue,
-  IntegerGenerator, IPAddressValueGenerator,
+  ContextAccessor,
+  IntegerGenerator,
+  IPAddressValueGenerator,
   ProbableBooleanGenerator,
-  TimestampGenerator
+  TimestampGenerator,
 } from '../generators';
 
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
@@ -20,11 +22,17 @@ const REGISTRY: StandardValueGeneratorRegistry = {};
 
 export const getAllStandardValues = () => {
   return Object.keys(REGISTRY);
-}
+};
 
 export const getStandard = (
   name: StandardValueGeneratorName,
 ): StandardValueGenerator => {
+  if (name.startsWith('!ref-')) {
+    return new ContextAccessor({
+      path: name.substring(5),
+    });
+  }
+
   const standard = REGISTRY[name];
 
   if (!standard) {
@@ -422,10 +430,11 @@ registerStandard(
 
 registerStandard(
   'random-ip-address',
-  () => new IPAddressValueGenerator({
-    octet1: { min: 1, max: 254 },
-    octet2: { min: 1, max: 254 },
-    octet3: { min: 1, max: 254 },
-    octet4: { min: 1, max: 254 }
-  })
+  () =>
+    new IPAddressValueGenerator({
+      octet1: { min: 1, max: 254 },
+      octet2: { min: 1, max: 254 },
+      octet3: { min: 1, max: 254 },
+      octet4: { min: 1, max: 254 },
+    }),
 );

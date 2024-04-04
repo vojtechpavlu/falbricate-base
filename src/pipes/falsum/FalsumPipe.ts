@@ -2,7 +2,7 @@ import { Falsum, ObjectFalsum } from '../../schema';
 import { fieldsToCamel, fieldsToSnake } from './fieldNameCasing';
 import {
   addGeneratedTimestampDate,
-  addGeneratedTimestampNumber
+  addGeneratedTimestampNumber,
 } from './generatedTimestamp';
 import { pruneEmptyArrays, pruneNulls, pruneUndefined } from './falsumCleaners';
 import { stringify, stringifyWithIndentation } from './stringification';
@@ -20,25 +20,25 @@ export type FalsumPipeName =
   | string
   // Field names modifications
   | (
-  | 'snake-case-props'
-  | 'camel-case-props'
+      | 'snake-case-props'
+      | 'camel-case-props'
 
-  // Timestamps
-  | 'generated-timestamp-date'
-  | 'generated-timestamp-number'
+      // Timestamps
+      | 'generated-timestamp-date'
+      | 'generated-timestamp-number'
 
-  // Pruners
-  | 'prune-undefined'
-  | 'prune-null'
-  | 'prune-empty-arrays'
+      // Pruners
+      | 'prune-undefined'
+      | 'prune-null'
+      | 'prune-empty-arrays'
 
-  // Stringification
-  | 'stringify'
-  | 'stringify-indented'
+      // Stringification
+      | 'stringify'
+      | 'stringify-indented'
 
-  // Object Manipulation
-  | 'object-to-list'
-  );
+      // Object Manipulation
+      | 'object-to-list'
+    );
 
 /**
  * Registry used to store the commonly used Falsum Pipes
@@ -87,7 +87,7 @@ export const registerFalsumPipe = (name: string, pipe: FalsumPipe) => {
     throw new Error(`Falsum Pipe not provided`);
   } else if (hasFalsumPipe(name)) {
     throw new Error(
-      `There already is one Falsum Pipe assigned to name '${name}'`
+      `There already is one Falsum Pipe assigned to name '${name}'`,
     );
   }
 
@@ -100,9 +100,7 @@ export const registerFalsumPipe = (name: string, pipe: FalsumPipe) => {
  * @param name Name to be checked if is or is not already reserved.
  */
 export const hasFalsumPipe = (name: string): boolean => {
-  return !!getAllFalsumPipeNames().find(
-    (pipeName) => pipeName === name
-  );
+  return !!getAllFalsumPipeNames().find((pipeName) => pipeName === name);
 };
 
 // Falsum field names modifications

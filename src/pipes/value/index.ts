@@ -21,20 +21,20 @@ export type ValuePipeName =
   | string
   // String value pipes
   | (
-  | 'stringify'
-  | 'trim'
-  | 'single-space'
-  | 'uppercase'
-  | 'lowercase'
-  | 'space-split'
+      | 'stringify'
+      | 'trim'
+      | 'single-space'
+      | 'uppercase'
+      | 'lowercase'
+      | 'space-split'
 
-  // Sorting
-  | 'sort-ascending'
-  | 'sort-descending'
+      // Sorting
+      | 'sort-ascending'
+      | 'sort-descending'
 
-  // Object manipulation
-  | 'object-to-list'
-  );
+      // Object manipulation
+      | 'object-to-list'
+    );
 
 /**
  * Declaration of Value Pipes Registry type
@@ -92,7 +92,7 @@ export const registerValuePipe = (name: ValuePipeName, pipe: ValuePipe) => {
     throw new Error(`Name is required`);
   } else if (hasValuePipe(name)) {
     throw new Error(
-      `There already is one Value Pipe registered with name '${name}'`
+      `There already is one Value Pipe registered with name '${name}'`,
     );
   } else if (!pipe) {
     throw new Error(`Pipe must be defined`);

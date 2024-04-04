@@ -1,20 +1,20 @@
 import {
   GeneratedValue,
   ValueGenerator,
-  ValueGeneratorConfig
+  ValueGeneratorConfig,
 } from '../ValueGenerator';
 import { StringTemplateGenerator } from '../string';
 import { IntegerGenerator } from '../numeric';
 
 /** Definition of an octet */
 interface OctetDefinition {
-  min: number,
-  max: number,
+  min: number;
+  max: number;
 }
 
 /** Helper for easier referencing */
 interface IPAddressConfigHelper {
-  [octet: string]: OctetDefinition
+  [octet: string]: OctetDefinition;
 }
 
 /**
@@ -25,7 +25,8 @@ export type IPAddressConfig = {
   octet2: OctetDefinition;
   octet3: OctetDefinition;
   octet4: OctetDefinition;
-} & ValueGeneratorConfig & IPAddressConfigHelper;
+} & ValueGeneratorConfig &
+  IPAddressConfigHelper;
 
 /**
  * This generator simply returns a string representing an IPv4 address.
@@ -34,20 +35,20 @@ export class IPAddressValueGenerator extends ValueGenerator<
   GeneratedValue,
   IPAddressConfig
 > {
-
   private readonly generator;
 
   constructor(config: IPAddressConfig) {
-
-    const octetNames = ["octet1", "octet2", "octet3", "octet4"];
+    const octetNames = ['octet1', 'octet2', 'octet3', 'octet4'];
 
     octetNames.forEach((octetName) => {
       if (config[octetName]!.min < 0) {
-        throw new Error(`Every octet has to have minimum positive`)
+        throw new Error(`Every octet has to have minimum positive`);
       } else if (config[octetName]!.max > 255) {
-        throw new Error(`Every octet has to have maximum <= 255`)
+        throw new Error(`Every octet has to have maximum <= 255`);
       } else if (config[octetName]!.min > config[octetName]!.max) {
-        throw new Error(`Every octet's minimum value has to be less or equal to max`)
+        throw new Error(
+          `Every octet's minimum value has to be less or equal to max`,
+        );
       }
     });
 
@@ -62,11 +63,23 @@ export class IPAddressValueGenerator extends ValueGenerator<
     this.generator = new StringTemplateGenerator({
       template: '{o1}.{o2}.{o3}.{o4}',
       variables: {
-        o1: new IntegerGenerator({ min: this.config.octet1.min, max: this.config.octet1.max }),
-        o2: new IntegerGenerator({ min: this.config.octet2.min, max: this.config.octet2.max }),
-        o3: new IntegerGenerator({ min: this.config.octet3.min, max: this.config.octet3.max }),
-        o4: new IntegerGenerator({ min: this.config.octet4.min, max: this.config.octet4.max })
-      }
+        o1: new IntegerGenerator({
+          min: this.config.octet1.min,
+          max: this.config.octet1.max,
+        }),
+        o2: new IntegerGenerator({
+          min: this.config.octet2.min,
+          max: this.config.octet2.max,
+        }),
+        o3: new IntegerGenerator({
+          min: this.config.octet3.min,
+          max: this.config.octet3.max,
+        }),
+        o4: new IntegerGenerator({
+          min: this.config.octet4.min,
+          max: this.config.octet4.max,
+        }),
+      },
     });
   }
 

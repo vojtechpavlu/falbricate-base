@@ -1,11 +1,16 @@
 import {
-  GeneratedValue, registerStandard, registerValueGenerator,
+  GeneratedValue,
+  registerStandard,
+  registerValueGenerator,
   StandardValueGeneratorBuilder,
   ValueGeneratorBuilder,
-  ValueGeneratorConfig
+  ValueGeneratorConfig,
 } from '../generators';
 import { Charset, registerCharset } from '../utils';
-import { ProfileFabricatorBuilder, registerProfileFabricator } from '../profiles/ProfileFabricatorRegistry';
+import {
+  ProfileFabricatorBuilder,
+  registerProfileFabricator,
+} from '../profiles/ProfileFabricatorRegistry';
 import { FalsumPipe, registerFalsumPipe } from '../pipes';
 import { registerValuePipe, ValuePipe } from '../pipes/value';
 
