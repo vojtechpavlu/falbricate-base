@@ -55,7 +55,7 @@ export interface ValuePipePlugin extends Registrable {
 /**
  * Common declaration for all the plugins to be imported.
  */
-export interface Plugin {
+export interface FalbricatePlugin {
   valueGenerators?: ValueGeneratorPlugin[];
   standards?: StandardPlugin[];
   charsets?: CharsetPlugin[];
@@ -69,7 +69,7 @@ export interface Plugin {
  *
  * @param plugin to be registered
  */
-export const registerPlugin = (plugin: Plugin) => {
+export const registerPlugin = (plugin: FalbricatePlugin) => {
   plugin.valueGenerators?.forEach((plugin) => {
     registerValueGenerator(plugin.key, plugin.builder);
   });
