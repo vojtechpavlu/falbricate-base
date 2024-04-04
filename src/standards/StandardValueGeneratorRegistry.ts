@@ -4,7 +4,7 @@ import {
 } from './StandardValueGenerator';
 import { MongoObjectId, UUIDGenerator } from './index';
 import {
-  ConstantValue,
+  ConstantValue, ContextAccessor,
   IntegerGenerator, IPAddressValueGenerator,
   ProbableBooleanGenerator,
   TimestampGenerator
@@ -25,6 +25,13 @@ export const getAllStandardValues = () => {
 export const getStandard = (
   name: StandardValueGeneratorName,
 ): StandardValueGenerator => {
+
+  if (name.startsWith('!ref-')) {
+    return new ContextAccessor({
+      path: name.substring(5)
+    });
+  }
+
   const standard = REGISTRY[name];
 
   if (!standard) {

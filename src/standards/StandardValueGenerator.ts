@@ -1,7 +1,10 @@
 export type StandardValueGeneratorName =
   | string
-  // IDs
   | (
+      // Context Referencing shorthand
+      '!ref-'
+
+      // IDs
       | 'uuid'
       | 'UUID'
       | 'mongo-object-id'
