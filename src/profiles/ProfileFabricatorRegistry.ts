@@ -1,7 +1,12 @@
-import { ProfileFabricator, ProfileFabricatorConfiguration } from './ProfileFabricator';
+import {
+  ProfileFabricator,
+  ProfileFabricatorConfiguration,
+} from './ProfileFabricator';
 import { IdentifierProfileFabricator } from './generators';
 
-export type ProfileFabricatorBuilder = (config?: ProfileFabricatorConfiguration) => ProfileFabricator;
+export type ProfileFabricatorBuilder = (
+  config?: ProfileFabricatorConfiguration,
+) => ProfileFabricator;
 
 export type ProfileFabricatorName = string | 'identifiers';
 
@@ -13,7 +18,7 @@ const REGISTRY: ProfileFabricatorRegistry = {};
 
 export const getProfileFabricator = (
   name: ProfileFabricatorName,
-  config?: ProfileFabricatorConfiguration
+  config?: ProfileFabricatorConfiguration,
 ): ProfileFabricator => {
   const builder = REGISTRY[name];
 

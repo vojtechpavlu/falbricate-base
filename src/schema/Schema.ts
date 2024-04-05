@@ -93,7 +93,6 @@ export class Schema {
     const profileFabricators: ProfileFabricators = {};
 
     schemaInput.profiles?.forEach((profileDeclaration) => {
-
       let profileFabricator;
 
       if (typeof profileDeclaration === 'string') {
@@ -102,10 +101,15 @@ export class Schema {
       } else if (typeof profileDeclaration === 'object') {
         // When using object-based declaration
         const type = profileDeclaration.type;
-        profileFabricator = getProfileFabricator(type, profileDeclaration.configuration);
+        profileFabricator = getProfileFabricator(
+          type,
+          profileDeclaration.configuration,
+        );
       } else {
         // When unexpected type of Profile Fabricator declaration
-        throw new Error(`Unexpected type of Profile Fabricator '${typeof profileDeclaration}'`);
+        throw new Error(
+          `Unexpected type of Profile Fabricator '${typeof profileDeclaration}'`,
+        );
       }
 
       profileFabricators[profileFabricator.profileKey] =
