@@ -1,7 +1,12 @@
-import { ProfileFabricator } from './ProfileFabricator';
+import {
+  ProfileFabricator,
+  ProfileFabricatorConfiguration,
+} from './ProfileFabricator';
 import { IdentifierProfileFabricator } from './generators';
 
-export type ProfileFabricatorBuilder = () => ProfileFabricator;
+export type ProfileFabricatorBuilder = (
+  config?: ProfileFabricatorConfiguration,
+) => ProfileFabricator;
 
 export type ProfileFabricatorName = string | 'identifiers';
 
@@ -13,6 +18,7 @@ const REGISTRY: ProfileFabricatorRegistry = {};
 
 export const getProfileFabricator = (
   name: ProfileFabricatorName,
+  config?: ProfileFabricatorConfiguration,
 ): ProfileFabricator => {
   const builder = REGISTRY[name];
 
@@ -20,7 +26,7 @@ export const getProfileFabricator = (
     throw new Error(`No Profile Fabricator found for name '${name}'`);
   }
 
-  return builder();
+  return builder(config);
 };
 
 export const hasProfileFabricator = (name: ProfileFabricatorName): boolean => {
