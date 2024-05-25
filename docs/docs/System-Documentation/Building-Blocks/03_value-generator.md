@@ -1,6 +1,6 @@
 # Value Generator
 
-Value Generator provides a service to generate a value the Falsum consists of. These generators are designed to be
+Value Generator provides a service to generate values the Falsum consists of. These generators are designed to be
 able to generate a random (or for example to simply pass predefined value from context) and return it. This service is
 used for generating a falsum by given schema.
 
@@ -10,6 +10,7 @@ Then, the generator on its `get(context: GenerationContext)` method call returns
 
 For example how can you use the generator, have a look on [how to access the generator](#accessing-value-generators).
 
+
 ## Accessing Value Generators
 
 Value generators are basically classes (or instances if you wish). It can be accessed as any other
@@ -17,11 +18,11 @@ class instance you know.
 
 !!! example
 
-    Accessing to the generator as to a class instance
+    Accessing the generator as a class instance
 
     ``` typescript
     const generator = new IntegerGenerator({ max: 17 });
-    const value = generator.get();
+    const value = generator.generate();
     ```
 
 But this is not the only way you can use these generators. The Falbricate ecosystem also enables you to
@@ -73,7 +74,7 @@ your own Value Generators!
 To create a Value Generator and to use it within the ecosystem, you need to follow simple rules:
 
 1. The generator needs to extend an abstract and generic class `ValueGenerator<ValueType, Configuration>`
-2. Yours configuration must be a superset of the `ValueGeneratorConfig` type
+2. Your configuration must be a superset of the `ValueGeneratorConfig` type
 3. _(Optional) if you want to register your value generator, you must follow [these instructions](#register-custom-value-generator)_
 
 !!! example

@@ -58,7 +58,7 @@ returned as the result of the Value Generator.
 
     ``` typescript linenums="1"
     const config: ConstantValueConfig = {
-        value: 'my constant string',
+        value: 'my testing value',
         pipes: [
             'uppercase'
         ]

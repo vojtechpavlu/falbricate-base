@@ -7,6 +7,7 @@ the fabricated falsum look like.
 Similarly to [Schema](./01_schema.md), the Schema Input also contains declarations of fields with
 [Value Generators](./03_value-generator.md) assigned.
 
+
 ## Schema Declaration
 
 The whole process of describing the schema via Schema Input was designed with a high emphasis

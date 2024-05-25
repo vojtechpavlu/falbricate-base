@@ -6,23 +6,24 @@ Value Generators do not require any further configuration, their specification i
 To describe to the [Fabricator](../Building-Blocks/04_fabricator.md) you want to use a specific standard value
 generator in your schema, you only need to attach the standard's name to the field.
 
+
 !!! example
 
-````typescript linenums="1"
-const schema: SchemaInput = {
-fields: {
-myStandardField: 'some-standard-name',
-myAnotherStandardField: 'some-another-standard-name',
-onceMoreStandardField: 'some-different-standard-name',
+    ```typescript linenums="1"
+    const schema: SchemaInput = {
+        fields: {
+            myStandardField: 'some-standard-name',
+            myAnotherStandardField: 'some-another-standard-name',
+            onceMoreStandardField: 'some-different-standard-name',
 
-          // ... Some other desired fields ...
-      },
+            // ... Some other desired fields ...
+        },
 
-      // ... Other configuration when desired ...
+        // ... Other configuration when desired ...
     };
-
+    
     const fabricator = new Fabricator(config);
-
+    
     console.log(fabricator.generate());
     ```
 
@@ -82,12 +83,12 @@ function. This is basically a function defined like this:
 
 ```typescript
 export type StandardValueGeneratorBuilder = () => StandardValueGenerator;
-````
+```
 
 This means the builder function is just returning your Standard Value Generator on demand (on invocation). To
 actually perform the registration, pick a unique name and store it like this:
 
-```typescript linenums="1"
+```typescript
 registerStandard('hello-world-standard', () => new HelloWorldStandard());
 ```
 

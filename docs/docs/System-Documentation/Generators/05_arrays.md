@@ -81,7 +81,7 @@ a shuffled sample of it.
 It takes `array` field as a non-empty array of items of any type and
 the `sampleSize` which is any integer number greater than 0.
 
-When these requirements are not met, it throws an error; so does when the
+When these requirements are not met, it throws an error; so it does when the
 sample size is greater than the length of the given array.
 
 ### Examples

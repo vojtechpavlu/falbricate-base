@@ -7,9 +7,15 @@ These prepared data objects are meant to be accessible through a context object
 provided to each Falsum Fabrication run. So, you can easily access them
 using context accessors without needing to declare these on your own.
 
+These are also meant to share pre-generated values for the falsum to remain
+internally consistent; _e.g._ person born in Germany will probably have german
+nationality, probably will have a telephone number starting with `+49` local prefix,
+main language will be german and first name will most likely be Hans.
+
+
 ## Schema Declaration
 
-To declare you want to have access to a profile, you need to provide
+To declare that you want to have access to a profile, you need to provide
 the profile's name into a [Schema input](../Building-Blocks/02_schema-input.md)
 like this:
 
