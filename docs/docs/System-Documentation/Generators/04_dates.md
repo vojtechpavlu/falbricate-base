@@ -4,7 +4,7 @@ Here are listed predefined date generators.
 
 ## Date in range
 
-This generator generates dates withing the specified range.
+This generator generates dates within a specified range.
 
 ### Configuration
 

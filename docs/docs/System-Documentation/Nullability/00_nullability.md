@@ -1,7 +1,7 @@
 # Nullability Configuration
 
-Nullability is a feature for enabling to specify to the Value Generator to include _null-like_ values instead
-of the specified ones - on demand. Sometimes it's useful.
+Nullability is a feature for enabling the client to specify to the Value Generator to include 
+_null-like_ values instead of the specified ones - on demand. 
 
 ## Configuration
 
@@ -23,9 +23,9 @@ be `null` or `undefined`.
 
 This is an example how you can implement the nullability into your Schemas.
 
-=== "Using with Value Generator"
+!!! example "Using with Value Generator"
 
-    ``` typescript linenums="1"
+    ```typescript linenums="1"
     const config: ConstantValueConfig = {
         value: "my constant value",
         nullability: {

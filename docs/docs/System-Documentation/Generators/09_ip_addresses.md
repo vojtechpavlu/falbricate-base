@@ -6,14 +6,14 @@ This generator is responsible for generating random IP Address (v4) in a given r
 
 !!! example
 
-```typescript linenums="1"
-const config: IPAddressConfig = {
-  octet1: { min: 10, max: 12 },
-  octet2: { min: 1, max: 32 },
-  octet3: { min: 1, max: 254 },
-  octet4: { min: 1, max: 254 },
-};
-```
+    ```typescript linenums="1"
+    const config: IPAddressConfig = {
+      octet1: { min: 10, max: 12 },
+      octet2: { min: 1, max: 32 },
+      octet3: { min: 1, max: 254 },
+      octet4: { min: 1, max: 254 },
+    };
+    ```
 
 ## Examples
 

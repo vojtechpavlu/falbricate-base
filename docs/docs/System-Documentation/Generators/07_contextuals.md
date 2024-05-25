@@ -6,7 +6,7 @@ Here is a list of predefined generators retrieving values from
 ## Context Accessor
 
 Returns a value from the received context. The value is reached by the given
-path the value shall be at.
+path the value is expected to be at.
 
 === "Configuration Declaration"
 
@@ -38,12 +38,12 @@ path the value shall be at.
     };
     ```
 
-- `path` represents the path in the given fabrication context (like `data.myContext.myValue`)
+- `path` represents the path in the given fabrication context (like `profiles.identifiers.uuid`)
 
 - `sep` represents separator to be used on path; by default it's a dot (`.`); supported
   values are `.`, `/`, `#` and `$`
 
-- `handleError` tells the accessor that if there is no value on the path or it comes into another
+- `handleError` tells the accessor that if there is no value on the path or when it comes into another
   issue, if it should try to handle or should fail in the first place. By default, it lets the error
   to be thrown. Otherwise, it uses _null-like_ value specified in `useErrorValue`
 

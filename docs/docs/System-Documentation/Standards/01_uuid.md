@@ -7,7 +7,8 @@ These Standard Value Generators tries to support it in your Falsa to ease the wh
 
 !!! warning
 
-    Keep in mind this implementation does not aim on secure randoms; some collisions might occur.
+    Keep in mind this implementation does not aim on secure randoms; some collisions might possibly occur.
+
 
 ## `uuid` Standard
 
@@ -18,7 +19,7 @@ built of lowercase hexadecimal characters (for uppercase version, use [`UUID` St
 
 === "Instance access"
 
-    ``` typescript linenums="1"
+    ```typescript linenums="1"
     const generator = new UUIDGenerator();
     console.log(generator.generate());
     ```
@@ -31,7 +32,7 @@ built of lowercase hexadecimal characters (for uppercase version, use [`UUID` St
 
 === "Declarative access"
 
-    ``` typescript linenums="1"
+    ```typescript linenums="1"
     const generator = getStandard('uuid');
     console.log(generator.generate());
     ```
@@ -44,7 +45,7 @@ built of lowercase hexadecimal characters (for uppercase version, use [`UUID` St
 
 === "Schema access"
 
-    ``` javascript linenums="1"
+    ```typescript linenums="1"
     const schema: SchemaInput = {
         fields: {
             value: 'uuid'

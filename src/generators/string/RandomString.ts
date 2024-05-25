@@ -1,4 +1,4 @@
-import { Charset, randomInteger, randomStringOfLength } from '../../utils';
+import { Charset, CharsetName, getCharset, randomInteger, randomStringOfLength } from '../../utils';
 import {
   GeneratedValue,
   ValueGenerator,
@@ -11,7 +11,7 @@ import {
 export type RandomStringGeneratorConfig = {
   minLen?: number;
   maxLen: number;
-  charset: Charset;
+  charset: Charset | CharsetName;
 } & ValueGeneratorConfig;
 
 /**
@@ -23,6 +23,9 @@ export class RandomStringGenerator extends ValueGenerator<
   RandomStringGeneratorConfig
 > {
   constructor(config: RandomStringGeneratorConfig) {
+
+    config = JSON.parse(JSON.stringify(config));
+
     config.minLen = config.minLen ?? 0;
 
     if (!config.maxLen) {
@@ -36,6 +39,10 @@ export class RandomStringGenerator extends ValueGenerator<
       );
     } else if (!config.charset) {
       throw new Error(`Property 'charset' is required`);
+    }
+
+    if (typeof config.charset === 'string') {
+      config.charset = getCharset(config.charset)
     }
 
     super(config);

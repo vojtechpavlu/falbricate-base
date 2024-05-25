@@ -105,7 +105,7 @@ schema object will be used to generate nested falsum.
 
 ## List of Objects from Schema
 
-Builds up a list of an objects by given schema.
+Builds up a list of objects by given schema.
 
 The configuration object is required to have `schema` field containing
 a [Schema Input](../Building-Blocks/02_schema-input.md) object. This configured

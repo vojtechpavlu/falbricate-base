@@ -1,14 +1,16 @@
-import { randomBytes } from 'crypto';
+let seed = 1;
 
 /**
  * Random float generator based on crypto library
  */
 const cryptoGenerator = (): number => {
+  const { randomBytes } = require('crypto');
+
   const bytes = randomBytes(7);
 
   let float: number = (bytes[0]! % 32) / 32;
 
-  bytes.subarray(1).forEach((byte) => {
+  bytes.subarray(1).forEach((byte: number) => {
     float = (float + byte) / 256;
   });
 
@@ -37,7 +39,7 @@ const RANDOMIZER_REGISTRY: RandomizerRegistry = {
   default: Math.random,
 
   /** Proprietary */
-  crypto: cryptoGenerator,
+  crypto: cryptoGenerator
 };
 
 /**
@@ -53,6 +55,17 @@ export const useRandomizer = (name: RandomizerName): void => {
   }
 
   RANDOMIZER = getRandomizer(name);
+};
+
+/**
+ * Implementation of Linear congruential generator to enable
+ * seeding the pseudo-randomization.
+ */
+export const useSeed = (seed: number): void => {
+  RANDOMIZER = () => {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed / 233280;
+  }
 };
 
 /**
@@ -96,7 +109,7 @@ export const hasRandomizer = (name: RandomizerName): boolean => {
  */
 export const storeRandomizer = (
   name: RandomizerName,
-  randomizer: Randomizer,
+  randomizer: Randomizer
 ) => {
   if (!name) {
     throw new Error(`No randomizer name provided`);

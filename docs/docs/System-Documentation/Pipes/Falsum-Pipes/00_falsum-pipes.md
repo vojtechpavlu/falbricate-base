@@ -202,9 +202,9 @@ to register it into internal registry of Falsum Pipes.
     with such name registered, it will throw an Error when trying to store!
 
 !!! tip "Naming conventions"
-It doesn't matter what name do you use. As long as it's a string. But
-it's a best practice to avoid using whitespaces or special characters.
-Shouldn't stop working if you do, though...
+    It doesn't matter what name do you use. As long as it's a string. But
+    it's a best practice to avoid using whitespaces or special characters.
+    Shouldn't stop working if you do, though...
 
 Now, when you have your custom pipe registered, you can use it in your schema
 by just referring to it by previously given name:

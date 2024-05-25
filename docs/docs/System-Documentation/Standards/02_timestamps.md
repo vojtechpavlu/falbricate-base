@@ -8,7 +8,7 @@ there's a set of standards you can use.
 
 ## Names
 
-Naming convention for prepared is as follows:
+Naming convention for prepared ones is as follows:
 
 ```
 <<type>>-<<direction>>-<<period-length>><<time-unit>>
@@ -64,7 +64,7 @@ Standards of this type are generating a timestamp represented by a number (UNIX 
 
 === "Declarative access"
 
-    ``` typescript linenums="1"
+    ```typescript linenums="1"
     const generator = getStandard('timestamp-past-12h');
     console.log(generator.generate());
     ```
@@ -77,7 +77,7 @@ Standards of this type are generating a timestamp represented by a number (UNIX 
 
 === "Schema access"
 
-    ``` javascript linenums="1"
+    ```typescript linenums="1"
     const schema: SchemaInput = {
         fields: {
             value: 'timestamp-past-12h'

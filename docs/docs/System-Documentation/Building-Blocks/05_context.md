@@ -9,17 +9,17 @@ Partially it's given by client, partially it's a context provided internally by 
 ## Contents of the Context
 
 Context consists of multiple parts. First and the most important is the context the
-client provides. The client can put as the context whatever he needs.
+client provides. The client can put as the context whatever he might need for generation.
 
 For example have a look at [Context Accessor](../Generators/07_contextuals.md#context-accessor).
 
 But there are also items added to the context internally:
 
-- `index` - number of generated item in the row (counting from 0). More important
-  when using `Fabricator#generateMany(n, context)` method
+- `index` - number of currently generated item in a row (counting from 0); more useful
+  when invoking `Fabricator#generateMany(n, context)` method
 
 - `current` - falsum being currently fabricated; useful when you need to access
-  other properties to stay consistent within falsa
+  other properties to stay consistent within falsum
 
 - `previous` - previously fabricated falsum; only populated when using
   `Fabricator#generateMany(n, context)` method
@@ -30,8 +30,8 @@ But there are also items added to the context internally:
     are being merged giving the clinet the opportunity to alter the context as he wish
     and whenever he needs.
 
-    **On the other hand, be careful when doing so - you can simply get into unexpected
-    behaviour just by overriding some of these default context proeprties!**
+    **On the other hand, be careful when doing so - you can easily get into unexpected
+    behaviour just by overriding some of these default context properties!**
 
 !!! example "Example Context"
 
