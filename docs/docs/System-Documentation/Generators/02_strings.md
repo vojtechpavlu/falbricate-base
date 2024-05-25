@@ -2,6 +2,12 @@
 
 Here is a list of predefined generators for generating string values.
 
+
+!!! note
+
+    These generators are well combined with [Charsets](../../Utils/charset.md) feature  
+
+
 ## Random String of lenght
 
 Generates a random string based on desired `length` (number) and given `charset`.
