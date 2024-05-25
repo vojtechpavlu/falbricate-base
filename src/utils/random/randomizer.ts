@@ -57,6 +57,10 @@ export const useRandomizer = (name: RandomizerName): void => {
   RANDOMIZER = getRandomizer(name);
 };
 
+/**
+ * Implementation of Linear congruential generator to enable
+ * seeding the pseudo-randomization.
+ */
 export const useSeed = (seed: number): void => {
   RANDOMIZER = () => {
     seed = (seed * 9301 + 49297) % 233280;
