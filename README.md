@@ -1,5 +1,7 @@
 # @falbricate/base
 
+![![Automatic Tests](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml/badge.svg)](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml)
+
 Simple and lightweight tool for mocking data in a shape you describe.
 
 [Here](https://vojtechpavlu.github.io/falbricate-base/) you can find full documentation for this tool,
