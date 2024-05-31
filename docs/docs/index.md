@@ -10,6 +10,8 @@ The name chosen for this project is a composition of words **_Falsum_** and **_F
 to indicate the intended purpose - to enable the user to generate any random data by declaring
 just how the output data should look like - by providing a simple JSON-like schema.
 
+This nature enables you to version the schema at the same pace the project needs will grow.
+
 Currently, its main aim is to enhance mocking and preparation tools; with future extension to
 other ecosystems to support the developer experience as much as possible.
 
