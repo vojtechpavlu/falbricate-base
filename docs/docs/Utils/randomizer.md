@@ -26,7 +26,7 @@ To specify you want to use a different generator, you need to specify it using
 
 ## What is a randomizer
 
-For Falbricate, randomizer (or Random Generator) is a function providing a _pseudo-_random 
+For Falbricate, randomizer (or Random Generator) is a function providing a *pseudo-*random 
 number in range `[0, 1]` and is being used all over the Falbricate ecosystem. For example 
 the default randomizer is simply the default `Math.random` function.
 
@@ -36,7 +36,7 @@ the default randomizer is simply the default `Math.random` function.
 In some scenarios, you might need to use not exactly random values, but seeded randoms - to
 be able to determinate the results.
 
-For this purpose, there's a simple implementation of Linear Congruential Generator (LCG) implemented.
+For this purpose, there's a simple implementation of Linear Congruential Generator (LCG) defined.
 
 To enable this feature, you need to start with:
 
@@ -44,7 +44,7 @@ To enable this feature, you need to start with:
 useSeed(123)
 ```
 
-This will make sure your Fabricators will generate pseudo-random results with a deterministic element - results
+This will make sure your Fabricators will generate *pseudo*-random results with a deterministic element - results
 shall be always the same. This feature might be very useful for extensive testing purposes.
 
 
