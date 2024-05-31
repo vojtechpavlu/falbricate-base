@@ -1,6 +1,6 @@
 # @falbricate/base
 
-[![Verify](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml/badge.svg)](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml)
+[![Tests](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml/badge.svg)](https://github.com/vojtechpavlu/falbricate-base/actions/workflows/verify.yml)
 
 Simple and lightweight tool for mocking data in a shape you describe.
 
