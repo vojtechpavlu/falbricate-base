@@ -7,7 +7,7 @@ import { SchemaInput } from '../../schema';
 export class IdentifierProfileFabricator extends ProfileFabricator {
   private static readonly SCHEMA_INPUT: SchemaInput = {
     fields: {
-      rowNumber: { type: 'context-input', config: { path: 'index' } },
+      rowNumber: '!ref-index',
       randH: 'integer-e3-u',
       randT: 'integer-e4-u',
       randM: 'integer-e7-u',
