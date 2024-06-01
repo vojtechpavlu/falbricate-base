@@ -8,9 +8,9 @@ export class IdentifierProfileFabricator extends ProfileFabricator {
   private static readonly SCHEMA_INPUT: SchemaInput = {
     fields: {
       rowNumber: { type: 'context-input', config: { path: 'index' } },
-      randH: { type: 'range-integer', config: { max: 100 } },
-      randT: { type: 'range-integer', config: { max: 1_000 } },
-      randM: { type: 'range-integer', config: { max: 1_000_000 } },
+      randH: 'integer-e3-u',
+      randT: 'integer-e4-u',
+      randM: 'integer-e7-u',
       uuid: 'uuid',
       UUID: {
         type: 'context-input',
