@@ -48,6 +48,11 @@ console.log(fabricator.generate());
     { id: '5c3c2dc9-905b-4005-4059-40ff821cd2cc' }
     ```
 
+!!! tip
+
+    In this example, you can see a basic usage of [Identifiers](./01_identifiers.md) 
+    profile for generating an object ID. Check it out!
+
 As you can see, the profile data are generated and passed into the
 Fabrication Context object into `profiles` property; the actual
 profile object (with its contents) you requested is then accessible

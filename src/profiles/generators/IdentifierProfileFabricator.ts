@@ -7,12 +7,36 @@ import { SchemaInput } from '../../schema';
 export class IdentifierProfileFabricator extends ProfileFabricator {
   private static readonly SCHEMA_INPUT: SchemaInput = {
     fields: {
-      rowNumber: { type: 'context-input', config: { path: 'index' } },
+      rowNumber: '!ref-index',
+      randH: {
+        type: 'range-integer',
+        config: {
+          min: 100,
+          max: 999
+        }
+      },
+      randT: {
+        type: 'range-integer',
+        config: {
+          min: 1_000,
+          max: 9_999
+        }
+      },
+      randM: {
+        type: 'range-integer',
+        config: {
+          min: 1_000_000,
+          max: 9_999_999
+        }
+      },
       uuid: 'uuid',
-      UUID: 'UUID',
-      randH: { type: 'range-integer', config: { max: 100 } },
-      randT: { type: 'range-integer', config: { max: 1_000 } },
-      randM: { type: 'range-integer', config: { max: 1_000_000 } },
+      UUID: {
+        type: 'context-input',
+        config: {
+          path: 'current.uuid',
+          pipes: ['uppercase']
+        },
+      }
     },
   };
 
